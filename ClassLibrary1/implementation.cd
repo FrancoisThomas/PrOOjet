@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="unites est une map ayant pour clé les Coordonnees et pour valeur une Unite.">
+    <Position X="4.75" Y="9" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="cases est une map ayant pour clé les Coordonnees et pour valeur une Case">
+    <Position X="17.029" Y="5.306" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="PrOOjet.Peuple">
+    <Position X="7.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Peuple.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="joueur" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.224" />
+  </Class>
+  <Class Name="PrOOjet.Gaulois">
+    <Position X="6" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gaulois.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Viking">
+    <Position X="7.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Viking.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Nain">
+    <Position X="9.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Unite">
+    <Position X="1.75" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACBAAACQAEAAABUAAEAAAAAAAAACEAEAI=</HashCode>
+      <FileName>Unite.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="joueur" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.UniteGaulois">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UniteGaulois.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.UniteViking">
+    <Position X="2.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UniteViking.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.UniteNain">
+    <Position X="4" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UniteNain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Case">
+    <Position X="20.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Case.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.CaseMontagne">
+    <Position X="17.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CaseMontagne.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.CasePlaine">
+    <Position X="19" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CasePlaine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.CaseDesert">
+    <Position X="20.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CaseDesert.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.CaseEau">
+    <Position X="22.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CaseEau.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.CaseForet">
+    <Position X="24.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CaseForet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Carte">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <AssociationLine Name="fabriqueCase" Type="PrOOjet.FabriqueCase">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.144" Y="0.239" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Carte.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cases" />
+      <Property Name="fabriqueCase" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.FabriqueCase">
+    <Position X="12.75" Y="8.25" Width="1.5" />
+    <AssociationLine Name="montagne" Type="PrOOjet.CaseMontagne" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="8.464" />
+        <Point X="18" Y="8.464" />
+        <Point X="18" Y="7.997" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="plaine" Type="PrOOjet.CasePlaine" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="8.893" />
+        <Point X="19.75" Y="8.893" />
+        <Point X="19.75" Y="7.997" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="desert" Type="PrOOjet.CaseDesert" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="9.321" />
+        <Point X="21.5" Y="9.321" />
+        <Point X="21.5" Y="7.997" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="eau" Type="PrOOjet.CaseEau" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="9.75" />
+        <Point X="23.25" Y="9.75" />
+        <Point X="23.25" Y="7.997" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foret" Type="PrOOjet.CaseForet" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="10.178" />
+        <Point X="25" Y="10.178" />
+        <Point X="25" Y="7.997" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAQCCAACAAAAAAAAAgAAAAAAAgCAABEAAAAAAAAAAE=</HashCode>
+      <FileName>FabriqueCase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="montagne" />
+      <Property Name="plaine" />
+      <Property Name="desert" />
+      <Property Name="eau" />
+      <Property Name="foret" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Partie">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <AssociationLine Name="INSTANCE" Type="PrOOjet.Partie" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.247" />
+        <Point X="4" Y="3.247" />
+        <Point X="4" Y="2.687" />
+        <Point X="4.25" Y="2.687" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.306" Y="-0.279" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Carte" Type="PrOOjet.Carte" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="2.927" />
+        <Point X="12.178" Y="2.927" />
+        <Point X="12.178" Y="5.727" />
+        <Point X="12.75" Y="5.727" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="joueur1" Type="PrOOjet.Joueur">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.248" Y="0.349" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="joueur2" Type="PrOOjet.Joueur">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.441" Y="0.336" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAEgAAAAAAAAAAAQAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Partie.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="INSTANCE" />
+      <Property Name="Carte" />
+      <Property Name="joueur1" />
+      <Property Name="joueur2" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Joueur">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgAAAAAAAAAAAQAIAAAAAAAAgAAAIAAAAAAAgQ=</HashCode>
+      <FileName>Joueur.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="peuple" />
+      <Property Name="unites" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.MonteurPartie">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MonteurPartie.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PrOOjet.Coordonnees">
+    <Position X="6.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAA=</HashCode>
+      <FileName>Coordonnees.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

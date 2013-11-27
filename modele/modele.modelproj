@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f3278014-d5bb-4f55-8202-960d26055491}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>modele</Name>
+    <RootNamespace>modele</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="creationPartie.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="creationPartie.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>creationPartie.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="EtatsTransitionsPartie.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="EtatsTransitionsPartie.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>EtatsTransitionsPartie.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="selectionUnite.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="selectionUnite.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>selectionUnite.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="combat.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="combat.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>combat.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="EtatsTransitionsUnites.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="EtatsTransitionsUnites.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>EtatsTransitionsUnites.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="combat.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="combat.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>combat.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="UseCaseDiagram.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UseCaseDiagram.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UseCaseDiagram.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\modele.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

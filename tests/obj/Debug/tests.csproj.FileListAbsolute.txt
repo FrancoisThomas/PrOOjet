@@ -1,0 +1,6 @@
+H:\TP\POO\PrOOjet\tests\bin\Debug\tests.dll
+H:\TP\POO\PrOOjet\tests\bin\Debug\tests.pdb
+H:\TP\POO\PrOOjet\tests\obj\Debug\tests.csprojResolveAssemblyReference.cache
+H:\TP\POO\PrOOjet\tests\obj\Debug\tests.dll
+H:\TP\POO\PrOOjet\tests\obj\Debug\tests.pdb
+H:\TP\POO\PrOOjet\tests\bin\Debug\carte.dll

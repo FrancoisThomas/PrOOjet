@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="a42b2eed-3df4-479b-9a14-da7375a3b1f1" name="UMLUseCaseDiagram1" linkedPackageId="d323f4e2-2e8f-48fb-9cff-93a142551389" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="afc6d64a-fe7d-4bcc-bd87-c116b714c3ff" name="Joueur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="61ba5c65-2a2e-45ca-acd2-444e07a7f9b3" />
+        <targetEnds>
+          <association Id="df79e5e5-8890-4300-9ef1-22148e00867c" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Jouer son tour" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9f8c6b4d-6924-4718-bd9c-2622a4bb3f26" LastKnownName="Jouer son tour" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="01603588-a283-475e-b5aa-cc1a46dff0ad" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9e1dc42a-2dcd-4d36-9050-41aae5b508b4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b885b27a-fcba-471b-a395-6038693c8c8e" name="Jouer son tour" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8ae32c7a-2a9c-4746-9043-087f1c38d423" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8e0c2a78-e8b6-47fc-bc8f-092b57614636" />
+          </association>
+          <association Id="0173175a-c665-4f56-a2a7-a324f58cebb4" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Démarrer une partie" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5d5755cf-1b3d-411b-b423-ee7cb7c6739b" LastKnownName="Démarrer une partie" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="475ee3b0-23a7-4c7a-bc83-a15b9f52f227" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bdcde860-105d-45f4-a2d5-649bfef34dcb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b37f7479-4a7e-4969-a3f7-34e4870b9d4a" name="Démarrer une partie" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b74394d7-97b6-4dc0-aafe-b3c1c1ba77a9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c433b09f-bc0a-444d-a0fc-6f63e379843b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9f8c6b4d-6924-4718-bd9c-2622a4bb3f26" name="Jouer son tour" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8059cf01-33f5-468f-aa69-5aae9a6eca8a" />
+        <additions>
+          <include Id="51ac1c23-d5c4-4029-beed-6d2882898cbe">
+            <useCaseMoniker Id="4eac8584-5e16-4ae2-8cd7-d852c57564cf" LastKnownName="Finir son tour" />
+            <elementDefinition Id="3534be4a-ef95-424d-ab7a-056fe62493cd" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6c34e0d2-1f3b-4b55-8d44-c61f7dbb5241" name="Déplacer une unité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5a75082e-d588-4568-a2aa-d96ff0ec03ce" />
+        <extendedCases>
+          <extend Id="c7012c0e-692c-415f-ac56-5726978c91fe">
+            <useCaseMoniker Id="db78dfb5-57cf-4729-a6ea-8777c33074e3" LastKnownName="Sélectionner unité" />
+            <elementDefinition Id="717fa34d-1ca3-44a0-a12d-7c21d59f33ca" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e4255485-3a14-4cb8-9d16-f555de50151d" name="Faire attaquer une unité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="51957825-e621-4901-897f-002ccdf3e0dc" />
+        <extendedCases>
+          <extend Id="3953eb33-f034-451a-a6a3-83c9192d3e75">
+            <useCaseMoniker Id="db78dfb5-57cf-4729-a6ea-8777c33074e3" LastKnownName="Sélectionner unité" />
+            <elementDefinition Id="b5a8f9cf-eab2-4f0f-b8d6-5da620f134a0" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="00ae647c-cf40-4753-aa67-8cf788f5747e">
+            <useCaseMoniker Id="dc68d9af-7e75-4a80-9f28-e1b2b61e8b18" LastKnownName="Sélectionner la case à attaquer" />
+            <elementDefinition Id="8e187a26-3f54-484c-a6f8-de25afd1e064" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5d5755cf-1b3d-411b-b423-ee7cb7c6739b" name="Démarrer une partie" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="451f8835-4500-43f6-8216-4c806e86781d" />
+        <additions>
+          <include Id="07102990-bb9b-4c3d-a9b1-512999c3b54a">
+            <useCaseMoniker Id="c953ec79-09b9-4e92-bf99-51ab2fc997c1" LastKnownName="Choisir un peuple" />
+            <elementDefinition Id="680741d3-a80e-4b12-a6d7-edb755091c32" />
+          </include>
+          <include Id="5d22f4a7-c410-4d75-b010-fda26e0d4454">
+            <useCaseMoniker Id="3dc103bd-3b0c-4d2d-9462-c71329fcd9f8" LastKnownName="Choisir une carte" />
+            <elementDefinition Id="eeddd10c-c487-4632-9841-183bb2319491" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c953ec79-09b9-4e92-bf99-51ab2fc997c1" name="Choisir un peuple" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4bdc80c7-2339-4acc-813e-77a37378b93a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3dc103bd-3b0c-4d2d-9462-c71329fcd9f8" name="Choisir une carte" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8412dc35-c9aa-4c88-b11f-f020750e19bd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4eac8584-5e16-4ae2-8cd7-d852c57564cf" name="Finir son tour" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="db29f87a-e8cb-4053-bb87-93c14f827847" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e7d80f9c-2995-40ac-8d01-d7ca94d65315" name="Gaulois" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6f62430e-ff4f-48a4-8717-096f7bc1a958" />
+        <extendedCases>
+          <extend Id="565ed83a-ff0f-4d98-ae98-823cb0251e7f">
+            <useCaseMoniker Id="c953ec79-09b9-4e92-bf99-51ab2fc997c1" LastKnownName="Choisir un peuple" />
+            <elementDefinition Id="7b275990-de75-472e-9974-81cee281033c" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5dabf3fa-5bc5-455c-9626-12b0389e4d3f" name="Viking" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="910253b6-da72-429c-84b7-3a85f30392dd" />
+        <extendedCases>
+          <extend Id="98979601-e397-4508-8976-34530d767564">
+            <useCaseMoniker Id="c953ec79-09b9-4e92-bf99-51ab2fc997c1" LastKnownName="Choisir un peuple" />
+            <elementDefinition Id="1f1e2b28-dca0-419b-b18a-7a196c47d010" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="15d41ce8-98a6-4013-adc0-05d773528e18" name="Nain" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d62441e0-0c03-41c0-9163-d1a4b3ba9ae4" />
+        <extendedCases>
+          <extend Id="13afc7ab-082e-4b08-b386-5a9c4194b0e6">
+            <useCaseMoniker Id="c953ec79-09b9-4e92-bf99-51ab2fc997c1" LastKnownName="Choisir un peuple" />
+            <elementDefinition Id="3a495d63-861b-4790-a6b5-e459bd92eb02" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e96f7a27-b9e0-4235-9e22-78c5ee18267d" name="Démo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9e038b6d-fd02-4f8b-9775-96fcbfcb5e96" />
+        <extendedCases>
+          <extend Id="66abd83e-3d6a-4094-ac93-70a69f5ad6b4">
+            <useCaseMoniker Id="3dc103bd-3b0c-4d2d-9462-c71329fcd9f8" LastKnownName="Choisir une carte" />
+            <elementDefinition Id="cf40efc9-615c-4ab0-9aba-ec20443e5d8a" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d9ec1437-2a6d-4337-99cb-e630ab65a95f" name="Petite" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="352cf5bd-5f3c-4e51-a221-50c3724f5cc8" />
+        <extendedCases>
+          <extend Id="75fa6bda-03e9-4cef-9be5-26a5f8e8bfef">
+            <useCaseMoniker Id="3dc103bd-3b0c-4d2d-9462-c71329fcd9f8" LastKnownName="Choisir une carte" />
+            <elementDefinition Id="967ffa9d-3a80-4f8b-9cbf-41087541cad6" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="27e9da48-d22b-4c49-8cd8-c2b1ba63853f" name="Normale" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8d9a90e5-a5f9-4d3f-98a0-6be77b3da1f8" />
+        <extendedCases>
+          <extend Id="3bfb6fc0-b7b7-45a2-b7a0-960a74ac45bf">
+            <useCaseMoniker Id="3dc103bd-3b0c-4d2d-9462-c71329fcd9f8" LastKnownName="Choisir une carte" />
+            <elementDefinition Id="72c16d20-095a-41a0-a13c-8c01ad581e07" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="db78dfb5-57cf-4729-a6ea-8777c33074e3" name="Sélectionner unité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="31808f44-7dbd-405a-b2be-1c9a05361173" />
+        <extendedCases>
+          <extend Id="08e6801c-28ed-474d-9c6a-1ed9970333ec">
+            <useCaseMoniker Id="9f8c6b4d-6924-4718-bd9c-2622a4bb3f26" LastKnownName="Jouer son tour" />
+            <elementDefinition Id="a8eb5072-6f9d-4628-bccd-3fa4db055a29" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b9ccfa83-d4cb-405f-964b-423a8b378901" name="Parcourir la carte" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6053c313-f898-46c9-a463-e1a190437a4c" />
+        <extendedCases>
+          <extend Id="3bd32b26-52b3-4e11-b8db-36259d45bbe7">
+            <useCaseMoniker Id="9f8c6b4d-6924-4718-bd9c-2622a4bb3f26" LastKnownName="Jouer son tour" />
+            <elementDefinition Id="03aaf605-cfd1-4c0c-b449-52cd5b0502f3" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="26cdc565-f1e2-407e-95b8-881a3b12f40d" name="Voir les caractéristiques de l'unité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="df67ebe4-a84f-4379-8206-1a0cdefe21ae" />
+        <additions>
+          <include Id="bb6e6dba-bcb1-4c89-a357-002dabde75e3">
+            <useCaseMoniker Id="db78dfb5-57cf-4729-a6ea-8777c33074e3" LastKnownName="Sélectionner unité" />
+            <elementDefinition Id="306a19d8-1aa4-40a1-8fc6-0feda350b4ed" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="de73eac0-05a8-452a-855d-119647aee80d" name="Sélectionner la case d'arrivée" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0e270540-2bfe-4e50-b27e-143aa99377df" />
+        <additions>
+          <include Id="4f54d145-3185-46aa-8582-1ac105397d30">
+            <useCaseMoniker Id="6c34e0d2-1f3b-4b55-8d44-c61f7dbb5241" LastKnownName="Déplacer une unité" />
+            <elementDefinition Id="b82854ed-f20c-428f-9621-3df129fdbb2e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dc68d9af-7e75-4a80-9f28-e1b2b61e8b18" name="Sélectionner la case à attaquer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="57efeef1-68c6-4db3-af7c-9968540cdf3b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1f83019d-da58-405c-b720-db47e805c97f" name="Nicolas Cage" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="77d458d7-4cd9-4680-86a7-9566943b06ac" />
+        <generalsInternal>
+          <generalization Id="7340c875-d99a-4d89-9218-6053fcc426e6" isSubstitutable="false">
+            <actorMoniker Id="afc6d64a-fe7d-4bcc-bd87-c116b714c3ff" LastKnownName="Joueur" />
+            <elementDefinition Id="eb09710b-a1ae-417a-b5ae-4d51b2f8d848" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="d323f4e2-2e8f-48fb-9cff-93a142551389" name="modele">
+    <elementDefinition Id="b55103ff-bd6c-4aaa-b02d-24c2d0577821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="5ad8a105-62f3-41e0-b077-799525e36dea">
+        <profileInstance Id="e8d16ced-d851-471c-b59c-072831a495d5" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a5276223-6a59-49dc-8eb5-a41025006ce3">
+        <profileInstance Id="37e0b29f-bb43-478d-ad6b-46ba1969fccb" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

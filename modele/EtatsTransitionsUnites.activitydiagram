@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="3a2870c3-834f-48ca-8e91-f17fdaa9659b" name="Activity1" linkedPackageId="03d3614e-4615-4f84-892e-e0b310a0f57f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="2a0092e4-b37d-4c71-bdc6-efab4fcca2b5">
+      <elementDefinition Id="307220cf-f1a6-48dd-b98a-653eb1d77678" />
+      <body>Création de l'unité</body>
+    </comment>
+    <comment Id="b24a0911-4f5a-4254-bf44-96db2fd9b2ca">
+      <elementDefinition Id="0493e554-ff8b-4753-b7f5-989764f6ea85" />
+      <body>Nouveau tour</body>
+    </comment>
+    <comment Id="bd86935b-189b-4974-8610-84c63b0127c6">
+      <elementDefinition Id="735c5720-a92e-4fb0-aaf5-ebd15930baa7" />
+      <body>Mort de l'unité</body>
+    </comment>
+    <comment Id="395e979f-59b6-4b71-a652-6d260ad5c1ff">
+      <elementDefinition Id="c8c0cf78-f76f-4ab0-b5e7-cfb690aed2a5" />
+      <body>Points de déplacement &lt;= 0</body>
+    </comment>
+    <comment Id="e7bfab60-2b14-499c-91c2-ad13f7ee2166">
+      <elementDefinition Id="0fccce16-ec1a-43e3-b7f3-4b7a47a99bb3" />
+      <body>Points de vie &lt;= 0</body>
+    </comment>
+    <comment Id="d29a324f-02e1-4718-b4c7-a5ee13bc9f14">
+      <elementDefinition Id="848aa153-39f1-42fd-af60-fccf80611da7" />
+      <body>Points de déplacement &gt; 0</body>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="149a0297-da31-4f01-bbe6-6cff768b6ee0" name="Activity1" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="cc289512-c014-47ef-a2e6-4144c6b767b7" />
+        <nodes>
+          <initialNode Id="8d044f93-54c9-4177-bb39-739b0bc93dcb" name="Initial1" isLeaf="false">
+            <elementDefinition Id="f1f0efec-b336-46d1-8e68-eb60079ce037" />
+            <flowNodeTargets>
+              <controlFlow Id="946e95fc-4cc1-40ce-86a8-c3bb7f309bf8" isLeaf="false">
+                <opaqueActionMoniker Id="58445761-ad27-4d0b-9abb-793f6ca0eae3" LastKnownName="Peut bouger" />
+                <elementDefinition Id="c8f20606-4188-4880-b24b-5cd9e1890dba" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="58445761-ad27-4d0b-9abb-793f6ca0eae3" name="Peut bouger" isLeaf="false">
+            <elementDefinition Id="81fad001-5275-4346-aa8f-ff7fbbe5ebbd" />
+            <flowNodeTargets>
+              <controlFlow Id="abe03527-7337-4a54-8eee-a508a4979ed4" isLeaf="false">
+                <opaqueActionMoniker Id="58445761-ad27-4d0b-9abb-793f6ca0eae3" LastKnownName="Peut bouger" />
+                <elementDefinition Id="5a7b86e7-e459-4a3a-9889-8fa4255f2ed0" />
+              </controlFlow>
+              <controlFlow Id="cf3caf58-9e96-4047-a294-d361a16d66f3" isLeaf="false">
+                <opaqueActionMoniker Id="af52a97b-3fbe-49a0-8d11-2541621e253e" LastKnownName="Ne peut plus bouger" />
+                <elementDefinition Id="8d915333-d2a5-4193-ace8-9ee48462fa2e" />
+              </controlFlow>
+              <controlFlow Id="33758f9b-fc4d-4fd4-851d-a9f6abf78eaf" isLeaf="false">
+                <activityFinalNodeMoniker Id="5c85b339-5daf-426e-a00f-cf72ba04a34d" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="b6bd058a-6ee6-4b86-a4cc-845320296439" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="af52a97b-3fbe-49a0-8d11-2541621e253e" name="Ne peut plus bouger" isLeaf="false">
+            <elementDefinition Id="de78f23f-5efb-40be-8f30-ebd2f2cfe125" />
+            <flowNodeTargets>
+              <controlFlow Id="d235a185-1245-4b7c-8bf9-d37b62409b5b" isLeaf="false">
+                <opaqueActionMoniker Id="58445761-ad27-4d0b-9abb-793f6ca0eae3" LastKnownName="Peut bouger" />
+                <elementDefinition Id="c802c18b-93ad-494b-8eea-999a403426a2" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="5c85b339-5daf-426e-a00f-cf72ba04a34d" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="e48b1c6f-8160-420e-a385-0527589a5075" />
+          </activityFinalNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="03d3614e-4615-4f84-892e-e0b310a0f57f" name="modele">
+    <elementDefinition Id="b55103ff-bd6c-4aaa-b02d-24c2d0577821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8b36a5e4-d311-4f0e-8ba7-7f06de4080b0">
+        <profileInstance Id="efb7f589-fe89-4786-a80c-229f8cbac7c8" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="13316661-7afb-4939-a293-b295b1f3b4d5">
+        <profileInstance Id="c9af1754-c6ac-4bb6-9277-295f227f1aca" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

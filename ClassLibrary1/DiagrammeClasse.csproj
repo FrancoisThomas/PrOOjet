@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC2F7478-D0E8-4D72-AC5E-173548D0DF3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PrOOjet</RootNamespace>
+    <AssemblyName>PrOOjet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\PrOOjet.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Carte.cs" />
+    <Compile Include="Case.cs" />
+    <Compile Include="CaseDesert.cs" />
+    <Compile Include="CaseEau.cs" />
+    <Compile Include="CaseForet.cs" />
+    <Compile Include="CaseMontagne.cs" />
+    <Compile Include="CasePlaine.cs" />
+    <Compile Include="Coordonnees.cs" />
+    <Compile Include="FabriqueCase.cs" />
+    <Compile Include="Gaulois.cs" />
+    <Compile Include="ICarte.cs" />
+    <Compile Include="ICase.cs" />
+    <Compile Include="ICaseDesert.cs" />
+    <Compile Include="ICaseEau.cs" />
+    <Compile Include="ICaseForet.cs" />
+    <Compile Include="ICaseMontagne.cs" />
+    <Compile Include="ICasePlaine.cs" />
+    <Compile Include="IFabriqueCase.cs" />
+    <Compile Include="IJoueur.cs" />
+    <Compile Include="IMonteurPartie.cs" />
+    <Compile Include="IPartie.cs" />
+    <Compile Include="IPeuple.cs" />
+    <Compile Include="IPeupleGaulois.cs" />
+    <Compile Include="IPeupleNain.cs" />
+    <Compile Include="IPeupleViking.cs" />
+    <Compile Include="IStrategieDemo.cs" />
+    <Compile Include="IStrategieNormale.cs" />
+    <Compile Include="IStrategiePetite.cs" />
+    <Compile Include="IStrategieTaille.cs" />
+    <Compile Include="IUnite.cs" />
+    <Compile Include="IUniteGaulois.cs" />
+    <Compile Include="IUniteNain.cs" />
+    <Compile Include="IUniteViking.cs" />
+    <Compile Include="IVue.cs" />
+    <Compile Include="Joueur.cs" />
+    <Compile Include="MonteurPartie.cs" />
+    <Compile Include="Nain.cs" />
+    <Compile Include="Partie.cs" />
+    <Compile Include="Peuple.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unite.cs" />
+    <Compile Include="UniteGaulois.cs" />
+    <Compile Include="UniteNain.cs" />
+    <Compile Include="UniteViking.cs" />
+    <Compile Include="Viking.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="implementation.cd" />
+    <None Include="interfaces.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

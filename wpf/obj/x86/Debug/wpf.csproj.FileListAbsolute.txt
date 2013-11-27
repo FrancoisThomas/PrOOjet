@@ -1,0 +1,12 @@
+H:\TP\POO\PrOOjet\wpf\bin\Debug\wpf.exe
+H:\TP\POO\PrOOjet\wpf\bin\Debug\wpf.pdb
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.csprojResolveAssemblyReference.cache
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\MainWindow.baml
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\MainWindow.g.cs
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\App.g.cs
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.cache
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.g.resources
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.Properties.Resources.resources
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.csproj.GenerateResource.Cache
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.exe
+H:\TP\POO\PrOOjet\wpf\obj\x86\Debug\wpf.pdb

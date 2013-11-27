@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Singleton">
+    <Position X="8.714" Y="5.094" Height="0.292" Width="0.96" />
+  </Comment>
+  <Comment CommentText="Fabrique">
+    <Position X="13.142" Y="8.605" Height="0.302" Width="1.263" />
+  </Comment>
+  <Comment CommentText="Poids-Mouche">
+    <Position X="19.5" Y="8" Height="0.291" Width="1.044" />
+  </Comment>
+  <Interface Name="PrOOjet.IJoueur">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>IJoueur.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICase">
+    <Position X="22" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICarte">
+    <Position X="16.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICarte.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IPeuple">
+    <Position X="13" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPeuple.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IUnite">
+    <Position X="7.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUnite.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IMonteurPartie">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMonteurPartie.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IPeupleGaulois">
+    <Position X="11.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPeupleGaulois.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IPeupleViking">
+    <Position X="13" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPeupleViking.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IPeupleNain">
+    <Position X="14.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPeupleNain.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IUniteGaulois">
+    <Position X="5.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUniteGaulois.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IUniteViking">
+    <Position X="7.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUniteViking.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IUniteNain">
+    <Position X="9" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUniteNain.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IFabriqueCase">
+    <Position X="16.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACCAACAAAAAAAAAgAAAAAAAgAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>IFabriqueCase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICaseMontagne">
+    <Position X="18.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICaseMontagne.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICasePlaine">
+    <Position X="20.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICasePlaine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICaseDesert">
+    <Position X="22" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICaseDesert.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICaseEau">
+    <Position X="23.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICaseEau.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.ICaseForet">
+    <Position X="25.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICaseForet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PrOOjet.IPartie">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>IPartie.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

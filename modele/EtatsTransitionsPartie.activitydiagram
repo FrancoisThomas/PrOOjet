@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="a78ff024-444c-498f-b210-5de2f80f5cd5" name="EtatsTransitionsPartie" linkedPackageId="c1a62a92-d1c0-4481-a875-5332e8accf50" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="975f94aa-e78b-4ab3-a8df-a8ce5acb8bb2">
+      <elementDefinition Id="bad1d72e-29ea-40be-b7cd-4c2d3d14f2b6" />
+      <body>Création de la Partie</body>
+    </comment>
+    <comment Id="37b10449-9105-4bec-b597-100379e6f723">
+      <elementDefinition Id="c9e47b5a-8db4-4964-8dc8-ab82d48ab955" />
+      <body>Nouveau tour</body>
+    </comment>
+    <comment Id="93bb9b5e-eb52-43f8-a27e-7efe36362df9">
+      <elementDefinition Id="cf6bf86b-996e-40a7-8790-5112f1a66de8" />
+      <body>Nouveau tour</body>
+    </comment>
+    <comment Id="a8195180-ff09-436e-80e5-72152e31f207">
+      <elementDefinition Id="f30af4c4-c5af-4c3e-b42b-5c07fe33977c" />
+      <body>Nombre  de  tours prédéfinis atteint</body>
+    </comment>
+    <comment Id="45cfe44d-d34b-4022-b2db-35cb14d83485">
+      <elementDefinition Id="1f4566ca-e700-4e97-b79c-a0374584f76e" />
+      <body>Dernière unité du Joueur 1 morte</body>
+    </comment>
+    <comment Id="7ba90fcf-f03f-4a14-88c8-31b85fe0bcd4">
+      <elementDefinition Id="bdab5d60-e11e-4a70-a5f6-4161669d3431" />
+      <body>Dernière unité du Joueur 1 morte</body>
+    </comment>
+    <comment Id="19146ace-9499-4e3d-b528-278fbfc3ba82">
+      <elementDefinition Id="cc4d0aad-7eed-4ed4-b29d-081931dfabe2" />
+      <body>Dernière unité du Joueur 2 morte</body>
+    </comment>
+    <comment Id="ee4b196d-0409-4a2f-bd2f-b57c5feb0664">
+      <elementDefinition Id="f1c0f1f7-0c91-43e9-acd2-8d3620d229aa" />
+      <body>Dernière unité du Joueur 2 morte</body>
+    </comment>
+    <comment Id="22af18ff-62e2-4e30-8a92-d9c6df97bc43">
+      <elementDefinition Id="d836078a-ea59-4ea8-bfbe-0c563d22774b" />
+      <body>Points du Joueur 2 &gt; Points du Joueur 1</body>
+    </comment>
+    <comment Id="754fa32b-0a7b-411f-8101-5e2d14ec9746">
+      <elementDefinition Id="1e843321-5037-4375-89e6-6fadbe1c312c" />
+      <body>Points du Joueur 1 &gt; Points du Joueur 2</body>
+    </comment>
+    <comment Id="886e720f-baaa-467e-92aa-08f78f7393c4">
+      <elementDefinition Id="63d31e80-a3c3-43c2-a9a2-ce2e36ff8239" />
+      <body>Victoire Joueur 2</body>
+    </comment>
+    <comment Id="8167c9f2-4aff-44aa-8745-1fac329f1147">
+      <elementDefinition Id="a1871f8c-d383-4460-b0d3-37d60f7d395b" />
+      <body>Victoire Joueur 1</body>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="1c4bb3dc-00b7-4b91-a9c4-c07af06bac90" name="EtatsTransitionsPartie" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="65d46a07-b131-4e85-8b0f-b8cdf2953f76" />
+        <nodes>
+          <initialNode Id="fe45fb8e-1c3e-431e-b116-705806605a11" name="Initial1" isLeaf="false">
+            <elementDefinition Id="044e96ef-c3e2-4917-b24a-1e1f04b77253" />
+            <flowNodeTargets>
+              <controlFlow Id="cc3cdfc4-5aca-41ab-bb65-f3dd8b078944" isLeaf="false">
+                <opaqueActionMoniker Id="37e89cf6-00aa-4bd0-8513-bc7fe597afba" LastKnownName="Tour Joueur 1" />
+                <elementDefinition Id="169b29eb-e59e-4769-bda3-2cc04212f9f0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="37e89cf6-00aa-4bd0-8513-bc7fe597afba" name="Tour Joueur 1" isLeaf="false">
+            <elementDefinition Id="a49ecf15-43c8-4382-8a23-8a5988729f7b" />
+            <flowNodeTargets>
+              <controlFlow Id="b1e52819-b626-40c3-9f0c-53ac3261850a" isLeaf="false">
+                <opaqueActionMoniker Id="8a97cdb2-c132-43df-8d5e-9ef10a651c2c" LastKnownName="Tour Joueur 2" />
+                <elementDefinition Id="c74f3f85-3188-490c-b243-9a2c535ebe42" />
+              </controlFlow>
+              <controlFlow Id="0d82b18e-53ad-4a88-9a16-aa809342cc3a" isLeaf="false">
+                <activityFinalNodeMoniker Id="72d21e59-78db-4c08-9068-ea853fd17e9b" LastKnownName="ActivityFinal11" />
+                <elementDefinition Id="cc2bcb91-cf15-49d9-937c-ddfdccc9dc05" />
+              </controlFlow>
+              <controlFlow Id="be3e4aa4-96a0-4f74-9196-7888e75def27" isLeaf="false">
+                <opaqueActionMoniker Id="bfb098c0-18f8-46c7-aa4d-2c55a5f593c0" LastKnownName="Fin de Partie" />
+                <elementDefinition Id="485280ee-9a33-401a-90a6-7eb16b13375d" />
+              </controlFlow>
+              <controlFlow Id="f6ec493b-96f3-4dd6-ad4f-8eae813342db" isLeaf="false">
+                <activityFinalNodeMoniker Id="2dfd072a-ae47-4f38-a4de-a4ea464f87e2" LastKnownName="ActivityFinal111" />
+                <elementDefinition Id="8c45d307-acca-424a-8cb7-942ee09bf2bb" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="8a97cdb2-c132-43df-8d5e-9ef10a651c2c" name="Tour Joueur 2" isLeaf="false">
+            <elementDefinition Id="76efd22f-a1eb-448d-8730-85935f1faaed" />
+            <flowNodeTargets>
+              <controlFlow Id="70f6f2fe-06b5-48ba-97a4-f5d3cb5cf856" isLeaf="false">
+                <opaqueActionMoniker Id="37e89cf6-00aa-4bd0-8513-bc7fe597afba" LastKnownName="Tour Joueur 1" />
+                <elementDefinition Id="36da293d-61b6-48b9-92ec-a6cd208c8882" />
+              </controlFlow>
+              <controlFlow Id="3b780d82-4db0-40b7-99e4-f1e9796ff5c5" isLeaf="false">
+                <activityFinalNodeMoniker Id="2dfd072a-ae47-4f38-a4de-a4ea464f87e2" LastKnownName="ActivityFinal111" />
+                <elementDefinition Id="e62a84ad-e52c-4086-8d77-4f6a2fec4128" />
+              </controlFlow>
+              <controlFlow Id="84c88fa8-e0c9-4c2a-b657-e6df1669ef61" isLeaf="false">
+                <activityFinalNodeMoniker Id="72d21e59-78db-4c08-9068-ea853fd17e9b" LastKnownName="ActivityFinal11" />
+                <elementDefinition Id="10f7ef5b-0491-4f82-9120-43e89a5fb082" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="72d21e59-78db-4c08-9068-ea853fd17e9b" name="ActivityFinal11" isLeaf="false">
+            <elementDefinition Id="bf14bf91-7e88-4d69-b693-9f3ab7136108" />
+          </activityFinalNode>
+          <activityFinalNode Id="2dfd072a-ae47-4f38-a4de-a4ea464f87e2" name="ActivityFinal111" isLeaf="false">
+            <elementDefinition Id="ddc6aa3b-13ee-4bb1-b0c0-2d95a4e0fab1" />
+          </activityFinalNode>
+          <opaqueAction Id="bfb098c0-18f8-46c7-aa4d-2c55a5f593c0" name="Fin de Partie" isLeaf="false">
+            <elementDefinition Id="cf1ecab7-b5fa-41a9-beaa-e16ad42e61a9" />
+            <flowNodeTargets>
+              <controlFlow Id="bf091a4e-05e2-4ea6-a692-0f79cf19fd93" isLeaf="false">
+                <activityFinalNodeMoniker Id="2dfd072a-ae47-4f38-a4de-a4ea464f87e2" LastKnownName="ActivityFinal111" />
+                <elementDefinition Id="af371a5f-f319-4ca4-933e-0ca28787033b" />
+              </controlFlow>
+              <controlFlow Id="1774f84b-8521-47bb-80ab-33b4876c6337" isLeaf="false">
+                <activityFinalNodeMoniker Id="72d21e59-78db-4c08-9068-ea853fd17e9b" LastKnownName="ActivityFinal11" />
+                <elementDefinition Id="ff64abb7-9748-4cd9-94e7-e51da796f24a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="c1a62a92-d1c0-4481-a875-5332e8accf50" name="modele">
+    <elementDefinition Id="b55103ff-bd6c-4aaa-b02d-24c2d0577821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="5cc62eaf-34f5-44b7-a9d2-350fac732655">
+        <profileInstance Id="5a07f1d0-9806-4b16-9f52-fe3efd9e04e5" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fefa073d-b3de-4061-aad9-ed1c38fbbf97">
+        <profileInstance Id="69820d0e-7198-4df7-be24-d3accb2dc3e8" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>
