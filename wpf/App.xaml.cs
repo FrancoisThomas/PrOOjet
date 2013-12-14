@@ -12,5 +12,6 @@ namespace wpf
     /// </summary>
     public partial class App : Application
     {
+        int a;
     }
 }

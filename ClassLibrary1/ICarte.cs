@@ -7,6 +7,9 @@ namespace PrOOjet
 {
     public interface ICarte
     {
+        int getTaille();
+
+        ICase getCase(int colonne, int ligne); 
     }
 
 }

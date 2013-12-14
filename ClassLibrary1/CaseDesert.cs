@@ -7,5 +7,13 @@ namespace PrOOjet
 {
     public class CaseDesert : Case, ICaseDesert
     {
+
+        private string image = "Coucou";
+
+        public CaseDesert() {
+            int i;
+
+        }
     }
+
 }

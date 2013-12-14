@@ -7,6 +7,6 @@ namespace PrOOjet
 {
     public interface IJoueur
     {
-        List<IUnite> recupereUnites();
+        List<IUnite> recupereUnites(Coordonnees coord);
     }
 }

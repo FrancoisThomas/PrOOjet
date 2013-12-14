@@ -7,6 +7,6 @@ namespace PrOOjet
 {
     public interface IMonteurPartie
     {
-        void creerPartie();
+        IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, int tailleCarte);
     }
 }

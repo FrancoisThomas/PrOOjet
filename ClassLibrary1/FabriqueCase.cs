@@ -9,92 +9,63 @@ namespace PrOOjet
     {
         public FabriqueCase()
         {
-            throw new System.NotImplementedException();
         }
     
-        public CaseMontagne montagne
+        public CaseMontagne montagne;
+        public CasePlaine plaine;
+        public CaseDesert desert;
+        public CaseEau eau;
+        public CaseForet foret;
+       
+
+        public ICaseMontagne creeCaseMontagne()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            if (montagne == null)
+                montagne = new CaseMontagne();
+            return montagne;
         }
 
-        public CasePlaine plaine
+        public ICasePlaine creeCasePlaine()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            if (plaine == null)
+                plaine = new CasePlaine();
+            return plaine;
         }
 
-        public CaseDesert desert
+        public ICaseDesert creeCaseDesert()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            if (desert == null)
+                desert = new CaseDesert();
+            return desert;
         }
 
-        public CaseEau eau
+        public ICaseEau creeCaseEau()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            if (eau == null)
+                eau = new CaseEau();
+            return eau;
         }
 
-        public CaseForet foret
+        public ICaseForet creeCaseForet()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        private ICase creeCaseMontagne()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private ICase creeCasePlaine()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private ICase creeCaseDesert()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private ICase creeCaseEau()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private ICase creeCaseForet()
-        {
-            throw new System.NotImplementedException();
+            if (foret == null)
+                foret = new CaseForet();
+            return foret;
         }
 
         public ICase creeCase(string cle)
         {
-            throw new System.NotImplementedException();
+            if (cle == "desert" || cle == "d")
+                return creeCaseDesert();
+            if (cle == "eau" || cle == "e")
+                return creeCaseEau();
+            if (cle == "montagne" || cle == "m")
+                return creeCaseMontagne();
+            if (cle == "foret" || cle == "f")
+                return creeCaseForet();
+            if (cle == "plaine" || cle == "p")
+                return creeCasePlaine();
+            throw new System.ArgumentException();
         }
     }
 }

@@ -1,9 +1,0 @@
-﻿<Window x:Class="wpf.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="367.446" Width="529.362">
-    <Grid>
-        <Button Content="Trouver Btrav" Margin="118,124,128,83" Click="Button_Click_2">
-        </Button>
-    </Grid>
-</Window>

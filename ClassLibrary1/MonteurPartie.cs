@@ -12,7 +12,7 @@ namespace PrOOjet
             throw new System.NotImplementedException();
         }
 
-        public IPartie creerPartie(Peuple peuple1, Peuple peuple2, int tailleCarte)
+        public IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, int tailleCarte)
         {
             throw new NotImplementedException();
         }

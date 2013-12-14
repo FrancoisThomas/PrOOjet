@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrOOjet</RootNamespace>
     <AssemblyName>PrOOjet</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +90,12 @@
   <ItemGroup>
     <None Include="implementation.cd" />
     <None Include="interfaces.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\wrapper\wrapper.vcxproj">
+      <Project>{1709ab2d-a5cc-4132-a48f-9549d30a300d}</Project>
+      <Name>wrapper %28Visual Studio 2010%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

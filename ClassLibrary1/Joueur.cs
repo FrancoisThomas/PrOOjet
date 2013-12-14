@@ -10,7 +10,7 @@ namespace PrOOjet
         private string nom;
         private int couleur;
 
-        public Joueur(Peuple peuple, int couleur, string nom)
+        public Joueur(IPeuple peuple, int couleur, string nom)
         {
             throw new System.NotImplementedException();
         }

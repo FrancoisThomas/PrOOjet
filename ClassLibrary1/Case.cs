@@ -7,9 +7,5 @@ namespace PrOOjet
 {
     public abstract class Case : ICase
     {
-        public Case()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -8,5 +8,6 @@ namespace PrOOjet
     public interface IPartie
     {
         List<IUnite> selectionneUnites(Coordonnees coord);
+        ICarte getCarte();
     }
 }

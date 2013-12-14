@@ -12,6 +12,11 @@ namespace PrOOjet
         private int attaque;
         private int pointsDeMouvement;
 
+        public Unite()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Unite(Joueur joueur)
         {
             throw new System.NotImplementedException();

@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using wrapper;
 
 namespace PrOOjet
 {
     public class Partie : IPartie
     {
-        public Partie(Joueur j1, Joueur j2, Carte carte)
+
+        private ICarte carte;
+
+        public Partie()
         {
-            throw new System.NotImplementedException();
-        }
-    
-        public Partie INSTANCE
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            // TODO
+            carte = new Carte(10);
         }
 
-        public Carte Carte
+        public Partie(IJoueur j1, IJoueur j2, ICarte carte)
+        {
+            // TODO
+            carte = new Carte(5);
+        }
+
+        public ICarte getCarte() { return carte; }
+
+        public Partie INSTANCE
         {
             get
             {
@@ -60,5 +62,7 @@ namespace PrOOjet
         {
             throw new System.NotImplementedException();
         }
+
+        
     }
 }
