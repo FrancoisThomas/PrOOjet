@@ -8,16 +8,19 @@ namespace PrOOjet
 {
     public class Partie : IPartie
     {
+        private static IPartie instance;
 
+        private IJoueur joueur1;
+        private IJoueur joueur2;
         private ICarte carte;
 
-        public Partie()
+        private Partie()
         {
             // TODO
             carte = new Carte(10);
         }
 
-        public Partie(IJoueur j1, IJoueur j2, ICarte carte)
+        private Partie(IJoueur j1, IJoueur j2, ICarte carte)
         {
             // TODO
             carte = new Carte(5);
@@ -25,38 +28,19 @@ namespace PrOOjet
 
         public ICarte getCarte() { return carte; }
 
-        public Partie INSTANCE
+        public static IPartie INSTANCE
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                if (instance == null)
+                    instance = new Partie();
+                return instance;
             }
         }
 
-        public Joueur joueur1
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public Joueur joueur2
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public IJoueur Joueur1 { get; set; }
+        public IJoueur Joueur2 { get; set; }
+        public ICarte Carte { get; set; }
 
         public List<IUnite> selectionneUnites(Coordonnees coord)
         {

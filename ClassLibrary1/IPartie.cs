@@ -7,7 +7,10 @@ namespace PrOOjet
 {
     public interface IPartie
     {
+        IJoueur Joueur1 { get; set; }
+        IJoueur Joueur2 { get; set; }
+        ICarte Carte { get; set; }
+
         List<IUnite> selectionneUnites(Coordonnees coord);
-        ICarte getCarte();
     }
 }

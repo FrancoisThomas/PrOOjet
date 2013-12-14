@@ -24,9 +24,15 @@ namespace PrOOjet
             cases = l;
         }
 
-        public int getTaille() { return taille; }
+        public int Taille 
+        { 
+            get { return taille; } 
+        }
 
-        public List<ICase> getCases() { return cases; }
+        public List<ICase> Cases 
+        { 
+            get { return cases; } 
+        }
 
         public ICase getCase(int colonne, int ligne)
         {

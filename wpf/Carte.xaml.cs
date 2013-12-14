@@ -27,7 +27,7 @@ namespace wpf
         public Carte()
         {
             InitializeComponent();
-            partie = new Partie();
+            partie = Partie.INSTANCE;
         }
 
         
@@ -35,19 +35,19 @@ namespace wpf
         {
             
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
-            carte = partie.getCarte();
-            int tailleRectangle = 600 / carte.getTaille();
-            for (int c = 0; c < carte.getTaille(); c++)
+            /*carte = partie.Carte;
+            int tailleRectangle = 600 / carte.Taille;
+            for (int c = 0; c < carte.Taille; c++)
             {
                 mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(tailleRectangle, GridUnitType.Pixel) });
                 mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(tailleRectangle, GridUnitType.Pixel) });
-                for (int l = 0; l < carte.getTaille(); l++)
+                for (int l = 0; l < carte.Taille; l++)
                 {
                     var tile = carte.getCase(c, l);
                     var element = creeRectangle(c, l, tile);
                     mapGrid.Children.Add(element);
                 }
-            }
+            }*/
         }
 
         private Rectangle creeRectangle(int c, int l, ICase tile)
