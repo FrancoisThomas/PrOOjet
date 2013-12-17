@@ -35,7 +35,7 @@ namespace wpf
         {
             
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
-            /*carte = partie.Carte;
+            carte = partie.Carte;
             int tailleRectangle = 600 / carte.Taille;
             for (int c = 0; c < carte.Taille; c++)
             {
@@ -47,7 +47,7 @@ namespace wpf
                     var element = creeRectangle(c, l, tile);
                     mapGrid.Children.Add(element);
                 }
-            }*/
+            }
         }
 
         private Rectangle creeRectangle(int c, int l, ICase tile)

@@ -6,7 +6,8 @@
 
 using namespace System::Collections::Generic;
 
-namespace wrapper {
+namespace wrapper 
+{
 
 	public ref class WrapperCarte
 	{
@@ -17,9 +18,7 @@ namespace wrapper {
 			List<int>^ carte = gcnew List<int>();
 
 			for (int i = 0; i < taille*taille; i++)
-			{
 				carte->Add(list[i]);
-			}
 
 			return carte;
 		}

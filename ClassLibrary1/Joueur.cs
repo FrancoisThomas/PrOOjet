@@ -9,37 +9,28 @@ namespace PrOOjet
     {
         private string nom;
         private int couleur;
+        private IPeuple peuple;
+        private Dictionary<Coordonnees, List<IUnite>> unites;
 
-        public Joueur(IPeuple peuple, int couleur, string nom)
+        public Joueur(IPeuple p, int c, string n)
         {
-            throw new System.NotImplementedException();
+            peuple = p;
+            couleur = c;
+            nom = n;
+            unites = new Dictionary<Coordonnees, List<IUnite>>();
         }
-    
-        public Peuple peuple
+
+        public Dictionary<Coordonnees, List<IUnite>> Unites
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public Unite unites
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                return unites;
             }
         }
 
         public List<IUnite> recupereUnites(Coordonnees coord)
         {
-            throw new System.NotImplementedException();
+            return (coord != null && unites.ContainsKey(coord)) ? unites[coord] : null;
         }
 
         public void getCouleur()
@@ -52,9 +43,26 @@ namespace PrOOjet
             throw new System.NotImplementedException();
         }
 
-        public Peuple getPeuple()
+        public IPeuple Peuple
         {
-            throw new System.NotImplementedException();
+            get { return peuple; }
+        }
+
+        public void creeUnite(Coordonnees c)
+        {
+            IUnite u = peuple.creeUnite(this);
+
+            if (!unites.ContainsKey(c))
+            {
+                List<IUnite> l = new List<IUnite>();
+                l.Add(u);
+                unites.Add(c, l);
+            }
+            else
+            {
+                List<IUnite> l = unites[c];
+                l.Add(u);
+            }
         }
     }
 }

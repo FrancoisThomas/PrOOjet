@@ -1,0 +1,22 @@
+﻿     0>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.Platform.Redirect.props(23,3): warning MSB4011: impossible d'importer "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Platforms\Itanium\Microsoft.Cpp.Itanium.default.props" à nouveau. Il a déjà été importé à "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\v110\Microsoft.Cpp.Default.props (46,3)". Il s'agit d'une erreur de création de build. Cette importation sera ignorée. [H:\TP\POO\PrOOjet-eud-l-ankou\wrapper\wrapper.vcxproj]
+La génération a démarré 16/12/2013 17:47:39.
+     1>Projet "H:\TP\POO\PrOOjet-eud-l-ankou\wrapper\wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>InitializeBuildStatus:
+         Mise à jour de l'horodatage "Itanium\Debug\wrapper.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_ia64\CL.exe /c /I..\lib /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Itanium\Debug\\" /Fd"Itanium\Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /errorReport:prompt wrapper.cpp /clr:nostdlib 
+         wrapper.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_ia64\CL.exe /c /I..\lib /Zi /clr /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Itanium\Debug\\" /Fd"Itanium\Debug\vc100.pdb" /TP /errorReport:prompt "C:\Users\thfranco\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_ia64\link.exe /ERRORREPORT:PROMPT /OUT:"H:\TP\POO\PrOOjet-eud-l-ankou\Itanium\Debug\wrapper.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\debug carte.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Itanium\Debug\wrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\TP\POO\PrOOjet-eud-l-ankou\Itanium\Debug\wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:IA64 /DLL Itanium\Debug\AssemblyInfo.obj
+         Itanium\Debug\wrapper.obj
+         "Itanium\Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+     1>wrapper.obj : error LNK2028: jeton non résolu (0A000005) "extern "C" int * __cdecl genereTableauCarte(int)" (?genereTableauCarte@@$$J0YAPEAHH@Z) référencé dans la fonction "public: static class System::Collections::Generic::List<int> ^ __clrcall wrapper::WrapperCarte::genereCarte(int)" (?genereCarte@WrapperCarte@wrapper@@$$FSMPE$AAV?$List@H@Generic@Collections@System@@H@Z)
+     1>wrapper.obj : error LNK2019: symbole externe non résolu "extern "C" int * __cdecl genereTableauCarte(int)" (?genereTableauCarte@@$$J0YAPEAHH@Z) référencé dans la fonction "public: static class System::Collections::Generic::List<int> ^ __clrcall wrapper::WrapperCarte::genereCarte(int)" (?genereCarte@WrapperCarte@wrapper@@$$FSMPE$AAV?$List@H@Generic@Collections@System@@H@Z)
+     1>H:\TP\POO\PrOOjet-eud-l-ankou\Itanium\Debug\wrapper.dll : fatal error LNK1120: 2 externes non résolus
+     1>Génération du projet "H:\TP\POO\PrOOjet-eud-l-ankou\wrapper\wrapper.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
+
+ÉCHEC de la build.
+
+Temps écoulé 00:00:02.95

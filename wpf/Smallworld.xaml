@@ -4,6 +4,6 @@
         xmlns:wpf="clr-namespace:wpf"
         Title="SmallWorld" Height="768" Width="1024">
     <Grid>
-        <wpf:Carte></wpf:Carte>
+        <wpf:Carte x:Name="EcranCarte"></wpf:Carte>
     </Grid>
 </Window>

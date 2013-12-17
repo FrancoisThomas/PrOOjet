@@ -19,5 +19,3 @@ H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\Debug\wpf.Properties.Resources.resources
 H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\Debug\wpf.csproj.GenerateResource.Cache
 H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\Debug\wpf.exe
 H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\Debug\wpf.pdb
-H:\TP\POO\PrOOjet-eud-l-ankou\wpf\bin\Debug\wrapper.dll
-H:\TP\POO\PrOOjet-eud-l-ankou\wpf\bin\Debug\wrapper.pdb

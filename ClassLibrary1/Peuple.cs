@@ -7,28 +7,8 @@ namespace PrOOjet
 {
     public abstract class Peuple : PrOOjet.IPeuple
     {
+        public Peuple() {}
 
-        public Peuple() { throw new System.NotImplementedException(); }
-
-        public Peuple(Joueur joueur)
-        {
-            throw new System.NotImplementedException();
-        }
-    
-        public Joueur joueur
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public IUnite creeUnite()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract IUnite creeUnite(IJoueur joueur);
     }
 }

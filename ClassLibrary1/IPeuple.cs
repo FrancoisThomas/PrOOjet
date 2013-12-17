@@ -7,6 +7,6 @@ namespace PrOOjet
 {
     public interface IPeuple
     {
-        IUnite creeUnite();
+        IUnite creeUnite(IJoueur joueur);
     }
 }

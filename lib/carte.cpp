@@ -24,5 +24,5 @@ void Carte::genereTableauCarte()
 {
 	// TODO Remplir mat
 	for(int i=0; i<taille*taille; i++)
-		mat[i] = 1;
+		mat[i] = i % 5;
 }

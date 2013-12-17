@@ -7,70 +7,97 @@ namespace PrOOjet
 {
     public abstract class Unite : PrOOjet.IUnite
     {
-        private int pointsDeVie;
-        private int defense;
-        private int attaque;
-        private int pointsDeMouvement;
+        protected const int PDVMAX = 2;
+        protected const int PDMMAX = 2;
+        protected const int DEFENSE = 1;
+        protected const int ATTAQUE = 2;
 
-        public Unite()
+        protected int pointsDeVie;
+        protected int pointsDeMouvement;
+
+        protected IJoueur joueur;
+
+        protected Unite()
         {
-            throw new System.NotImplementedException();
+            pointsDeVie = PDVMAX;
+            pointsDeMouvement = PDMMAX;
         }
 
-        public Unite(Joueur joueur)
+        protected Unite(IJoueur j)
         {
-            throw new System.NotImplementedException();
+            pointsDeVie = PDVMAX;
+            pointsDeMouvement = PDMMAX;
+            joueur = j;
         }
 
-        public Joueur joueur
+        public int PointsDeMouvement
         {
             get
             {
-                throw new System.NotImplementedException();
+                return pointsDeMouvement;
             }
             set
             {
+                // TODO
             }
         }
 
-        public void setPointsDeMouvement(ICase caseEntree)
+        public int Attaque
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                return ATTAQUE * (pointsDeVie / PDVMAX);
+            }
         }
 
-        public bool peutBouger(ICase caseEntree)
+        public int Defense
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                return DEFENSE * (pointsDeVie / PDVMAX);
+            }
         }
 
-        public void setPointsDeVie()
+        public int PointsDeVie
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                return pointsDeVie;
+            }
+            set
+            {
+                pointsDeVie = value;
+            }
         }
 
-        public Boolean estMort()
+        public IJoueur Joueur
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                return joueur;
+            }
+            set
+            {
+                joueur = value;
+            }
         }
 
-        public int getPointsDeMouvement()
+        public void diminuePointsDeMouvement(int v)
         {
-            throw new System.NotImplementedException();
+            pointsDeMouvement -= v;
         }
 
-        public int getAttaque()
+        public void diminuePointsDeVie(int v)
         {
-            throw new System.NotImplementedException();
+            pointsDeVie -= v;
         }
 
-        public int getDefense()
+        public abstract bool peutBouger(ICase caseEntree);
+
+        public bool estMort()
         {
-            throw new System.NotImplementedException();
+            return pointsDeVie <= 0;
         }
 
-        public int getPointsDeVie()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

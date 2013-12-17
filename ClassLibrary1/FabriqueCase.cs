@@ -7,64 +7,88 @@ namespace PrOOjet
 {
     public class FabriqueCase : PrOOjet.IFabriqueCase
     {
-        public FabriqueCase()
-        {
-        }
-    
-        public CaseMontagne montagne;
-        public CasePlaine plaine;
-        public CaseDesert desert;
-        public CaseEau eau;
-        public CaseForet foret;
-       
+        private static IFabriqueCase instance;
 
-        public ICaseMontagne creeCaseMontagne()
-        {
-            if (montagne == null)
-                montagne = new CaseMontagne();
-            return montagne;
-        }
+        private CaseMontagne montagne;
+        private CasePlaine plaine;
+        private CaseDesert desert;
+        private CaseEau eau;
+        private CaseForet foret;
 
-        public ICasePlaine creeCasePlaine()
+        private FabriqueCase() {}
+
+        public static IFabriqueCase INSTANCE
         {
-            if (plaine == null)
-                plaine = new CasePlaine();
-            return plaine;
+            get
+            {
+                if (instance == null)
+                    instance = new FabriqueCase();
+                return instance;
+            }
         }
 
-        public ICaseDesert creeCaseDesert()
+        public ICaseMontagne CaseMontagne
         {
-            if (desert == null)
-                desert = new CaseDesert();
-            return desert;
+            get
+            {
+                if (montagne == null)
+                    montagne = new CaseMontagne();
+                return montagne;
+            }
         }
 
-        public ICaseEau creeCaseEau()
+        public ICasePlaine CasePlaine
         {
-            if (eau == null)
-                eau = new CaseEau();
-            return eau;
+            get
+            {
+                if (plaine == null)
+                    plaine = new CasePlaine();
+                return plaine;
+            }
         }
 
-        public ICaseForet creeCaseForet()
+        public ICaseDesert CaseDesert
         {
-            if (foret == null)
-                foret = new CaseForet();
-            return foret;
+            get
+            {
+                if (desert == null)
+                    desert = new CaseDesert();
+                return desert;
+            }
+        }
+
+        public ICaseEau CaseEau
+        {
+            get
+            {
+                if (eau == null)
+                    eau = new CaseEau();
+                return eau;
+            }
+        }
+
+        public ICaseForet CaseForet
+        {
+            get
+            {
+                if (foret == null)
+                    foret = new CaseForet();
+                return foret;
+            }
         }
 
         public ICase creeCase(string cle)
         {
             if (cle == "desert" || cle == "d")
-                return creeCaseDesert();
+                return FabriqueCase.INSTANCE.CaseDesert;
             if (cle == "eau" || cle == "e")
-                return creeCaseEau();
+                return FabriqueCase.INSTANCE.CaseEau;
             if (cle == "montagne" || cle == "m")
-                return creeCaseMontagne();
+                return FabriqueCase.INSTANCE.CaseMontagne;
             if (cle == "foret" || cle == "f")
-                return creeCaseForet();
+                return FabriqueCase.INSTANCE.CaseForet;
             if (cle == "plaine" || cle == "p")
-                return creeCasePlaine();
+                return FabriqueCase.INSTANCE.CasePlaine;
             throw new System.ArgumentException();
         }
     }

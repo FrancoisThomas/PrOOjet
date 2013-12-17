@@ -15,8 +15,13 @@ namespace PrOOjet
         public Carte(int tailleCarte)
         {
             taille = tailleCarte;
+            fabriqueCase = FabriqueCase.INSTANCE;
             String[] typesCases = { "d", "e", "m", "f", "p" };
-            List<int> tab = WrapperCarte.genereCarte(taille);
+            //List<int> tab = WrapperCarte.genereCarte(taille);
+            List<int> tab = new List<int>();
+            for (int i = 0; i < taille * taille; i++)
+                tab.Add(i%5);
+
             List<ICase> l = new List<ICase>();
 
             for (int i = 0; i < taille*taille; i++)
@@ -26,12 +31,20 @@ namespace PrOOjet
 
         public int Taille 
         { 
-            get { return taille; } 
+            get
+            {
+                return taille;
+            }
+
         }
 
-        public List<ICase> Cases 
+        public List<ICase> Cases
         { 
-            get { return cases; } 
+            get 
+            { 
+                return cases; 
+            }
+
         }
 
         public ICase getCase(int colonne, int ligne)

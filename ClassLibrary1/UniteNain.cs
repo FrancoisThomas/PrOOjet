@@ -7,5 +7,11 @@ namespace PrOOjet
 {
     public class UniteNain : Unite, IUniteNain
     {
+        public UniteNain(IJoueur j) : base(j) {}
+
+        public override bool peutBouger(ICase caseEntree)
+        {
+            return (PointsDeMouvement > 1);
+        }
     }
 }
