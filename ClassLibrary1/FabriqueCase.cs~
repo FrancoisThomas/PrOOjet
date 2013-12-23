@@ -80,12 +80,6 @@ namespace PrOOjet
             }
         }
 
-		/// <summary>
-		/// Fournit une case.
-		/// </summary>
-		/// <param name="cle"> Indique le type de case à fournir. </param>
-		/// <returns> La case correspondant à la clé. </returns>
-		/// <exception cref="ArgumentException"> Levée si la clé n'est pas valide. </exception>
         public ICase creeCase(string cle)
         {
             if (cle == "desert" || cle == "d")

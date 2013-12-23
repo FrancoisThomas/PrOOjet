@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Interface d'une case de forêt.
+	/// </summary>
     public interface ICaseForet : ICase
     {
     }

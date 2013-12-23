@@ -26,12 +26,7 @@ namespace PrOOjet
 		/// <returns> La liste des unités sur la case, <c>null</c> si il n'y en a aucune. </returns>
         List<IUnite> recupereUnites(Coordonnees coord);
         
-        /// <summary>
-		/// Ajoute une nouvelle unité aux coordonnées en paramètre.
-		/// </summary>
-		/// <remarks> L'unité appartient au peuple du joueur. </remarks>
-		/// <remarks> Si il y a déja une ou des unité(s) aux coordonnées, l'unité est ajoutée à la liste. </remarks>
-		/// <param name="c"> Coordonnées auxquels ajouter l'unité. </param>
+        
         void creeUnite(Coordonnees c);
     }
 }

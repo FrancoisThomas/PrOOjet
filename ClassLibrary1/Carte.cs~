@@ -61,11 +61,10 @@ namespace PrOOjet
         }
 
 		/// <summary>
-		/// Fournit la case situé aux coordonnées passées en paramètre.
+		/// Fournit la case situé auw coordonnées fournis.
 		/// </summary>
 		/// <param name="colonne"> Indice de la colonne. Commence à 0. </param>
 		/// <param name="ligne"> Indice de la ligne. Commence à 0. </param>
-		/// <returns> La case aux coordonnées passées en paramètre. </returns>
         public ICase getCase(int colonne, int ligne) // TODO utiliser des Coordonnes à la place des entiers ?
         {
             return cases.ElementAt(ligne * taille + colonne);

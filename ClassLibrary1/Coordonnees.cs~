@@ -12,7 +12,7 @@ namespace PrOOjet
     {
     	/// <summary> Abscisse. </summary>
         private int posX;
-        /// <summary> Ordonnée. </summary>
+            	/// <summary> Ordonnée. </summary>
         private int posY;
 
 		/// <summary>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Interface d'une case.
+	/// </summary>
     public interface ICase
     {
     }

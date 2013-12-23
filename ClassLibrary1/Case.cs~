@@ -6,9 +6,9 @@ using System.Text;
 namespace PrOOjet
 {
 	/// <summary>
-	/// Classe représentant une case de montagne.
+	/// Classe abstraite représentant une case.
 	/// </summary>
-    public class CaseMontagne : Case, ICaseMontagne
+    public abstract class Case : ICase
     {
     }
 }

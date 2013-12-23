@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Classe représentant une case de plaine.
+	/// </summary>
     public class CasePlaine : Case, ICasePlaine
     {
     }

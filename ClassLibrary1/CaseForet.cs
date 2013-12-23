@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Classe représentant une case de forêt.
+	/// </summary>
     public class CaseForet : Case, ICaseForet
     {
     }
