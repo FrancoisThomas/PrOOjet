@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Interface d'une unité gauloise.
+	/// </summary>
     public interface IUniteGaulois : PrOOjet.IUnite
     {
     }

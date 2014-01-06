@@ -5,6 +5,10 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Interface du peuple gaulois. Sert de fabrique à <c>IUniteGaulois</c>
+	/// </summary>
+	/// <seealso cref="IUniteGaulois"/>
     public interface IPeupleGaulois : PrOOjet.IPeuple
     {
     }

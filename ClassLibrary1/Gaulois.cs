@@ -8,6 +8,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant le peuple gaulois. Sert de fabrique à <c>UnitesGaulois</c>.
 	/// </summary>
+	/// <seealso cref="UniteGaulois"/>
     public class Gaulois : Peuple, IPeupleGaulois
     {
         private static IPeupleGaulois instance;

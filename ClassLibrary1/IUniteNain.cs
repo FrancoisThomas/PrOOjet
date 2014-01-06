@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Interface d'une unité naine.
+	/// </summary>
     public interface IUniteNain : PrOOjet.IUnite
     {
     }

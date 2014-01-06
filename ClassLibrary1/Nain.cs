@@ -5,6 +5,10 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Classe représentant le peuple nain. Sert de fabrique à <c>UnitesNain</c>.
+	/// </summary>
+	/// <seealso cref="UniteNain"/>
     public class Nain : Peuple, IPeupleNain
     {
         private static IPeupleNain instance;
@@ -21,6 +25,11 @@ namespace PrOOjet
             }
         }
 
+		/// <summary>
+		/// Fournit une <c>UniteNain</c>.
+		/// </summary>
+		/// <param name="joueur"> Joueur auquel appartient l'unité crée. </param>
+		/// <returns> Une nouvelle <c>UniteNain</c> </returns>
         public override IUnite creeUnite(IJoueur joueur)
         {
             return new UniteNain(joueur);

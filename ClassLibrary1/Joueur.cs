@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PrOOjet
 {
+	/// <summary>
+	/// Classe représentant un joueur.
+	/// </summary>
     public class Joueur : PrOOjet.IJoueur
     {
         private string nom;
@@ -12,6 +15,12 @@ namespace PrOOjet
         private IPeuple peuple;
         private Dictionary<Coordonnees, List<IUnite>> unites;
 
+		/// <summary>
+		/// Constructeur.
+		/// </summary>
+		/// <param name="p"> Peuple du joueur. </param>
+		/// <param name="c"> Couleur du joueur. </param>
+		/// <param name="n"> Nom du joueur. </param>
         public Joueur(IPeuple p, int c, string n)
         {
             peuple = p;
@@ -20,6 +29,11 @@ namespace PrOOjet
             unites = new Dictionary<Coordonnees, List<IUnite>>();
         }
 
+		/// <summary>
+    	/// Dictionnaire des unités du joueur.
+    	/// Clés : Coordonnées de la case sur laquelle sont les unités.
+    	/// Valeurs : Liste d'unités sur la case aux coordonnées clés.
+    	/// </summary>
         public Dictionary<Coordonnees, List<IUnite>> Unites
         {
             get
@@ -49,7 +63,7 @@ namespace PrOOjet
             throw new System.NotImplementedException();
         }
 */
-
+		/// <summary> Peuple du joueur. </summary>
         public IPeuple Peuple
         {
             get { return peuple; }

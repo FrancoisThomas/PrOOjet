@@ -8,8 +8,4 @@ namespace PrOOjet
     public interface IStrategieDemo : PrOOjet.IStrategieTaille
     {
     }
-
-    public interface CopyOfIStrategieDemo : PrOOjet.IStrategieTaille
-    {
-    }
 }
