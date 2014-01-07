@@ -41,51 +41,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carte.cs" />
-    <Compile Include="Case.cs" />
-    <Compile Include="CaseDesert.cs" />
-    <Compile Include="CaseEau.cs" />
-    <Compile Include="CaseForet.cs" />
-    <Compile Include="CaseMontagne.cs" />
-    <Compile Include="CasePlaine.cs" />
-    <Compile Include="Coordonnees.cs" />
-    <Compile Include="FabriqueCase.cs" />
-    <Compile Include="Gaulois.cs" />
-    <Compile Include="ICarte.cs" />
-    <Compile Include="ICase.cs" />
-    <Compile Include="ICaseDesert.cs" />
-    <Compile Include="ICaseEau.cs" />
-    <Compile Include="ICaseForet.cs" />
-    <Compile Include="ICaseMontagne.cs" />
-    <Compile Include="ICasePlaine.cs" />
-    <Compile Include="IFabriqueCase.cs" />
-    <Compile Include="IJoueur.cs" />
-    <Compile Include="IMonteurPartie.cs" />
-    <Compile Include="IPartie.cs" />
-    <Compile Include="IPeuple.cs" />
-    <Compile Include="IPeupleGaulois.cs" />
-    <Compile Include="IPeupleNain.cs" />
-    <Compile Include="IPeupleViking.cs" />
-    <Compile Include="IStrategieDemo.cs" />
-    <Compile Include="IStrategieNormale.cs" />
-    <Compile Include="IStrategiePetite.cs" />
-    <Compile Include="IStrategieTaille.cs" />
-    <Compile Include="IUnite.cs" />
-    <Compile Include="IUniteGaulois.cs" />
-    <Compile Include="IUniteNain.cs" />
-    <Compile Include="IUniteViking.cs" />
-    <Compile Include="IVue.cs" />
-    <Compile Include="Joueur.cs" />
-    <Compile Include="MonteurPartie.cs" />
-    <Compile Include="Nain.cs" />
-    <Compile Include="Partie.cs" />
-    <Compile Include="Peuple.cs" />
+    <Compile Include="Carte\Carte.cs" />
+    <Compile Include="Carte\Cases\Case.cs" />
+    <Compile Include="Carte\Cases\CaseDesert.cs" />
+    <Compile Include="Carte\Cases\CaseEau.cs" />
+    <Compile Include="Carte\Cases\CaseForet.cs" />
+    <Compile Include="Carte\Cases\CaseMontagne.cs" />
+    <Compile Include="Carte\Cases\CasePlaine.cs" />
+    <Compile Include="Carte\Coordonnees.cs" />
+    <Compile Include="Carte\Cases\FabriqueCase.cs" />
+    <Compile Include="Peuples\Gaulois.cs" />
+    <Compile Include="Carte\ICarte.cs" />
+    <Compile Include="Carte\Cases\ICase.cs" />
+    <Compile Include="Carte\Cases\ICaseDesert.cs" />
+    <Compile Include="Carte\Cases\ICaseEau.cs" />
+    <Compile Include="Carte\Cases\ICaseForet.cs" />
+    <Compile Include="Carte\Cases\ICaseMontagne.cs" />
+    <Compile Include="Carte\Cases\ICasePlaine.cs" />
+    <Compile Include="Carte\Cases\IFabriqueCase.cs" />
+    <Compile Include="Partie\IJoueur.cs" />
+    <Compile Include="Partie\IMonteurPartie.cs" />
+    <Compile Include="Partie\IPartie.cs" />
+    <Compile Include="Peuples\IPeuple.cs" />
+    <Compile Include="Peuples\IPeupleGaulois.cs" />
+    <Compile Include="Peuples\IPeupleNain.cs" />
+    <Compile Include="Peuples\IPeupleViking.cs" />
+    <Compile Include="Carte\IStrategieDemo.cs" />
+    <Compile Include="Carte\IStrategieNormale.cs" />
+    <Compile Include="Carte\IStrategiePetite.cs" />
+    <Compile Include="Carte\IStrategieTaille.cs" />
+    <Compile Include="Unites\IUnite.cs" />
+    <Compile Include="Unites\IUniteGaulois.cs" />
+    <Compile Include="Unites\IUniteNain.cs" />
+    <Compile Include="Unites\IUniteViking.cs" />
+    <Compile Include="Partie\Joueur.cs" />
+    <Compile Include="Partie\MonteurPartie.cs" />
+    <Compile Include="Peuples\Nain.cs" />
+    <Compile Include="Partie\Partie.cs" />
+    <Compile Include="Peuples\Peuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unite.cs" />
-    <Compile Include="UniteGaulois.cs" />
-    <Compile Include="UniteNain.cs" />
-    <Compile Include="UniteViking.cs" />
-    <Compile Include="Viking.cs" />
+    <Compile Include="Unites\Unite.cs" />
+    <Compile Include="Unites\UniteGaulois.cs" />
+    <Compile Include="Unites\UniteNain.cs" />
+    <Compile Include="Unites\UniteViking.cs" />
+    <Compile Include="Peuples\Viking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="implementation.cd" />
@@ -94,7 +93,7 @@
   <ItemGroup>
     <ProjectReference Include="..\wrapper\wrapper.vcxproj">
       <Project>{1709ab2d-a5cc-4132-a48f-9549d30a300d}</Project>
-      <Name>wrapper %28Visual Studio 2010%29</Name>
+      <Name>Wrapper %28Visual Studio 2010%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
