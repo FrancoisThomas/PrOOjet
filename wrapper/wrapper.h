@@ -13,8 +13,8 @@ namespace wrapper
 	private:
 		Api* api;
 	public:
-		WrapperCarte(){api = Api_new();}
-		~WrapperCarte(){Api_delete(api);}
+		//WrapperCarte(){api = Api_new();}
+		//~WrapperCarte(){Api_delete(api);}
 
 		List<int>^ genereCarte(int taille){ 
 			int* list =	api->genereTableauCarte(taille);
@@ -28,27 +28,28 @@ namespace wrapper
 	};
 
 
+	
 	public ref class WrapperCombat
 	{
 	private:
 		Api* api;
-		int pdv_attaquant_fin;
-		int pdv_defenseur_fin;
+		int pdvAttaquantFin;
+		int pdvDefenseurFin;
 
 	public:
-		WrapperCombat(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def){
+		WrapperCombat(){
 				api = Api_new();
 		}
 		~WrapperCombat(){Api_delete(api);}
 
-		void combattre(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def){
-			api->combattre(pdv_att, pdv_att_max, pdv_def, pdv_def_max, pts_att, pts_def);
-			pdv_attaquant_fin = api->pdv_attaquant_fin;
-			pdv_defenseur_fin = api->pdv_defenseur_fin;
+		void combattre(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef){
+			api->combat(pdvAtt, pdvAttMax, pdvDef, pdvDefMax, ptsAtt, ptsDef);
+			pdvAttaquantFin = api->pdv_attaquant_fin;
+			pdvDefenseurFin = api->pdv_defenseur_fin;
 		}
 
-		int getVieAttaquant(){return pdv_attaquant_fin;}
-		int getVieDefenseur(){return pdv_defenseur_fin;}
+		int getVieAttaquant(){return pdvAttaquantFin;}
+		int getVieDefenseur(){return pdvDefenseurFin;}
 
 	};
 }

@@ -21,9 +21,10 @@ class DLL Api{
 	
 	int * genereTableauCarte(int taille);
 
-	void combattre(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def);
 	int pdv_attaquant_fin;
 	int pdv_defenseur_fin;
+	void combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef);
+	
 
 
 };

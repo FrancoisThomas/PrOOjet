@@ -88,3 +88,6 @@ H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\App.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.cache
 H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.lref
+H:\PrOOjet\Test\PrOOjet\wpf\bin\Debug\wpf.exe.config
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf.exe
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf.pdb

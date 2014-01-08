@@ -11,8 +11,8 @@ int * Api::genereTableauCarte(int taille)
 	return c->getData();
 }
 
-void combattre(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def)
+void Api::combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef)
 {
-	Combat * cbt = new Combat(pdv_att, pdv_att_max, pdv_def, pdv_def_max, pts_att, pts_def);
-
+	Combat * cbt = new Combat(pdvAtt, pdvAttMax, pdvDef, pdvDefMax, ptsAtt, ptsDef);
+	cbt->combattre();
 }

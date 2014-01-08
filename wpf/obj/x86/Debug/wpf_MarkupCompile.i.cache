@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\
 wpf
 none
 false
 DEBUG;TRACE
-H:\PrOOjet\PrOOjet\wpf\App.xaml
+H:\PrOOjet\Test\PrOOjet\wpf\App.xaml
 3-792805202
 
 8-2094619789
-14-136569648
+14102274975
 Accueil.xaml;Jeu.xaml;Smallworld.xaml;
 
-False
+True
 
