@@ -25,5 +25,20 @@ namespace PrOOjet
             posX = x;
             posY = y;
         }
+
+        public override bool Equals(object obj)
+        {
+            return (obj != null)
+                && (obj is Coordonnees) 
+                && ((Coordonnees)obj).posX == this.posX 
+                && ((Coordonnees)obj).posY == this.posY;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = (int) (posX ^ (posX >> 32));
+            hash = 31 * hash + (int) (posY ^ (posY >> 32));
+            return hash;
+        }
     }
 }

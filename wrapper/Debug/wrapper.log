@@ -1,27 +1,25 @@
-﻿La génération a démarré 08/01/2014 13:28:04.
+﻿La génération a démarré 08/01/2014 16:10:42.
      1>Projet "H:\PrOOjet\PrOOjet\wrapper\wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
      1>InitializeBuildStatus:
-         Création de "Debug\wrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+         Mise à jour de l'horodatage "Debug\wrapper.unsuccessfulbuild".
+       GenerateTargetFrameworkMonikerAttribute:
+       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        ClCompile:
          Toutes les sorties sont à jour.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\lib /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt "C:\Users\rbaron\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+         Toutes les sorties sont à jour.
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\PrOOjet\PrOOjet\Debug\wrapper.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\Debug /MANIFEST /ManifestFile:"Debug\wrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\PrOOjet\PrOOjet\Debug\wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\AssemblyInfo.obj
          Debug\wrapper.obj
          "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
          H:\PrOOjet\PrOOjet\Debug\Librairie.lib
+     1>Librairie.lib(api.obj) : error LNK2038: discordance détectée pour '_MSC_VER' : la valeur '1700' ne correspond pas à la valeur '1600' in wrapper.obj
      1>Librairie.lib(api.obj) : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/INCREMENTAL:NO'
-         wrapper.vcxproj -> H:\PrOOjet\PrOOjet\Debug\wrapper.dll
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"H:\PrOOjet\PrOOjet\Debug\wrapper.dll;#2" /manifest Debug\wrapper.dll.intermediate.manifest
-       _CopyFilesMarkedCopyLocal:
-         Copie du fichier de "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" vers "H:\PrOOjet\PrOOjet\Debug\System.dll".
-       FinalizeBuildStatus:
-         Suppression du fichier "Debug\wrapper.unsuccessfulbuild".
-         Mise à jour de l'horodatage "Debug\wrapper.lastbuildstate".
-     1>Génération du projet "H:\PrOOjet\PrOOjet\wrapper\wrapper.vcxproj" terminée (Build cible(s)).
+     1>Librairie.lib(combat.obj) : error LNK2038: discordance détectée pour '_MSC_VER' : la valeur '1700' ne correspond pas à la valeur '1600' in wrapper.obj
+     1>wrapper.obj : error LNK2028: jeton non résolu (0A0000A1) "public: void __thiscall Api::combattre(int,int,int,int,int,int)" (?combattre@Api@@$$FQAEXHHHHHH@Z) référencé dans la fonction "public: void __clrcall wrapper::WrapperCombat::combattre(int,int,int,int,int,int)" (?combattre@WrapperCombat@wrapper@@$$FQ$AAMXHHHHHH@Z)
+     1>wrapper.obj : error LNK2019: symbole externe non résolu "public: void __thiscall Api::combattre(int,int,int,int,int,int)" (?combattre@Api@@$$FQAEXHHHHHH@Z) référencé dans la fonction "public: void __clrcall wrapper::WrapperCombat::combattre(int,int,int,int,int,int)" (?combattre@WrapperCombat@wrapper@@$$FQ$AAMXHHHHHH@Z)
+     1>H:\PrOOjet\PrOOjet\Debug\wrapper.dll : fatal error LNK1120: 2 externes non résolus
+     1>Génération du projet "H:\PrOOjet\PrOOjet\wrapper\wrapper.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
 
-La génération a réussi.
+ÉCHEC de la build.
 
-Temps écoulé 00:00:03.72
+Temps écoulé 00:00:01.18

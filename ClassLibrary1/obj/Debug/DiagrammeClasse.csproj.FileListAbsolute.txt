@@ -19,3 +19,11 @@ H:\PrOOjet\PrOOjet\ClassLibrary1\bin\Debug\PrOOjet.pdb
 H:\PrOOjet\PrOOjet\ClassLibrary1\bin\Debug\wrapper.dll
 H:\PrOOjet\PrOOjet\ClassLibrary1\bin\Debug\wrapper.pdb
 H:\PrOOjet\PrOOjet\ClassLibrary1\obj\Debug\PrOOjet.pdb
+D:\temp\PrOOjet\ClassLibrary1\obj\Debug\DiagrammeClasse.csprojResolveAssemblyReference.cache
+D:\temp\PrOOjet\ClassLibrary1\obj\Debug\PrOOjet.dll
+D:\temp\PrOOjet\ClassLibrary1\obj\Debug\PrOOjet.pdb
+D:\temp\PrOOjet\ClassLibrary1\bin\Debug\PrOOjet.XML
+D:\temp\PrOOjet\ClassLibrary1\bin\Debug\PrOOjet.dll
+D:\temp\PrOOjet\ClassLibrary1\bin\Debug\PrOOjet.pdb
+D:\temp\PrOOjet\ClassLibrary1\bin\Debug\wrapper.dll
+D:\temp\PrOOjet\ClassLibrary1\bin\Debug\wrapper.pdb

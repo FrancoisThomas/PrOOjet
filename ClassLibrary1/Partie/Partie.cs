@@ -26,7 +26,7 @@ namespace PrOOjet
         private Partie()
         {
             // TODO
-            carte = new Carte(8);
+            //carte = new Carte(8);
         }
 
         //public ICarte getCarte() { return carte; } //TODO supprimer

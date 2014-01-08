@@ -16,12 +16,12 @@ namespace PrOOjet
 		/// </summary>
 		/// <param name="peuple1"> Peuple du premier joueur. </param>
 		/// <param name="peuple2"> Peuple du second joueur. </param>
-		/// <param name="tailleCarte"> Taille de la carte. </param>
+		/// <param name="strategie"> Taille de la carte. </param>
 		/// <returns> La partie créée. </returns>
 		/// <seealso cref="IPartie"/>
 		/// <seealso cref="ICarte"/>
 		/// <seealso cref="IJoueur"/>
 		/// <seealso cref="IUnite"/>
-        IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, IStrategieTaille tailleCarte);
+        IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, IStrategieTaille strategie);
     }
 }

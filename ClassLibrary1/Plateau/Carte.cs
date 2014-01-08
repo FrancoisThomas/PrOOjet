@@ -72,5 +72,19 @@ namespace PrOOjet
         {
             return cases.ElementAt(ligne * taille + colonne);
         }
+
+        public override string ToString()
+        {
+            string res = "Carte de taille " + Taille + "\n";
+            for (int i = 0; i < Taille; i++)
+            {
+                for (int j = 0; j < Taille; j++)
+                {
+                    res += cases.ElementAt(i * Taille + j) + " ";
+                }
+                res += "\n";
+            }
+            return res;
+        }
     }
 }

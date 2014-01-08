@@ -23,7 +23,7 @@ namespace PrOOjet
 
         override public int NbUnites
         {
-            get { return NbUnites; }
+            get { return NBUNITES; }
         }
     }
 }
