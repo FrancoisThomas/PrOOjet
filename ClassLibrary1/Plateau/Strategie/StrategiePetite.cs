@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PrOOjet.Plateau.Strategie
+namespace PrOOjet
 {
-    class StrategiePetite : StrategieTaille, IStrategiePetite
+    public class StrategiePetite : StrategieTaille, IStrategiePetite
     {
         private const int TAILLE = 10;
         private const int NBTOURS = 20;
         private const int NBUNITES = 6;
 
-        public int Taille
+        override public int Taille
         {
             get { return TAILLE; }
         }
 
-        public int NbTours
+        override public int NbTours
         {
             get { return NBTOURS; }
         }
 
-        public int NbUnites
+        override public int NbUnites
         {
             get { return NbUnites; }
         }

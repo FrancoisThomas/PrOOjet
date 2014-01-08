@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PrOOjet.Plateau.Strategie
+namespace PrOOjet
 {
-    abstract class StrategieTaille : IStrategieTaille
+    public abstract class StrategieTaille : IStrategieTaille
     {
-        int Taille { get; }
-        int NbTours { get; }
-        int NbUnites { get; }
+        public abstract int Taille { get; }
+        public abstract int NbTours { get; }
+        public abstract int NbUnites { get; }
 
         public ICarte construitCarte()
         {

@@ -5,25 +5,7 @@ using System.Text;
 
 namespace PrOOjet
 {
-    public interface IStrategieDemo : IStrategieTaille, IStrategieDemo
+    public interface IStrategieDemo : IStrategieTaille
     {
-        private const int TAILLE = 5;
-        private const int NBTOURS = 5;
-        private const int NBUNITES = 4;
-
-        public int Taille
-        {
-            get { return TAILLE; }
-        }
-
-        public int NbTours
-        {
-            get { return NBTOURS; }
-        }
-
-        public int NbUnites
-        {
-            get { return NbUnites; }
-        }
     }
 }
