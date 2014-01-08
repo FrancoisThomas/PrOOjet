@@ -18,22 +18,22 @@ namespace wpf
     /// <summary>
     /// Logique d'interaction pour Carte.xaml
     /// </summary>
-    public partial class Carte : UserControl
+    public partial class Jeu : UserControl
     {
 
         ICarte carte;
         IPartie partie;
 
-        public Carte()
+        public Jeu()
         {
             InitializeComponent();
-            partie = Partie.INSTANCE;
         }
 
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieNormale());
+
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
             int tailleRectangle = 600 / carte.Taille;

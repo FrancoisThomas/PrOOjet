@@ -13,7 +13,7 @@ namespace PrOOjet
 
         public ICarte construitCarte()
         {
-            return new Carte(Taille);
+            return new PrOOjet.Carte(Taille);
         }
     }
 }

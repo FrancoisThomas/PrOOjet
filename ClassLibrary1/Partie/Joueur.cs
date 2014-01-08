@@ -91,5 +91,10 @@ namespace PrOOjet
                 l.Add(u);
             }
         }
+
+        public override string ToString()
+        {
+            return "Joueur " + nom + " , peuple : " + peuple;
+        }
     }
 }

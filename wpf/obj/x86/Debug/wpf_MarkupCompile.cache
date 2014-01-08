@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\x86\Debug\
+D:\temp\PrOOjet\wpf\obj\x86\Debug\
 wpf
 none
 false
 DEBUG;TRACE
-H:\TP\POO\PrOOjet-eud-l-ankou\wpf\App.xaml
-31968332954
+D:\temp\PrOOjet\wpf\App.xaml
+3-792805202
 
-71377429568
-14-1066301435
-Accueil.xaml;Carte.xaml;Smallworld.xaml;
+71385579275
+141514968540
+Accueil.xaml;Jeu.xaml;Smallworld.xaml;
 
 False
 
