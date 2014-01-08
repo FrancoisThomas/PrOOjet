@@ -32,7 +32,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieDemo());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieNormale());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -191,6 +191,13 @@ namespace wpf
             selectionRectangleMap.Height = rectangle.Height;
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
 
+            Console.WriteLine(column);
+            Console.WriteLine(row);
+            Console.WriteLine(selectionRectangleMap.ActualWidth);
+            Console.WriteLine(selectionRectangleMap.ActualHeight);
+            Console.WriteLine(selectionRectangleMap.Tag);
+            Console.WriteLine(selectionRectangleMap.Visibility);
+
             tileImage.Fill = rectangle.Fill;
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
@@ -214,6 +221,14 @@ namespace wpf
             selectionRectangleUnit.Width = rectangle.Width;
             selectionRectangleUnit.Height = rectangle.Height;
             selectionRectangleUnit.Visibility = System.Windows.Visibility.Visible;
+
+            Console.WriteLine(column);
+            Console.WriteLine(row);
+            Console.WriteLine(selectionRectangleUnit.ActualWidth);
+            Console.WriteLine(selectionRectangleUnit.ActualHeight);
+            Console.WriteLine(selectionRectangleUnit.Tag);
+            Console.WriteLine(selectionRectangleUnit.Visibility);
+            Console.WriteLine(selectionRectangleUnit.IsVisible);
 
             healthLabel.Content = unit.PointsDeVie;
             attackLabel.Content = unit.Attaque;
