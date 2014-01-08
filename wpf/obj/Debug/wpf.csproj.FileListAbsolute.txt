@@ -42,3 +42,5 @@ H:\PrOOjet\PrOOjet\wpf\obj\Debug\Smallworld.baml
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.g.resources
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.Properties.Resources.resources
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.csproj.GenerateResource.Cache
+H:\TP\POO\PrOOjet\wpf\obj\Debug\wpf.exe
+H:\TP\POO\PrOOjet\wpf\obj\Debug\wpf.pdb
