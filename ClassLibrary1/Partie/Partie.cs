@@ -16,6 +16,7 @@ namespace PrOOjet
         private IJoueur joueur1;
         private IJoueur joueur2;
         private ICarte carte;
+        private int nbTours;
 
 		/// <summary> Joueur en train de jouer. </summary>
         private IJoueur joueurActif;
@@ -56,6 +57,12 @@ namespace PrOOjet
         {
             get { return carte; }
             set { carte = value; }
+        }
+
+        public int NbTours
+        {
+            get { return nbTours; }
+            set { nbTours = value; }
         }
 
 		/// <summary>

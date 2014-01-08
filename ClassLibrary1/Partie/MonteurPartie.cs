@@ -36,18 +36,19 @@ namespace PrOOjet
 		/// <seealso cref="ICarte"/>
 		/// <seealso cref="IJoueur"/>
 		/// <seealso cref="IUnite"/>
-        public IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, int tailleCarte)
+        public IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, IStrategieTaille tailleCarte)
         {
             IPartie partie = Partie.INSTANCE;
             partie.Joueur1 = new Joueur(peuple1, 0, "j1");
             partie.Joueur2 = new Joueur(peuple2, 1, "j2");
-            partie.Carte = new Carte(tailleCarte);
+            partie.Carte = tailleCarte.construitCarte();
+            partie.NbTours = tailleCarte.NbTours;
 
             //TODO Recuperer coordonnes de depart pour j1 et j2
             Coordonnees c1 = null;
             Coordonnees c2 = null;
 
-            for (int i = 0; i < (4 * tailleCarte) / 5; i++) {
+            for (int i = 0; i < tailleCarte.NbUnites ; i++) {
                 partie.Joueur1.creeUnite(c1);
                 partie.Joueur2.creeUnite(c2);
             }

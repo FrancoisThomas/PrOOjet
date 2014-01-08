@@ -31,6 +31,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\PrOOjet.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,24 +60,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carte\Carte.cs" />
-    <Compile Include="Carte\Cases\Case.cs" />
-    <Compile Include="Carte\Cases\CaseDesert.cs" />
-    <Compile Include="Carte\Cases\CaseEau.cs" />
-    <Compile Include="Carte\Cases\CaseForet.cs" />
-    <Compile Include="Carte\Cases\CaseMontagne.cs" />
-    <Compile Include="Carte\Cases\CasePlaine.cs" />
-    <Compile Include="Carte\Coordonnees.cs" />
-    <Compile Include="Carte\Cases\FabriqueCase.cs" />
+    <Compile Include="Plateau\Carte.cs" />
+    <Compile Include="Plateau\Cases\Case.cs" />
+    <Compile Include="Plateau\Cases\CaseDesert.cs" />
+    <Compile Include="Plateau\Cases\CaseEau.cs" />
+    <Compile Include="Plateau\Cases\CaseForet.cs" />
+    <Compile Include="Plateau\Cases\CaseMontagne.cs" />
+    <Compile Include="Plateau\Cases\CasePlaine.cs" />
+    <Compile Include="Plateau\Coordonnees.cs" />
+    <Compile Include="Plateau\Cases\FabriqueCase.cs" />
+    <Compile Include="Plateau\Strategie\StrategieDemo.cs" />
     <Compile Include="Peuples\Gaulois.cs" />
-    <Compile Include="Carte\ICarte.cs" />
-    <Compile Include="Carte\Cases\ICase.cs" />
-    <Compile Include="Carte\Cases\ICaseDesert.cs" />
-    <Compile Include="Carte\Cases\ICaseEau.cs" />
-    <Compile Include="Carte\Cases\ICaseForet.cs" />
-    <Compile Include="Carte\Cases\ICaseMontagne.cs" />
-    <Compile Include="Carte\Cases\ICasePlaine.cs" />
-    <Compile Include="Carte\Cases\IFabriqueCase.cs" />
+    <Compile Include="Plateau\ICarte.cs" />
+    <Compile Include="Plateau\Cases\ICase.cs" />
+    <Compile Include="Plateau\Cases\ICaseDesert.cs" />
+    <Compile Include="Plateau\Cases\ICaseEau.cs" />
+    <Compile Include="Plateau\Cases\ICaseForet.cs" />
+    <Compile Include="Plateau\Cases\ICaseMontagne.cs" />
+    <Compile Include="Plateau\Cases\ICasePlaine.cs" />
+    <Compile Include="Plateau\Cases\IFabriqueCase.cs" />
     <Compile Include="Partie\IJoueur.cs" />
     <Compile Include="Partie\IMonteurPartie.cs" />
     <Compile Include="Partie\IPartie.cs" />
@@ -66,10 +86,13 @@
     <Compile Include="Peuples\IPeupleGaulois.cs" />
     <Compile Include="Peuples\IPeupleNain.cs" />
     <Compile Include="Peuples\IPeupleViking.cs" />
-    <Compile Include="Carte\IStrategieDemo.cs" />
-    <Compile Include="Carte\IStrategieNormale.cs" />
-    <Compile Include="Carte\IStrategiePetite.cs" />
-    <Compile Include="Carte\IStrategieTaille.cs" />
+    <Compile Include="Plateau\Strategie\IStrategieDemo.cs" />
+    <Compile Include="Plateau\Strategie\IStrategieNormale.cs" />
+    <Compile Include="Plateau\Strategie\IStrategiePetite.cs" />
+    <Compile Include="Plateau\Strategie\IStrategieTaille.cs" />
+    <Compile Include="Plateau\Strategie\StrategieNormale.cs" />
+    <Compile Include="Plateau\Strategie\StrategiePetite.cs" />
+    <Compile Include="Plateau\Strategie\StrategieTaille.cs" />
     <Compile Include="Unites\IUnite.cs" />
     <Compile Include="Unites\IUniteGaulois.cs" />
     <Compile Include="Unites\IUniteNain.cs" />
