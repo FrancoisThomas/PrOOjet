@@ -2,24 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagrammeClasse", "ClassLibrary1\DiagrammeClasse.csproj", "{FC2F7478-D0E8-4D72-AC5E-173548D0DF3A}"
-<<<<<<< HEAD
-=======
-	ProjectSection(ProjectDependencies) = postProject
-		{AE0F14D3-19D4-407F-8BE3-CD48A655DAFC} = {AE0F14D3-19D4-407F-8BE3-CD48A655DAFC}
-	EndProjectSection
-EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Modele", "modele\Modele.modelproj", "{F3278014-D5BB-4F55-8202-960D26055491}"
->>>>>>> 97e838b9d722b221ffc4c840b2dd3ac0dfae8dad
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Modele", "modele\Modele.modelproj", "{F3278014-D5BB-4F55-8202-960D26055491}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wrapper", "wrapper\wrapper.vcxproj", "{1709AB2D-A5CC-4132-A48F-9549D30A300D}"
-<<<<<<< HEAD
-=======
-	ProjectSection(ProjectDependencies) = postProject
-		{AE0F14D3-19D4-407F-8BE3-CD48A655DAFC} = {AE0F14D3-19D4-407F-8BE3-CD48A655DAFC}
-	EndProjectSection
->>>>>>> 97e838b9d722b221ffc4c840b2dd3ac0dfae8dad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf", "wpf\Wpf.csproj", "{624089DD-09AF-4525-ADFC-C5F21316D160}"
 	ProjectSection(ProjectDependencies) = postProject

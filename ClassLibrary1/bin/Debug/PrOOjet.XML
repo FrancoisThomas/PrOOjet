@@ -237,7 +237,7 @@
             </summary>
             <seealso cref="T:PrOOjet.IPartie"/>
         </member>
-        <member name="M:PrOOjet.IMonteurPartie.creerPartie(PrOOjet.IPeuple,PrOOjet.IPeuple,System.Int32)">
+        <member name="M:PrOOjet.IMonteurPartie.creerPartie(PrOOjet.IPeuple,PrOOjet.IPeuple,PrOOjet.IStrategieTaille)">
             <summary>
             Méthode de création de la partie. Crée la carte, les joueurs et les unités.
             </summary>
@@ -369,7 +369,7 @@
             </summary>
             <seealso cref="T:PrOOjet.IPartie"/>
         </member>
-        <member name="M:PrOOjet.MonteurPartie.creerPartie(PrOOjet.IPeuple,PrOOjet.IPeuple,System.Int32)">
+        <member name="M:PrOOjet.MonteurPartie.creerPartie(PrOOjet.IPeuple,PrOOjet.IPeuple,PrOOjet.IStrategieTaille)">
             <summary>
             Méthode de création de la partie. Crée la carte, les joueurs et les unités.
             </summary>

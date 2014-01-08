@@ -64,6 +64,7 @@
   <ItemGroup>
     <ClCompile Include="api.cpp" />
     <ClCompile Include="carte.cpp" />
+    <ClCompile Include="combat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api.h" />

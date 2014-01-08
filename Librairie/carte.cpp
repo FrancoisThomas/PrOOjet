@@ -1,4 +1,3 @@
-
 #include "carte.h"
 
 Carte::Carte(int t) : taille(t)

@@ -1,6 +1,9 @@
 #ifndef API_H
 #define API_H
 
+#include "carte.h"
+#include "combat.h"
+
 
 #ifdef WANTDLLEXP
 #define DLL _declspec(dllexport)
@@ -15,8 +18,13 @@ class DLL Api{
 
 	Api() {}
 	~Api() {}
-	int computeFoo();
+	
 	int * genereTableauCarte(int taille);
+
+	void combattre(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def);
+	int pdv_attaquant_fin;
+	int pdv_defenseur_fin;
+
 
 };
 

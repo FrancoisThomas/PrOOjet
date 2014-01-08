@@ -1,13 +1,11 @@
-﻿La génération a démarré 08/01/2014 11:38:42.
+﻿La génération a démarré 08/01/2014 13:28:04.
      1>Projet "H:\PrOOjet\PrOOjet\wrapper\wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
      1>InitializeBuildStatus:
-         Mise à jour de l'horodatage "Debug\wrapper.unsuccessfulbuild".
-       GenerateTargetFrameworkMonikerAttribute:
-       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
+         Création de "Debug\wrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\lib /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt wrapper.cpp /clr:nostdlib 
-         wrapper.cpp
          Toutes les sorties sont à jour.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\lib /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt "C:\Users\rbaron\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\PrOOjet\PrOOjet\Debug\wrapper.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\Debug /MANIFEST /ManifestFile:"Debug\wrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\PrOOjet\PrOOjet\Debug\wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\AssemblyInfo.obj
          Debug\wrapper.obj
@@ -17,6 +15,8 @@
          wrapper.vcxproj -> H:\PrOOjet\PrOOjet\Debug\wrapper.dll
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"H:\PrOOjet\PrOOjet\Debug\wrapper.dll;#2" /manifest Debug\wrapper.dll.intermediate.manifest
+       _CopyFilesMarkedCopyLocal:
+         Copie du fichier de "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" vers "H:\PrOOjet\PrOOjet\Debug\System.dll".
        FinalizeBuildStatus:
          Suppression du fichier "Debug\wrapper.unsuccessfulbuild".
          Mise à jour de l'horodatage "Debug\wrapper.lastbuildstate".
@@ -24,4 +24,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:01.22
+Temps écoulé 00:00:03.72
