@@ -2,6 +2,10 @@
 #define CARTE_H
 
 #include <stddef.h>
+#include <stdlib.h>		//srand/rand
+#include <time.h>		//time
+#include <algorithm>	//max   
+
 
 class Carte 
 {
@@ -15,6 +19,7 @@ public:
 
 	int * getData();
 	void genereTableauCarte();
+	void genereTableauCarte2();
 };
 
 #endif
