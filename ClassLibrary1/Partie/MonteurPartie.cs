@@ -41,6 +41,7 @@ namespace PrOOjet
             IPartie partie = Partie.INSTANCE;
             partie.Joueur1 = new Joueur(peuple1, 0, "j1");
             partie.Joueur2 = new Joueur(peuple2, 1, "j2");
+            partie.JoueurActif = partie.Joueur1;
             partie.Carte = strategie.construitCarte();
             partie.NbTours = strategie.NbTours;
 

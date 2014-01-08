@@ -91,3 +91,11 @@ H:\PrOOjet\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.lref
 H:\PrOOjet\Test\PrOOjet\wpf\bin\Debug\wpf.exe.config
 H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf.exe
 H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf.pdb
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\Wpf.csprojResolveAssemblyReference.cache
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\Accueil.g.cs
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\Jeu.g.cs
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\Smallworld.g.cs
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\App.g.cs
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.cache
+H:\PrOOjet\Test\PrOOjet\wpf\obj\x86\Debug\wpf_MarkupCompile.lref

@@ -13,13 +13,19 @@ namespace PrOOjet
     {
         private static IPartie instance;
 
+        /// <summary> Joueur 1. </summary>
         private IJoueur joueur1;
+
+        /// <summary> Joueur 2. </summary>
         private IJoueur joueur2;
+
+        /// <summary> Joueur en train de jouer. </summary>
+        private IJoueur joueurActif;
         private ICarte carte;
         private int nbTours;
 
 		/// <summary> Joueur en train de jouer. </summary>
-        private IJoueur joueurActif;
+        
         /// <summary> Joueur en attente. </summary>
         private IJoueur joueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
 
@@ -51,6 +57,12 @@ namespace PrOOjet
         {
             get { return joueur2; }
             set { joueur2 = value; }
+        }
+
+        public IJoueur JoueurActif
+        {
+            get { return joueurActif; }
+            set { joueurActif = value; }
         }
 
         public ICarte Carte 

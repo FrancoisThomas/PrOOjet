@@ -12,8 +12,10 @@ namespace PrOOjet
     {
         IJoueur Joueur1 { get; set; }
         IJoueur Joueur2 { get; set; }
+        IJoueur JoueurActif { get; set; }
         ICarte Carte { get; set; }
         int NbTours { get; set; }
+
 		
 		/// <summary>
 		/// Sélectionne les unités aux coordonnées indiquées.

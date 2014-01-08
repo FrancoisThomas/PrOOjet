@@ -243,7 +243,7 @@
             </summary>
             <param name="peuple1"> Peuple du premier joueur. </param>
             <param name="peuple2"> Peuple du second joueur. </param>
-            <param name="tailleCarte"> Taille de la carte. </param>
+            <param name="strategie"> Taille de la carte. </param>
             <returns> La partie créée. </returns>
             <seealso cref="T:PrOOjet.IPartie"/>
             <seealso cref="T:PrOOjet.ICarte"/>
@@ -375,7 +375,7 @@
             </summary>
             <param name="peuple1"> Peuple du premier joueur. </param>
             <param name="peuple2"> Peuple du second joueur. </param>
-            <param name="tailleCarte"> Taille de la carte. </param>
+            <param name="strategie"> Taille de la carte. </param>
             <returns> La partie créée. </returns>
             <seealso cref="T:PrOOjet.IPartie"/>
             <seealso cref="T:PrOOjet.ICarte"/>
