@@ -17,15 +17,11 @@ namespace tests
         }
 
         [TestMethod]
-        public void TestCreationPartie()
+        public void TestCreationPartieMonteur()
         {
-            IPeuple nain = Nain.INSTANCE;
-            IPeuple viking = Viking.INSTANCE;
-            IStrategieTaille taille = new StrategieDemo();
+            IStrategieTaille strat = new StrategieNormale();
 
-            IPartie partie = MonteurPartie.INSTANCE.creerPartie(nain, viking, taille);
-
-            //Assert.AreEqual(partie.Carte.Taille, taille.Taille);
+            IPartie partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, strat);
         }
     }
 }
