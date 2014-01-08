@@ -1,2 +1,8 @@
 Debug/
 *.sdf
+wrapper/Debug/
+wpf/bin/Debug/
+wpf/obj/Debug/
+tests/obj/Debug/
+ClassLibrary1/bin/Debug/
+ClassLibrary1/obj/Debug/
