@@ -53,16 +53,32 @@ namespace wpf
         private Rectangle creeRectangle(int c, int l, ICase tile)
         {
             var rectangle = new Rectangle();
+            ImageBrush imageBrush = new ImageBrush();
             if (tile is ICaseDesert)
-                rectangle.Fill = Brushes.Brown;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\desert.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (tile is ICaseForet)
-                rectangle.Fill = Brushes.DarkGreen;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\foret.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (tile is ICaseEau)
-                rectangle.Fill = Brushes.SlateBlue;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\eau.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (tile is ICasePlaine)
-                rectangle.Fill = Brushes.LightGreen;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\plaine.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (tile is ICaseMontagne)
-                rectangle.Fill = Brushes.Gray;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\montagne.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
@@ -130,15 +146,25 @@ namespace wpf
             }
         }
 
-        private Rectangle creeUnitRectangle(int c, int l, IUnite unit)
+        private Rectangle createUnitRectangle(int c, int l, IUnite unit)
         {
             var rectangle = new Rectangle();
+            ImageBrush imageBrush = new ImageBrush();
             if (unit is IUniteGaulois)
-                rectangle.Fill = Brushes.Brown;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (unit is IUniteNain)
-                rectangle.Fill = Brushes.DarkGreen;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             if (unit is IUniteViking)
-                rectangle.Fill = Brushes.SlateBlue;
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
