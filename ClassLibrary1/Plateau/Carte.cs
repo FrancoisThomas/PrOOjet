@@ -24,7 +24,9 @@ namespace PrOOjet
             taille = tailleCarte;
             fabriqueCase = FabriqueCase.INSTANCE;
             String[] typesCases = { "d", "e", "m", "f", "p" };
-            List<int> tab = WrapperCarte.genereCarte(taille);
+            WrapperCarte wrapou = new WrapperCarte();
+            List<int> tab = wrapou.genereCarte(taille);
+            
             /*List<int> tab = new List<int>();
             for (int i = 0; i < taille * taille; i++)
                 tab.Add(i%5);*/

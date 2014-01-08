@@ -22,10 +22,8 @@ H:\TP\POO\PrOOjet-eud-l-ankou\wpf\obj\Debug\wpf.pdb
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.exe
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.pdb
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\wpf.csprojResolveAssemblyReference.cache
-H:\PrOOjet\PrOOjet\wpf\obj\Debug\IHMMainWindow.baml
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\Accueil.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\Carte.g.cs
-H:\PrOOjet\PrOOjet\wpf\obj\Debug\IHMMainWindow.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\Smallworld.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\App.g.cs
 H:\PrOOjet\PrOOjet\wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
