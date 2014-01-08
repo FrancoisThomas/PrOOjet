@@ -29,9 +29,9 @@ void Carte::genereTableauCarte()
 
 void Carte::genereTableauCarte2()
 {
+	srand((unsigned int)time(NULL));
 	for(int i=0; i<taille*taille; i++)
 	{
-		srand((unsigned int)time(NULL));
 		mat[i] = rand() % 5;
 	}
 }
