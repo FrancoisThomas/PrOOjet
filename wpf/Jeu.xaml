@@ -6,22 +6,28 @@
              xmlns:local="clr-namespace:wpf"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
-             Loaded="Window_Loaded" >
+             Loaded="Window_Loaded">
 
     <DockPanel>
         <Grid  DockPanel.Dock="Bottom" >
             <!-- Définition du bouton "fin de tour" et association à l'évt Click : => appel à la méthode "Button_Click" -->
             <Button HorizontalAlignment="Center" Content="Fin du tour" />
         </Grid>
-        <Grid DockPanel.Dock="Left" Width="400" >
-            <Label Name ="typeCase" Content="Test" ></Label>
+        <Grid DockPanel.Dock="Left" Width="400">
+            <DockPanel HorizontalAlignment="Left" Height="108" LastChildFill="False" VerticalAlignment="Top" Width="400">
+                <Rectangle Height="100" Stroke="Black" StrokeThickness="2" Width="100" Name="tileImage" VerticalAlignment="Center"/>
+                <Grid Height="100" Margin="0,0,0,0" VerticalAlignment="Center" Width="300" Name="unitGrid">
+                    <Rectangle Name="selectionRectangleUnit" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="collapsed"/>
+                </Grid>
+            </DockPanel>
         </Grid>
+        
         <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600">
             <!--V2 : gestion avec Binding-->
             <!-- Définition du rectangle matérialisant la selection -->
             <!--   Permet d'avoir un objet graphique sur lequel on va pouvoir appliquer du Binding pour mettre à jour les labels d'informations-->
             <!--<rectangle width="20" height="20" name="selectionrectangle" stroke="blue" strokethickness="1" panel.zindex="333" visibility="collapsed"/>-->
-            <Rectangle Name="selectionRectangle" />
+            <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="collapsed"/>
             <!-- Chaque case de la grille contient potentiellement un rectangle de selection + une unité (qui ne sera pas sensible aux evts)-->
             <Ellipse Fill="White" Width="10" Height="10" Name="unitEllipse" Panel.ZIndex="444" IsHitTestVisible="False" />
 

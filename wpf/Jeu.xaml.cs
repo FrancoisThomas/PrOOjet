@@ -72,7 +72,83 @@ namespace wpf
             rectangle.StrokeThickness = 1;
             // enregistrement d'un écouteur d'evt sur le rectangle : 
             // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
-            //rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangle_MouseLeftButtonDown);
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(case_MouseLeftButtonDown);
+            return rectangle;
+        }
+
+        /// <summary>
+        /// Délégué : réponse à l'evt click gauche sur le rectangle, affichage des informations de la tuile
+        /// </summary>
+        /// <param name="sender"> le rectangle (la source) </param>
+        /// <param name="e"> l'evt </param>
+        void case_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var rectangle = sender as Rectangle;
+            var tile = rectangle.Tag as ICase;
+
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+
+            // V2 : gestion avec Binding
+            // Mise à jour du rectangle selectionné => le label sera mis à jour automatiquement par Binding
+            Grid.SetColumn(selectionRectangleMap, column);
+            Grid.SetRow(selectionRectangleMap, row);
+            selectionRectangleMap.Tag = tile;
+            selectionRectangleMap.Width = rectangle.Width;
+            selectionRectangleMap.Height = rectangle.Height;
+            selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
+
+            tileImage.Fill = rectangle.Fill;
+
+            updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
+
+            // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
+            e.Handled = true;
+        }
+
+
+        private void updateUnitGrid(List<IUnite> list)
+        {
+            if (list != null)
+            {
+                int i = 0;
+                int j = 0;
+
+                foreach (IUnite unit in list)
+                {
+                    var element = createUnitRectangle(i, j, unit);
+                    if (j<5)
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        i++;
+                        j = 0;
+                    }
+                }
+            }
+        }
+
+        private Rectangle creeUnitRectangle(int c, int l, IUnite unit)
+        {
+            var rectangle = new Rectangle();
+            if (unit is IUniteGaulois)
+                rectangle.Fill = Brushes.Brown;
+            if (unit is IUniteNain)
+                rectangle.Fill = Brushes.DarkGreen;
+            if (unit is IUniteViking)
+                rectangle.Fill = Brushes.SlateBlue;
+            // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
+            Grid.SetColumn(rectangle, c);
+            Grid.SetRow(rectangle, l);
+            rectangle.Tag = unit; // Tag : ref par defaut sur la tuile logique
+
+            rectangle.Stroke = Brushes.Azure;
+            rectangle.StrokeThickness = 1;
+            // enregistrement d'un écouteur d'evt sur le rectangle : 
+            // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(case_MouseLeftButtonDown); // TODO chnager
             return rectangle;
         }
 
