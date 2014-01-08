@@ -29,13 +29,21 @@ namespace wpf
             InitializeComponent();
         }
 
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieNormale());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieDemo());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
+            initialiseMapGrid();
+
+            initialiseUnitGrid();
+
+        }
+
+        private void initialiseMapGrid()
+        {
             int tailleRectangle = 600 / carte.Taille;
             for (int c = 0; c < carte.Taille; c++)
             {
@@ -44,13 +52,50 @@ namespace wpf
                 for (int l = 0; l < carte.Taille; l++)
                 {
                     var tile = carte.getCase(c, l);
-                    var element = creeRectangle(c, l, tile);
+                    var element = createMapRectangle(c, l, tile);
                     mapGrid.Children.Add(element);
                 }
             }
         }
 
-        private Rectangle creeRectangle(int c, int l, ICase tile)
+        private void initialiseUnitGrid()
+        {
+            for (int c = 0; c < 5; c++)
+            {
+                unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(50, GridUnitType.Pixel) });
+            }
+            for (int r = 0; r < 2; r++)
+            {
+                unitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
+            }
+        }
+
+        private void updateUnitGrid(List<IUnite> list)
+        {
+            unitGrid.Children.Clear();
+            selectionRectangleUnit.Visibility = System.Windows.Visibility.Collapsed;
+
+            if (list != null)
+            {
+                int c = 0;
+                int r = 0;
+
+                foreach (IUnite unit in list)
+                {
+                    var element = createUnitRectangle(c, r, unit);
+                    unitGrid.Children.Add(element);
+                    if (c < 5)
+                        c++;
+                    else
+                    {
+                        r++;
+                        c = 0;
+                    }
+                }
+            }
+        }
+
+        private Rectangle createMapRectangle(int c, int l, ICase tile)
         {
             var rectangle = new Rectangle();
             ImageBrush imageBrush = new ImageBrush();
@@ -88,7 +133,39 @@ namespace wpf
             rectangle.StrokeThickness = 1;
             // enregistrement d'un écouteur d'evt sur le rectangle : 
             // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(case_MouseLeftButtonDown);
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(tile_MouseLeftButtonDown);
+            return rectangle;
+        }
+
+        private Rectangle createUnitRectangle(int c, int l, IUnite unit)
+        {
+            var rectangle = new Rectangle();
+            ImageBrush imageBrush = new ImageBrush();
+            if (unit is IUniteGaulois)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            if (unit is IUniteNain)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            if (unit is IUniteViking)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
+            Grid.SetColumn(rectangle, c);
+            Grid.SetRow(rectangle, l);
+            rectangle.Tag = unit;
+
+            rectangle.Stroke = Brushes.Azure;
+            rectangle.StrokeThickness = 1;
+            // enregistrement d'un écouteur d'evt sur le rectangle : 
+            // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(unit_MouseLeftButtonDown); // TODO chnager
             return rectangle;
         }
 
@@ -97,7 +174,7 @@ namespace wpf
         /// </summary>
         /// <param name="sender"> le rectangle (la source) </param>
         /// <param name="e"> l'evt </param>
-        void case_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void tile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var rectangle = sender as Rectangle;
             var tile = rectangle.Tag as ICase;
@@ -123,59 +200,28 @@ namespace wpf
         }
 
 
-        private void updateUnitGrid(List<IUnite> list)
+        void unit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (list != null)
-            {
-                int i = 0;
-                int j = 0;
+            var rectangle = sender as Rectangle;
+            var unit = rectangle.Tag as IUnite;
 
-                foreach (IUnite unit in list)
-                {
-                    var element = createUnitRectangle(i, j, unit);
-                    if (j<5)
-                    {
-                        j++;
-                    }
-                    else
-                    {
-                        i++;
-                        j = 0;
-                    }
-                }
-            }
-        }
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
 
-        private Rectangle createUnitRectangle(int c, int l, IUnite unit)
-        {
-            var rectangle = new Rectangle();
-            ImageBrush imageBrush = new ImageBrush();
-            if (unit is IUniteGaulois)
-            {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
-                rectangle.Fill = imageBrush;
-            }
-            if (unit is IUniteNain)
-            {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
-                rectangle.Fill = imageBrush;
-            }
-            if (unit is IUniteViking)
-            {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
-                rectangle.Fill = imageBrush;
-            }
-            // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
-            Grid.SetColumn(rectangle, c);
-            Grid.SetRow(rectangle, l);
-            rectangle.Tag = unit; // Tag : ref par defaut sur la tuile logique
+            Grid.SetColumn(selectionRectangleUnit, column);
+            Grid.SetRow(selectionRectangleUnit, row);
+            selectionRectangleUnit.Tag = unit;
+            selectionRectangleUnit.Width = rectangle.Width;
+            selectionRectangleUnit.Height = rectangle.Height;
+            selectionRectangleUnit.Visibility = System.Windows.Visibility.Visible;
 
-            rectangle.Stroke = Brushes.Azure;
-            rectangle.StrokeThickness = 1;
-            // enregistrement d'un écouteur d'evt sur le rectangle : 
-            // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(case_MouseLeftButtonDown); // TODO chnager
-            return rectangle;
+            healthLabel.Content = unit.PointsDeVie;
+            attackLabel.Content = unit.Attaque;
+            defenseLabel.Content = unit.Defense;
+            movementLabel.Content = unit.PointsDeMouvement;
+
+            // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
+            e.Handled = true;
         }
 
     }
