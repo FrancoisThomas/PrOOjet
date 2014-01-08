@@ -1,5 +1,6 @@
 #include "carte.h"
 
+
 Carte::Carte(int t) : taille(t)
 {
 	if(t > 0)
@@ -24,4 +25,13 @@ void Carte::genereTableauCarte()
 	// TODO Remplir mat
 	for(int i=0; i<taille*taille; i++)
 		mat[i] = i % 5;
+}
+
+void Carte::genereTableauCarte2()
+{
+	for(int i=0; i<taille*taille; i++)
+	{
+		srand((unsigned int)time(NULL));
+		mat[i] = rand() % 5;
+	}
 }
