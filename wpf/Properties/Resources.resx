@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="desert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\desert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="foret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\foret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_gaulois" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_gaulois.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_nain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_nain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_viking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_viking.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="montagne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\montagne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plaine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plaine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
