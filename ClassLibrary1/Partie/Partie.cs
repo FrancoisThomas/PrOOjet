@@ -102,6 +102,49 @@ namespace PrOOjet
             
             return unit1.Concat(unit2).GroupBy(d => d.Key)
                         .ToDictionary(k => k.Key, v => v.First().Value.Union(v.Last().Value).ToList());
-        }        
+        }
+
+        /// <summary>
+        /// Renvoi la carte annotée selons les deplacements possibles.
+        /// </summary>
+        public List<int> suggereDeplacement(IUnite unite, Coordonnees pos)
+        {
+            List<int> carteAnnotee = new List<int>();
+            WrapperCarte wrap = new WrapperCarte();
+
+            int posUnite = pos.posX * carte.Taille + pos.posY;
+            List<int> carteInt = new List<int>();
+            foreach (ICase c in carte.Cases)
+	        {
+		        if (c is ICaseDesert)
+                    carteInt.Add((int)ECase.DESERT);
+                if (c is ICaseEau)
+                    carteInt.Add((int)ECase.EAU);
+                if (c is ICaseMontagne)
+                    carteInt.Add((int)ECase.MONTAGNE);
+                if (c is ICaseForet)
+                    carteInt.Add((int)ECase.FORET);
+                if (c is ICasePlaine)
+                    carteInt.Add((int)ECase.PLAINE);
+	        }
+
+            Dictionary<int, int> ennemis = new Dictionary<int,int>();
+
+            for (int i = 0; i < joueurNonActif.Unites.Count; i++)
+			{
+			    Coordonnees c = joueurNonActif.Unites.Keys.ElementAt(i);
+                ennemis.Add(c.posX * carte.Taille + c.posY, joueurNonActif.Unites.Values.ElementAt(i).Count);
+			}
+
+
+            if (unite is IUniteGaulois)
+                carteAnnotee = wrap.suggestionDeplacementGaulois(posUnite, carteInt, carte.Taille, ennemis);  
+            if (unite is IUniteNain)
+                carteAnnotee = wrap.suggestionDeplacementNain(posUnite, carteInt, carte.Taille, ennemis);
+            if (unite is IUniteViking)
+                carteAnnotee = wrap.suggestionDeplacementViking(posUnite, carteInt, carte.Taille, ennemis);
+
+            return carteAnnotee;
+        }
     }
 }

@@ -27,5 +27,10 @@ namespace PrOOjet
         /// Renvoi la liste des unités de la partie.
         /// </summary>
         Dictionary<Coordonnees, List<IUnite>> recupereUnites();
+
+        /// <summary>
+        /// Renvoi la carte annotée selons les deplacements possibles.
+        /// </summary>
+        List<int> suggereDeplacement(IUnite unite, Coordonnees pos);
     }
 }
