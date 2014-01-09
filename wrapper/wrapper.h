@@ -35,6 +35,7 @@ namespace wrapper
 				for (int j = 0; j < taille; j++)
 					matrice[i][j] = listCarte[i*taille+j];
 			}
+			return matrice;
 		}
 
 		int ** deDictionaryAMatrice(Dictionary<int, int> dico, int taille){
@@ -45,6 +46,7 @@ namespace wrapper
 				for (int j = 0; j < taille; j++)
 					dico.TryGetValue(i*taille+j, matrice[i][j]);
 			}
+			return matrice;
 		}
 
 
