@@ -11,9 +11,9 @@ namespace PrOOjet
     public class Coordonnees
     {
     	/// <summary> Abscisse. </summary>
-        private int posX;
+        public int posX;
         /// <summary> Ordonnée. </summary>
-        private int posY;
+        public int posY;
 
 		/// <summary>
 		/// Constructeur.
