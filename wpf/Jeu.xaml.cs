@@ -37,7 +37,6 @@ namespace wpf
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
             initialiseMapGrid();
-
             initialiseUnitGrid();
 
         }
@@ -53,6 +52,18 @@ namespace wpf
                 {
                     var tile = carte.getCase(c, l);
                     var element = createMapRectangle(c, l, tile);
+                    mapGrid.Children.Add(element);
+                }
+            }
+
+            Dictionary<Coordonnees, List<IUnite>> units = partie.recupereUnites();
+
+            for (int i = 0; i < units.Count; i++)
+            {
+                Coordonnees coord = units.Keys.ElementAt(i);
+                foreach (IUnite unit in units.Values.ElementAt(i))
+                {
+                    var element = createUnitSprite(coord.posX, coord.posY, unit);
                     mapGrid.Children.Add(element);
                 }
             }
@@ -169,6 +180,36 @@ namespace wpf
             return rectangle;
         }
 
+        private Rectangle createUnitSprite(int c, int l, IUnite unit)
+        {
+            var rectangle = new Rectangle();
+            ImageBrush imageBrush = new ImageBrush();
+            if (unit is IUniteGaulois)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            if (unit is IUniteNain)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            if (unit is IUniteViking)
+            {
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
+                rectangle.Fill = imageBrush;
+            }
+            // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
+            Grid.SetColumn(rectangle, c);
+            Grid.SetRow(rectangle, l);
+            rectangle.Tag = unit;
+
+            // enregistrement d'un écouteur d'evt sur le rectangle : 
+            // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(mapUnit_MouseLeftButtonDown);
+            return rectangle;
+        }
+
         /// <summary>
         /// Délégué : réponse à l'evt click gauche sur le rectangle, affichage des informations de la tuile
         /// </summary>
@@ -197,6 +238,11 @@ namespace wpf
             Console.WriteLine(selectionRectangleMap.ActualHeight);
             Console.WriteLine(selectionRectangleMap.Tag);
             Console.WriteLine(selectionRectangleMap.Visibility);
+
+            healthLabel.Content = "";
+            attackLabel.Content = "";
+            defenseLabel.Content = "";
+            movementLabel.Content = "";
 
             tileImage.Fill = rectangle.Fill;
 
@@ -234,6 +280,14 @@ namespace wpf
             attackLabel.Content = unit.Attaque;
             defenseLabel.Content = unit.Defense;
             movementLabel.Content = unit.PointsDeMouvement;
+
+            // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
+            e.Handled = true;
+        }
+
+        void mapUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // TODO
 
             // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
             e.Handled = true;

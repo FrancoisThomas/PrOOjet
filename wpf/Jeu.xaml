@@ -20,15 +20,19 @@
             </DockPanel>
             
             <StackPanel HorizontalAlignment="Right" Height="248" Margin="0,147,58,0" VerticalAlignment="Top" Width="291">
+                <!--Points de vie-->
                 <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
                     <Label Name="healthLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
                 </DockPanel>
+                <!--Attaque-->
                 <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40">
                     <Label Name="attackLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
                 </DockPanel>
+                <!--Defense-->
                 <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
                     <Label Name="defenseLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
                 </DockPanel>
+                <!--Points de mouvements-->
                 <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
                     <Label Name="movementLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
                 </DockPanel>
@@ -44,8 +48,6 @@
         
         <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600">
             <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
-            <!-- Chaque case de la grille contient potentiellement un rectangle de selection + une unité (qui ne sera pas sensible aux evts)-->
-            <Ellipse Fill="White" Width="10" Height="10" Name="unitEllipse" Panel.ZIndex="444" IsHitTestVisible="False" />
         </Grid>
     </DockPanel>
 
