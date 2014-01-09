@@ -22,5 +22,10 @@ namespace PrOOjet
 		/// </summary>
 		/// <param name="coord"> Les coordonnées auxquelles on veut sélectionner les unités.
         List<IUnite> selectionneUnites(Coordonnees coord);
+
+        /// <summary>
+        /// Renvoi la liste des unités de la partie.
+        /// </summary>
+        Dictionary<Coordonnees, List<IUnite>> recupereUnites();
     }
 }

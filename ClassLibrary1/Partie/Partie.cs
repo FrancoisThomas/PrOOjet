@@ -90,9 +90,18 @@ namespace PrOOjet
                 unites = joueurNonActif.recupereUnites(coord);
 
             return unites;
-
         }
 
-        
+        /// <summary>
+        /// Renvoi le dictionnaire des unités de la partie, avec leurs coordonees.
+        /// </summary>
+        public Dictionary<Coordonnees, List<IUnite>> recupereUnites()
+        {
+            Dictionary<Coordonnees, List<IUnite>> unit1 = joueur1.Unites;
+            Dictionary<Coordonnees, List<IUnite>> unit2 = joueur2.Unites;
+            
+            return unit1.Concat(unit2).GroupBy(d => d.Key)
+                        .ToDictionary(k => k.Key, v => v.First().Value.Union(v.Last().Value).ToList());
+        }        
     }
 }
