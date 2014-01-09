@@ -5,6 +5,11 @@ using System.Text;
 
 namespace PrOOjet
 {
+    public enum ECase
+    {
+        DESERT = 0, EAU, MONTAGNE, FORET, PLAINE
+    }
+
 	/// <summary>
 	/// Interface d'une carte.
 	/// </summary>
