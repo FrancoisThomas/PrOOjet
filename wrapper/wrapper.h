@@ -16,6 +16,7 @@ namespace wrapper
 		WrapperCarte(){api = Api_new();}
 		~WrapperCarte(){Api_delete(api);}
 
+
 		List<int>^ genereCarte(int taille){ 
 			int* list =	api->genereTableauCarte(taille);
 			List<int>^ carte = gcnew List<int>();
@@ -26,17 +27,37 @@ namespace wrapper
 			return carte;
 		}
 
-		List<int>^ suggestionDeplacementNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
-			int * list = api->deplacementsPossiblesNain(posUnite, carte, tailleCarte, posEnnemis);
-			List<int>^ suggestions = gcnew List<int>();
-
-			for (int i = 0; i < tailleCarte*tailleCarte; i++)
-				suggestions->Add(list[i]);
-
-			return suggestions;
+		int ** deListAMatrice(List<int>^ listCarte, int taille){
+			int ** matrice = new int *[taille];
+			for(int i = 0; i < taille; i++)
+			{
+				matrice[i] = new int[taille];
+				for (int j = 0; j < taille; j++)
+					matrice[i][j] = listCarte[i*taille+j];
+			}
 		}
 
-		List<int>^ suggestionDeplacementViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
+		int ** deDictionaryAMatrice(Dictionary<int, int> dico, int taille){
+			int ** matrice = new int *[taille];
+			for(int i = 0; i < taille; i++)
+			{
+				matrice[i] = new int[taille];
+				for (int j = 0; j < taille; j++)
+					dico.TryGetValue(i*taille+j, matrice[i][j]);
+			}
+		}
+
+
+		List<int>^ suggestionDeplacementViking(int posUnite, List<int>^ listCarte, int tailleCarte, Dictionary<int, int> ennemis){
+			
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de enemmis en posEnnemis
+			int ** posEnnemis = new int *[tailleCarte];
+						
 			int * list = api->deplacementsPossiblesViking(posUnite, carte, tailleCarte, posEnnemis);
 			List<int>^ suggestions = gcnew List<int>();
 
@@ -46,7 +67,17 @@ namespace wrapper
 			return suggestions;
 		}
 
-		List<int>^ suggestionDeplacementGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
+
+		List<int>^ suggestionDeplacementGaulois(int posUnite, List<int>^ listCarte, int tailleCarte, Dictionary<int, int> ennemis){
+			
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de enemmis en posEnnemis
+			int ** posEnnemis = new int *[tailleCarte];
+						
 			int * list = api->deplacementsPossiblesGaulois(posUnite, carte, tailleCarte, posEnnemis);
 			List<int>^ suggestions = gcnew List<int>();
 
@@ -55,6 +86,28 @@ namespace wrapper
 
 			return suggestions;
 		}
+
+
+		List<int>^ suggestionDeplacementNain(int posUnite, List<int>^ listCarte, int tailleCarte, Dictionary<int, int> ennemis){
+			
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de enemmis en posEnnemis
+			int ** posEnnemis = new int *[tailleCarte];
+						
+			int * list = api->deplacementsPossiblesNain(posUnite, carte, tailleCarte, posEnnemis);
+			List<int>^ suggestions = gcnew List<int>();
+
+			for (int i = 0; i < tailleCarte*tailleCarte; i++)
+				suggestions->Add(list[i]);
+
+			return suggestions;
+		}
+
+		
 	};
 
 
