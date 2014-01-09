@@ -25,6 +25,36 @@ namespace wrapper
 
 			return carte;
 		}
+
+		List<int>^ suggestionDeplacementNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
+			int * list = api->deplacementsPossiblesNain(posUnite, carte, tailleCarte, posEnnemis);
+			List<int>^ suggestions = gcnew List<int>();
+
+			for (int i = 0; i < tailleCarte*tailleCarte; i++)
+				suggestions->Add(list[i]);
+
+			return suggestions;
+		}
+
+		List<int>^ suggestionDeplacementViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
+			int * list = api->deplacementsPossiblesViking(posUnite, carte, tailleCarte, posEnnemis);
+			List<int>^ suggestions = gcnew List<int>();
+
+			for (int i = 0; i < tailleCarte*tailleCarte; i++)
+				suggestions->Add(list[i]);
+
+			return suggestions;
+		}
+
+		List<int>^ suggestionDeplacementGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis){
+			int * list = api->deplacementsPossiblesGaulois(posUnite, carte, tailleCarte, posEnnemis);
+			List<int>^ suggestions = gcnew List<int>();
+
+			for (int i = 0; i < tailleCarte*tailleCarte; i++)
+				suggestions->Add(list[i]);
+
+			return suggestions;
+		}
 	};
 
 
