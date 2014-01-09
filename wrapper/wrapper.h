@@ -13,8 +13,8 @@ namespace wrapper
 	private:
 		Api* api;
 	public:
-		//WrapperCarte(){api = Api_new();}
-		//~WrapperCarte(){Api_delete(api);}
+		WrapperCarte(){api = Api_new();}
+		~WrapperCarte(){Api_delete(api);}
 
 		List<int>^ genereCarte(int taille){ 
 			int* list =	api->genereTableauCarte(taille);

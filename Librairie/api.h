@@ -22,10 +22,16 @@ class DLL Api{
 	
 	int * genereTableauCarte(int taille);
 
-	int ** cartePondereeEnnemis(int tailleCarte, int * posEnnemis);
-	int * deplacementsPossiblesViking(int posUnite, int * carte, int tailleCarte, int * posEnnemis);
-	int * deplacementsPossiblesGaulois(int posUnite, int * carte, int tailleCarte, int * posEnnemis);
-	int * deplacementsPossiblesNain(int posUnite, int * carte, int tailleCarte, int * posEnnemis);
+	int ** cartePondereeEnnemis(int tailleCarte, int ** posEnnemis);
+
+	int ** cartePondereePointsViking(int tailleCarte, int ** carte);
+	int * deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
+	
+	int ** cartePondereePointsGaulois(int tailleCarte, int ** carte);
+	int * deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
+	
+	int ** cartePondereePointsNain(int tailleCarte, int ** carte);
+	int * deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
 
 	int pdv_attaquant_fin;
 	int pdv_defenseur_fin;

@@ -1,0 +1,20 @@
+﻿La génération a démarré 08/01/2014 19:32:11.
+     1>Projet "H:\PrOOjet\Test\PrOOjet\Librairie\Librairie.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>InitializeBuildStatus:
+         Création de "Debug\Librairie.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt api.cpp
+         api.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"H:\PrOOjet\Test\PrOOjet\Debug\Librairie.lib" /NOLOGO Debug\api.obj
+         Debug\carte.obj
+         Debug\combat.obj
+         Librairie.vcxproj -> H:\PrOOjet\Test\PrOOjet\Debug\Librairie.lib
+       FinalizeBuildStatus:
+         Suppression du fichier "Debug\Librairie.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Debug\Librairie.lastbuildstate".
+     1>Génération du projet "H:\PrOOjet\Test\PrOOjet\Librairie\Librairie.vcxproj" terminée (Build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:01.31

@@ -3,21 +3,17 @@
 Api * Api_new(){ return new Api(); }
 void Api_delete(Api* api){ delete api; }
 
+int const ENNEMI = -1;
+int const DEPLACEMENT_IMPOSSIBLE = 0;
+
 enum cases{
 	DESERT = 0, EAU, MONTAGNE, FORET, PLAINE
-};
-
-enum ennemisPresents{
-	ENNEMIS = -1, RAS = 0
 };
 
 enum pointsCase{
 	NUL = 2, NORMAL = 4, SUPER = 6
 };
 
-enum deplacement{
-	IMPOSSIBLE = 0, POSSIBLE
-};
 
 int * Api::genereTableauCarte(int taille)
 {
@@ -26,7 +22,20 @@ int * Api::genereTableauCarte(int taille)
 	return c->getData();
 }
 
-int ** Api::cartePondereeEnnemis(int tailleCarte, int * posEnnemis)
+int ** Api::cartePondereeEnnemis(int tailleCarte, int ** posEnnemis)
+{
+	int ** res = new int *[tailleCarte];
+	for(int i = 0; i < tailleCarte; i++)
+	{
+		res[i] = new int[tailleCarte];
+		for(int j = 0; j < tailleCarte; j++)
+			res[i][j] = 1-(2*posEnnemis[i][j]);
+	}
+	return res;
+}
+
+
+int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 {
 	int ** res = new int *[tailleCarte];
 	for(int i = 0; i < tailleCarte; i++)
@@ -34,107 +43,159 @@ int ** Api::cartePondereeEnnemis(int tailleCarte, int * posEnnemis)
 		res[i] = new int[tailleCarte];
 		for(int j = 0; j < tailleCarte; j++)
 		{
-		res[i][j] = (posEnnemis[i*tailleCarte+j] == 0 ? 0 : ENNEMIS);
+			if(carte[i][j] == DESERT) {	res[i][j] = NUL; }
+			else if(carte[i][j] == EAU)
+			{
+				if(i > 0 && carte[i-1][j] != DESERT ) res[i-1][j] = SUPER;
+				if(j > 0 && carte[i][j-1] != DESERT) res[i][j-1] = SUPER;
+				if(i < (tailleCarte - 1) && carte[i+1][j] != DESERT) res[i+1][j] = SUPER;
+				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT) res[i][j+1] = SUPER;
+			}
+			else
+			{
+				res[i][j] = (res[i][j] != SUPER ? NORMAL : SUPER);
+			}
 		}
 	}
 	return res;
 }
 
-
-
-
-int * Api::deplacementsPossiblesViking(int posUnite, int * carte, int tailleCarte, int * posEnnemis)
+int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
 	int * resultat = new int[tailleCarte*tailleCarte];
 
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
-	int ** res = cartePondereeEnnemis(tailleCarte, posEnnemis);
 
-	res[x_unit-1][y_unit] *= POSSIBLE;
-	res[x_unit][y_unit-1] *= POSSIBLE;
-	res[x_unit+1][y_unit] *= POSSIBLE;
-	res[x_unit][y_unit+1] *= POSSIBLE;
+	// On recupere la carte ponderee par le nombre d'ennemis par case
+	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
 
+	// On recupere la carte ponderee par la valeur en points des cases
+	int ** points = cartePondereePointsViking(tailleCarte, carte);
+	
 	for (int i = 0; i < tailleCarte; i++)
 	{
 		for (int j = 0; j < tailleCarte; j++)
 		{
-			if(carte[i*tailleCarte+j] == DESERT)
-				res[i][j] += NUL;
-			else if (carte[i*tailleCarte+j] == EAU)
+			
+			// Si la case n'est pas adjacente a la case de l'unite, alors le deplacement est impossible
+			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 1) { resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE; }
+
+			// Sinon le deplacement est possible, et on examine les differents cas
+			else
 			{
-				if(i > 0 && res[i-1][j] < (SUPER-1)) res[i-1][j] += SUPER;
-				if(j > 0 && res[i][j-1] < (SUPER-1)) res[i][j-1] += SUPER;
-				if(i < (tailleCarte - 1) && res[i+1][j] < (SUPER-1)) res[i+1][j] += SUPER;
-				if(j < (tailleCarte - 1) && res[i+1][j] < (SUPER-1)) res[i][j+1] += SUPER;
+				// Une case ou sont present plusieurs ennemis ne peut pas etre prise en un combat, 
+				// donc elle est ininteressante pour le gain de points
+				if (ennemis[i][j] < -1) {resultat[i*tailleCarte+j] = NUL + ENNEMI;}
+
+				// Sinon le score de la case est la somme du nombre de points octroyes par cette case, 
+				// ponderee par la presence eventuelle d'ennemis
+				else {resultat[i*tailleCarte+j] = points[i][j] + ennemis[i][j]; }
 			}
-			res[i][j] *= (std::abs(x_unit-i) + std::abs(y_unit-j) > 1 ? IMPOSSIBLE : POSSIBLE);
-			resultat[i*tailleCarte+j] = res[i][j];
 		}
-		return resultat;
+	}
+	return resultat;
+}
+
+
+
+int ** Api::cartePondereePointsGaulois(int tailleCarte, int ** carte)
+{
+	int ** res = new int *[tailleCarte];
+	for(int i = 0; i < tailleCarte; i++)
+	{
+		res[i] = new int[tailleCarte];
+		for(int j = 0; j < tailleCarte; j++)
+		{
+			if(carte[i][j] == MONTAGNE) { res[i][j] = NUL; }
+			else if(carte[i][j] == PLAINE) { res[i][j] = SUPER;}
+			else res[i][j] = NORMAL;
+		}
+	}
+	return res;
+}
+
+int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
+{
+	int * resultat = new int[tailleCarte*tailleCarte];
+
+	int x_unit = posUnite % tailleCarte;
+	int y_unit = (int)(posUnite/tailleCarte);
+
+	// On recupere la carte ponderee par le nombre d'ennemis par case
+	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
+
+	// On recupere la carte ponderee par la valeur en points des cases
+	int ** points = cartePondereePointsGaulois(tailleCarte, carte);
+
+	int ** resintermediaire = new int *[tailleCarte];
+	
+	for (int i = 0; i < tailleCarte; i++)
+	{
+		for (int j = 0; j < tailleCarte; j++)
+		{
+			resintermediaire[i] = new int[tailleCarte];
+
+			// Si la case est eloignee de plus de deux cases de la case de l'unite, alors le deplacement est impossible
+			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 2) { resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE; }
+
+			// Dans le cas ou la case est adjacente
+			else if(std::abs(x_unit-i) + std::abs(y_unit-j) <= 1) { resintermediaire[i][j] = points[i][j] + ennemis[i][j]; }
+
+
+		}
 	}
 }
 
-int * Api::deplacementsPossiblesGaulois(int posUnite, int * carte, int tailleCarte, int * posEnnemis)
+
+int ** Api::cartePondereePointsNain(int tailleCarte, int ** carte)
 {
-	int * res = new int[tailleCarte*tailleCarte];
-	for(int i = 0; i < tailleCarte*tailleCarte; i++)
-		res[i] = 0;
-
-	if(posUnite % tailleCarte != 0 && carte[posUnite-1] != EAU) 
+	int ** res = new int *[tailleCarte];
+	for(int i = 0; i < tailleCarte; i++)
 	{
-		res[posUnite-1] = 1;
-		if(posEnnemis[posUnite-1] == 0 && carte[posUnite-1] == PLAINE)
+		res[i] = new int[tailleCarte];
+		for(int j = 0; j < tailleCarte; j++)
 		{
-			if((posUnite-1) % tailleCarte != 0 && carte[posUnite-2] != EAU)
-				res[posUnite-2] = 1;
-			if((posUnite-1) > tailleCarte && carte[posUnite-tailleCarte-1] != EAU)
-				res[posUnite-tailleCarte-1] = 1;
-			if((posUnite-1) < tailleCarte && carte[posUnite+tailleCarte-1] != EAU)
-				res[posUnite+tailleCarte-1] = 1;
+			if(carte[i][j] == PLAINE) { res[i][j] = NUL; }
+			else if(carte[i][j] == FORET) { res[i][j] = SUPER;}
+			else res[i][j] = NORMAL;
 		}
 	}
+	return res;
+}
+
+int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
+{
+	int * resultat = new int[tailleCarte*tailleCarte];
+
+	int x_unit = posUnite % tailleCarte;
+	int y_unit = (int)(posUnite/tailleCarte);
+
+	// On recupere la carte ponderee par le nombre d'ennemis par case
+	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
+
+	// On recupere la carte ponderee par la valeur en points des cases
+	int ** points = cartePondereePointsGaulois(tailleCarte, carte);
 	
-	if(posUnite % tailleCarte != (tailleCarte-1) && carte[posUnite] != EAU)
+	for (int i = 0; i < tailleCarte; i++)
 	{
-		res[posUnite+1] = 1;
-		if(posEnnemis[posUnite+1] == 0 && carte[posUnite+1] == PLAINE)
+		for (int j = 0; j < tailleCarte; j++)
 		{
-			if((posUnite+1) % tailleCarte != (tailleCarte-1) && carte[posUnite+2] != EAU)
-				res[posUnite+2] = 1;
-			if((posUnite+1) > tailleCarte && carte[posUnite-tailleCarte+1] != EAU)
-				res[posUnite-tailleCarte+1] = 1;
-			if((posUnite+1) < tailleCarte && carte[posUnite+tailleCarte+1] != EAU)
-				res[posUnite+tailleCarte+1] = 1;
+			// Si la case n'est pas adjacente a la case de l'unite, il y a deux cas
+			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 1) 
+			{ 
+				// La case n'est pas une montagne, dans ce cas le deplacement est impossible
+				if(carte[i][j] != MONTAGNE)
+					resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE;
+				// La case est une montagne on peut s'y deplacer s'il n'y a pas d'ennemi
+				else resultat[i*tailleCarte+j] = (ennemis[i][j] == 0 ? points[i][j] : DEPLACEMENT_IMPOSSIBLE);
+			}
+			// Cas des cases adjacentes
+			else resultat[i*tailleCarte+j] = points[i][j] + ennemis[i][j];
 		}
 	}
-
-	if(posUnite > tailleCarte)
-	{
-		res[posUnite-tailleCarte] = 1;
-		if(posEnnemis[posUnite-tailleCarte] == 0 && carte[posUnite-tailleCarte] == PLAINE)
-		{
-			if((posUnite-tailleCarte) % tailleCarte != 0 && carte[posUnite+tailleCarte+1] != EAU)
-				res[posUnite+2] = 1;
-			if((posUnite-tailleCarte) % tailleCarte != (tailleCarte-1) && carte[posUnite+2] != EAU)
-				res[posUnite+2] = 1;
-			if((posUnite+1) > tailleCarte && carte[posUnite-tailleCarte+1] != EAU)
-				res[posUnite-tailleCarte+1] = 1;
-			if((posUnite+1) < tailleCarte && carte[posUnite+tailleCarte+1] != EAU)
-				res[posUnite+tailleCarte+1] = 1;
-		}
-
-
-	}
-	if(posUnite < tailleCarte*(tailleCarte-1))
-		res[posUnite+tailleCarte] = 1;
-
-
-
-
-};
-int * Api::deplacementsPossiblesNain(int posUnite, int * carte, int tailleCarte, int * posEnnemis){};
+	return resultat;
+}
 
 
 void Api::combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef)
