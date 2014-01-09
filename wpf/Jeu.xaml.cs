@@ -288,6 +288,22 @@ namespace wpf
         void mapUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // TODO
+            var rectangle = sender as Rectangle;
+            var unit = rectangle.Tag as IUnite;
+
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+
+            List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
+
+            for (int i = 0; i < partie.Carte.Taille; i++)
+            {
+                for (int j = 0; j < partie.Carte.Taille; j++)
+                {
+                    Console.Write(map.ElementAt(i * partie.Carte.Taille + j) + " ");
+                }
+                Console.WriteLine("");
+            }
 
             // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
             e.Handled = true;
