@@ -3,17 +3,6 @@
 Api * Api_new(){ return new Api(); }
 void Api_delete(Api* api){ delete api; }
 
-int const ENNEMI = -1;
-int const DEPLACEMENT_IMPOSSIBLE = 0;
-
-enum cases{
-	DESERT = 0, EAU, MONTAGNE, FORET, PLAINE
-};
-
-enum pointsCase{
-	NUL = 2, NORMAL = 4, SUPER = 6
-};
-
 
 int * Api::genereTableauCarte(int taille)
 {
@@ -22,39 +11,32 @@ int * Api::genereTableauCarte(int taille)
 	return c->getData();
 }
 
-int ** Api::cartePondereeEnnemis(int tailleCarte, int ** posEnnemis)
-{
-	int ** res = new int *[tailleCarte];
-	for(int i = 0; i < tailleCarte; i++)
-	{
-		res[i] = new int[tailleCarte];
-		for(int j = 0; j < tailleCarte; j++)
-			res[i][j] = 1-(2*posEnnemis[i][j]);
-	}
-	return res;
-}
-
 
 int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 {
 	int ** res = new int *[tailleCarte];
 	for(int i = 0; i < tailleCarte; i++)
-	{
 		res[i] = new int[tailleCarte];
+
+	for(int i = 0; i < tailleCarte; i++)
+	{
 		for(int j = 0; j < tailleCarte; j++)
 		{
-			if(carte[i][j] == DESERT) {	res[i][j] = NUL; }
+			if(carte[i][j] == DESERT) 
+				res[i][j] = NUL;
 			else if(carte[i][j] == EAU)
 			{
-				if(i > 0 && carte[i-1][j] != DESERT ) res[i-1][j] = SUPER;
-				if(j > 0 && carte[i][j-1] != DESERT) res[i][j-1] = SUPER;
-				if(i < (tailleCarte - 1) && carte[i+1][j] != DESERT) res[i+1][j] = SUPER;
-				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT) res[i][j+1] = SUPER;
+				if(i > 0 && carte[i-1][j] != DESERT )
+					res[i-1][j] = SUPER;
+				if(j > 0 && carte[i][j-1] != DESERT)
+					res[i][j-1] = SUPER;
+				if(i < (tailleCarte - 1) && carte[i+1][j] != DESERT)
+					res[i+1][j] = SUPER;
+				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT)
+					res[i][j+1] = SUPER;
 			}
-			else
-			{
-				res[i][j] = (res[i][j] != SUPER ? NORMAL : SUPER);
-			}
+			if (res[i][j] == NULL)
+				res[i][j] = NORMAL;
 		}
 	}
 	return res;
@@ -67,9 +49,6 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
-	// On recupere la carte ponderee par le nombre d'ennemis par case
-	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
-
 	// On recupere la carte ponderee par la valeur en points des cases
 	int ** points = cartePondereePointsViking(tailleCarte, carte);
 	
@@ -79,18 +58,21 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 		{
 			
 			// Si la case n'est pas adjacente a la case de l'unite, alors le deplacement est impossible
-			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 1) { resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE; }
+			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 1) 
+				resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE;
 
 			// Sinon le deplacement est possible, et on examine les differents cas
 			else
 			{
 				// Une case ou sont present plusieurs ennemis ne peut pas etre prise en un combat, 
 				// donc elle est ininteressante pour le gain de points
-				if (ennemis[i][j] < -1) {resultat[i*tailleCarte+j] = NUL + ENNEMI;}
+				if (posEnnemis[i][j] > 1) 
+					resultat[i*tailleCarte+j] = NUL + ENNEMI;
 
 				// Sinon le score de la case est la somme du nombre de points octroyes par cette case, 
 				// ponderee par la presence eventuelle d'ennemis
-				else {resultat[i*tailleCarte+j] = points[i][j] + ennemis[i][j]; }
+				else 
+					resultat[i*tailleCarte+j] = points[i][j] + (posEnnemis[i][j] == 0 ? RAS : ENNEMI);
 			}
 		}
 	}
@@ -107,9 +89,12 @@ int ** Api::cartePondereePointsGaulois(int tailleCarte, int ** carte)
 		res[i] = new int[tailleCarte];
 		for(int j = 0; j < tailleCarte; j++)
 		{
-			if(carte[i][j] == MONTAGNE) { res[i][j] = NUL; }
-			else if(carte[i][j] == PLAINE) { res[i][j] = SUPER;}
-			else res[i][j] = NORMAL;
+			if(carte[i][j] == MONTAGNE) 
+				res[i][j] = NUL;
+			else if(carte[i][j] == PLAINE) 
+				res[i][j] = SUPER;
+			else 
+				res[i][j] = NORMAL;
 		}
 	}
 	return res;
@@ -117,34 +102,64 @@ int ** Api::cartePondereePointsGaulois(int tailleCarte, int ** carte)
 
 int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
+	int ponderationGaulois[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NUL, NORMAL, SUPER};
+
 	int * resultat = new int[tailleCarte*tailleCarte];
 
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
-	// On recupere la carte ponderee par le nombre d'ennemis par case
-	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
-
-	// On recupere la carte ponderee par la valeur en points des cases
-	int ** points = cartePondereePointsGaulois(tailleCarte, carte);
-
-	int ** resintermediaire = new int *[tailleCarte];
+	int ** res = new int *[tailleCarte];
 	
+	for (int i = 0; i < tailleCarte; i++)
+		res[i] = new int[tailleCarte];
+
 	for (int i = 0; i < tailleCarte; i++)
 	{
 		for (int j = 0; j < tailleCarte; j++)
 		{
-			resintermediaire[i] = new int[tailleCarte];
-
 			// Si la case est eloignee de plus de deux cases de la case de l'unite, alors le deplacement est impossible
-			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 2) { resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE; }
+			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 2) 
+				res[i][j] = DEPLACEMENT_IMPOSSIBLE;
 
 			// Dans le cas ou la case est adjacente
-			else if(std::abs(x_unit-i) + std::abs(y_unit-j) <= 1) { resintermediaire[i][j] = points[i][j] + ennemis[i][j]; }
+			else if(std::abs(x_unit-i) + std::abs(y_unit-j) < 2 && carte[i][j] == PLAINE) 
+			{
+				if(i > 0)
+					res[i-1][j] = pointsCase(ponderationGaulois[carte[i-1][j]], posEnnemis[i-1][j]);
 
+				if(j > 0)
+					res[i][j-1] = pointsCase(ponderationGaulois[carte[i][j-1]], posEnnemis[i][j-1]);
 
+				if(i < (tailleCarte - 1))
+					res[i+1][j] = pointsCase(ponderationGaulois[carte[i+1][j]], posEnnemis[i+1][j]);
+
+				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT)
+					res[i][j+1] = pointsCase(ponderationGaulois[carte[i][j+1]], posEnnemis[i][j+1]);
+
+				res[i][j] = SUPER;
+			}
 		}
 	}
+
+	for (int i = 0; i < tailleCarte; i++)
+		for (int j = 0; j < tailleCarte; j++)
+			resultat[i*tailleCarte+j] = res[i][j];
+	return resultat;
+}
+
+int Api::pointsCase(int pointsCarte, int nombreEnnemis)
+{
+	int res;
+	if(pointsCarte == DEPLACEMENT_IMPOSSIBLE)
+		res = DEPLACEMENT_IMPOSSIBLE;
+	else if(nombreEnnemis > 1)
+		res = NUL + ENNEMI;
+	else if(nombreEnnemis = 1)
+		res = pointsCarte + ENNEMI;
+	else 
+		res = pointsCarte;
+	return res;
 }
 
 
@@ -156,9 +171,12 @@ int ** Api::cartePondereePointsNain(int tailleCarte, int ** carte)
 		res[i] = new int[tailleCarte];
 		for(int j = 0; j < tailleCarte; j++)
 		{
-			if(carte[i][j] == PLAINE) { res[i][j] = NUL; }
-			else if(carte[i][j] == FORET) { res[i][j] = SUPER;}
-			else res[i][j] = NORMAL;
+			if(carte[i][j] == PLAINE) 
+				res[i][j] = NUL;
+			else if(carte[i][j] == FORET) 
+				res[i][j] = SUPER;
+			else 
+				res[i][j] = NORMAL;
 		}
 	}
 	return res;
@@ -171,9 +189,6 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
-	// On recupere la carte ponderee par le nombre d'ennemis par case
-	int ** ennemis = cartePondereeEnnemis(tailleCarte, posEnnemis);
-
 	// On recupere la carte ponderee par la valeur en points des cases
 	int ** points = cartePondereePointsGaulois(tailleCarte, carte);
 	
@@ -185,13 +200,23 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 1) 
 			{ 
 				// La case n'est pas une montagne, dans ce cas le deplacement est impossible
-				if(carte[i][j] != MONTAGNE)
+				if(carte[x_unit][y_unit] != MONTAGNE || carte[i][j] != MONTAGNE)
 					resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE;
 				// La case est une montagne on peut s'y deplacer s'il n'y a pas d'ennemi
-				else resultat[i*tailleCarte+j] = (ennemis[i][j] == 0 ? points[i][j] : DEPLACEMENT_IMPOSSIBLE);
+				else 
+					resultat[i*tailleCarte+j] = (posEnnemis[i][j] == 0 ? points[i][j] : DEPLACEMENT_IMPOSSIBLE);
 			}
 			// Cas des cases adjacentes
-			else resultat[i*tailleCarte+j] = points[i][j] + ennemis[i][j];
+			else 
+				// Une case ou sont present plusieurs ennemis ne peut pas etre prise en un combat, 
+				// donc elle est ininteressante pour le gain de points
+				if (posEnnemis[i][j] < -1) 
+					resultat[i*tailleCarte+j] = NUL + ENNEMI;
+
+				// Sinon le score de la case est la somme du nombre de points octroyes par cette case, 
+				// ponderee par la presence eventuelle d'ennemis
+				else 
+					resultat[i*tailleCarte+j] = points[i][j] + (posEnnemis[i][j] == 0 ? RAS : ENNEMI);
 		}
 	}
 	return resultat;
