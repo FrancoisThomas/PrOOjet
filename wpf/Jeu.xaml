@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
              Loaded="Window_Loaded">
+    
+    <UserControl.Background>
+        <ImageBrush ImageSource="Resources/background.jpg"/>
+    </UserControl.Background>
 
     <DockPanel>
 

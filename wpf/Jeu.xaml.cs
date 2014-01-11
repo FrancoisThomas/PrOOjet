@@ -32,7 +32,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Viking.INSTANCE, Gaulois.INSTANCE, new StrategieDemo());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategiePetite());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -223,7 +223,7 @@ namespace wpf
             return rectangle;
         }
 
-        private Rectangle createMovementSuggestionRectangle(int c, int l, int type)
+        private Rectangle createMovementSuggestionRectangle(int c, int l, int type, IUnite unit)
         {
             var rectangle = new Rectangle();
             if (type == 0)
@@ -254,9 +254,10 @@ namespace wpf
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
+            rectangle.Tag = unit;
 
-            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(moveUnit_MouseLeftButtonDown);
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(moveUnit_MouseRightButtonDown);
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(moveUnit_MouseLeftButtonDown);
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(moveUnit_MouseRightButtonDown);
             return rectangle;
         }
 
@@ -318,7 +319,8 @@ namespace wpf
 
         void mapUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // TODO
+            movementGrid.Children.Clear();
+
             var rectangle = sender as Rectangle;
             var unit = rectangle.Tag as IUnite;
 
@@ -332,15 +334,29 @@ namespace wpf
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
 
             List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
-            movementGrid.Children.Clear();
 
-            for (int i = 0; i < partie.Carte.Taille; i++)
+            for (int r = 0; r < partie.Carte.Taille; r++)
             {
-                for (int j = 0; j < partie.Carte.Taille; j++)
+                for (int c = 0; c < partie.Carte.Taille; c++)
                 {
-                    if (i != row || j != column)
+                    Console.Write(map.ElementAt(r * partie.Carte.Taille + c) + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            for (int r = 0; r < partie.Carte.Taille; r++)
+            {
+                for (int c = 0; c < partie.Carte.Taille; c++)
+                {
+                    if (r != row || c != column)
                     {
-                        var element = createMovementSuggestionRectangle(j, i, map.ElementAt(i * partie.Carte.Taille + j));
+                        List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
+                        Rectangle element = null;
+                        if (unitesCase == null)
+                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unit);
+                        else
+                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unitesCase.ElementAt(0));
                         movementGrid.Children.Add(element);
                     }
                 }
@@ -351,59 +367,40 @@ namespace wpf
 
         void moveUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // TODO
-            var rectangle = sender as Rectangle;
-            var unit = rectangle.Tag as IUnite;
-
-            int column = Grid.GetColumn(rectangle);
-            int row = Grid.GetRow(rectangle);
-
-            Grid.SetColumn(selectionRectangleMap, column);
-            Grid.SetRow(selectionRectangleMap, row);
-            selectionRectangleMap.Width = rectangle.Width;
-            selectionRectangleMap.Height = rectangle.Height;
-            selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
-
-            List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
-            movementGrid.Children.Clear();
-
-            for (int i = 0; i < partie.Carte.Taille; i++)
-            {
-                for (int j = 0; j < partie.Carte.Taille; j++)
-                {
-                    if (i != row || j != column)
-                    {
-                        var element = createMovementSuggestionRectangle(j, i, map.ElementAt(i * partie.Carte.Taille + j));
-                        movementGrid.Children.Add(element);
-                    }
-                }
-            }
-
-            updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
-
-            e.Handled = true;
-        }
-
-        void moveUnit_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
             movementGrid.Children.Clear();
 
             var rectangle = sender as Rectangle;
 
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
-
-            if (partie.selectionneUnites(new Coordonnees(row, column)) == null)
+            
+            if (partie.selectionneUnites(new Coordonnees(column, row)) == null)
             {
-                Console.WriteLine(1);
                 tile_MouseLeftButtonDown(sender, e);
             }
             else
             {
-                Console.WriteLine(2);
                 mapUnit_MouseLeftButtonDown(sender, e);
             }
         }
+
+        void moveUnit_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // TODO
+        }
+
+
+        
+        /*
+        for (int r = 0; r < partie.Carte.Taille; r++)
+        {
+            for (int c = 0; c < partie.Carte.Taille; c++)
+            {
+                Console.Write(l.ElementAt(r * partie.Carte.Taille + c) + " ");
+            }
+            Console.WriteLine();
+        }
+        */     
 
 
     }
