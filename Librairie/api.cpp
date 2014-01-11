@@ -124,6 +124,10 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 		res[i] = new int[tailleCarte];
 
 	for (int i = 0; i < tailleCarte; i++)
+		for (int j = 0; j < tailleCarte; j++)
+			res[i][j] = -1;
+
+	for (int i = 0; i < tailleCarte; i++)
 	{
 		for (int j = 0; j < tailleCarte; j++)
 		{
@@ -134,21 +138,21 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 			// Dans le cas ou la case est adjacente et est une plaine
 			else if(std::abs(x_unit-i) + std::abs(y_unit-j) < 2 && carte[i][j] == PLAINE) 
 			{
-				if(i > 0)
+				if(i > 0 && posEnnemis[i][j] == 0)
 					res[i-1][j] = pointsCase(ponderationGaulois[carte[i-1][j]], posEnnemis[i-1][j]);
 
-				if(j > 0)
+				if(j > 0 && posEnnemis[i][j] == 0)
 					res[i][j-1] = pointsCase(ponderationGaulois[carte[i][j-1]], posEnnemis[i][j-1]);
 
-				if(i < (tailleCarte - 1))
+				if(i < (tailleCarte - 1) && posEnnemis[i][j] == 0)
 					res[i+1][j] = pointsCase(ponderationGaulois[carte[i+1][j]], posEnnemis[i+1][j]);
 
-				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT)
+				if(j < (tailleCarte - 1) && posEnnemis[i][j] == 0)
 					res[i][j+1] = pointsCase(ponderationGaulois[carte[i][j+1]], posEnnemis[i][j+1]);
 
-				res[i][j] = SUPER;
+				res[i][j] = pointsCase(ponderationGaulois[carte[i][j]], posEnnemis[i][j]);;
 			}
-			else if (std::abs(x_unit-i) + std::abs(y_unit-j) > 1)
+			else if ((std::abs(x_unit-i) + std::abs(y_unit-j) > 1) && res[i][j] < 0)
 				res[i][j] = DEPLACEMENT_IMPOSSIBLE;
 			else
 				res[i][j] = pointsCase(ponderationGaulois[carte[i][j]], posEnnemis[i][j]);
