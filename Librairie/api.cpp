@@ -35,7 +35,7 @@ int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 				if(j < (tailleCarte - 1) && carte[i][j+1] != DESERT)
 					res[i][j+1] = SUPER;
 			}
-			if (res[i][j] == NULL)
+			if (res[i][j] < 0)
 				res[i][j] = NORMAL;
 		}
 	}
@@ -46,11 +46,20 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 {
 	int * resultat = new int[tailleCarte*tailleCarte];
 
+	
+
+
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
 	// On recupere la carte ponderee par la valeur en points des cases
 	int ** points = cartePondereePointsViking(tailleCarte, carte);
+	
+	for (int i = 0; i < tailleCarte; i++)
+		for (int j = 0; j < tailleCarte; j++)
+			resultat[i*tailleCarte+j] = points[i][j];
+
+	printf("\n\n\n\nOk\n");
 	
 	for (int i = 0; i < tailleCarte; i++)
 	{
@@ -122,7 +131,7 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 			if(std::abs(x_unit-i) + std::abs(y_unit-j) > 2) 
 				res[i][j] = DEPLACEMENT_IMPOSSIBLE;
 
-			// Dans le cas ou la case est adjacente
+			// Dans le cas ou la case est adjacente et est une plaine
 			else if(std::abs(x_unit-i) + std::abs(y_unit-j) < 2 && carte[i][j] == PLAINE) 
 			{
 				if(i > 0)
@@ -139,6 +148,10 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 
 				res[i][j] = SUPER;
 			}
+			else if (std::abs(x_unit-i) + std::abs(y_unit-j) > 1)
+				res[i][j] = DEPLACEMENT_IMPOSSIBLE;
+			else
+				res[i][j] = pointsCase(ponderationGaulois[carte[i][j]], posEnnemis[i][j]);
 		}
 	}
 
@@ -155,7 +168,7 @@ int Api::pointsCase(int pointsCarte, int nombreEnnemis)
 		res = DEPLACEMENT_IMPOSSIBLE;
 	else if(nombreEnnemis > 1)
 		res = NUL + ENNEMI;
-	else if(nombreEnnemis = 1)
+	else if(nombreEnnemis == 1)
 		res = pointsCarte + ENNEMI;
 	else 
 		res = pointsCarte;
