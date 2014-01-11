@@ -176,35 +176,15 @@ int Api::pointsCase(int pointsCarte, int nombreEnnemis)
 }
 
 
-int ** Api::cartePondereePointsNain(int tailleCarte, int ** carte)
-{
-	int ** res = new int *[tailleCarte];
-	for(int i = 0; i < tailleCarte; i++)
-	{
-		res[i] = new int[tailleCarte];
-		for(int j = 0; j < tailleCarte; j++)
-		{
-			if(carte[i][j] == PLAINE) 
-				res[i][j] = NUL;
-			else if(carte[i][j] == FORET) 
-				res[i][j] = SUPER;
-			else 
-				res[i][j] = NORMAL;
-		}
-	}
-	return res;
-}
-
 int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
-	int * resultat = new int[tailleCarte*tailleCarte];
-
+	int ponderationNain[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NORMAL, SUPER, NUL};
+	
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
-	// On recupere la carte ponderee par la valeur en points des cases
-	int ** points = cartePondereePointsGaulois(tailleCarte, carte);
-	
+	int * resultat = new int[tailleCarte*tailleCarte];
+
 	for (int i = 0; i < tailleCarte; i++)
 	{
 		for (int j = 0; j < tailleCarte; j++)
@@ -217,19 +197,11 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 					resultat[i*tailleCarte+j] = DEPLACEMENT_IMPOSSIBLE;
 				// La case est une montagne on peut s'y deplacer s'il n'y a pas d'ennemi
 				else 
-					resultat[i*tailleCarte+j] = (posEnnemis[i][j] == 0 ? points[i][j] : DEPLACEMENT_IMPOSSIBLE);
+					resultat[i*tailleCarte+j] = (posEnnemis[i][j] == 0 ? ponderationNain[MONTAGNE] : DEPLACEMENT_IMPOSSIBLE);
 			}
 			// Cas des cases adjacentes
 			else 
-				// Une case ou sont present plusieurs ennemis ne peut pas etre prise en un combat, 
-				// donc elle est ininteressante pour le gain de points
-				if (posEnnemis[i][j] < -1) 
-					resultat[i*tailleCarte+j] = NUL + ENNEMI;
-
-				// Sinon le score de la case est la somme du nombre de points octroyes par cette case, 
-				// ponderee par la presence eventuelle d'ennemis
-				else 
-					resultat[i*tailleCarte+j] = points[i][j] + (posEnnemis[i][j] == 0 ? RAS : ENNEMI);
+				resultat[i*tailleCarte+j] = pointsCase(ponderationNain[carte[i][j]],posEnnemis[i][j]);
 		}
 	}
 	return resultat;
