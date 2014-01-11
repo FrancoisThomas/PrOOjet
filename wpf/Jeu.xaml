@@ -12,14 +12,13 @@
 
         <Grid DockPanel.Dock="Left" Width="400">
             
-            <DockPanel HorizontalAlignment="Left" Height="108" LastChildFill="False" VerticalAlignment="Top" Width="400">
-                <Rectangle Name="tileImage" Margin="5,5,5,5" Height="100" Stroke="Black" StrokeThickness="2" Width="100" VerticalAlignment="Center"/>
-                <Grid Name="unitGrid" Height="100" Margin="0,0,0,0" VerticalAlignment="Center" Width="300">
-                    <Rectangle Name="selectionRectangleUnit" Stroke="Black" StrokeThickness="2" Panel.ZIndex="666" Visibility="Collapsed"/>
+            <DockPanel HorizontalAlignment="Left" Height="200" LastChildFill="False" VerticalAlignment="Top" Width="400">
+                <Grid Name="unitGrid" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" Width="400">
+                    <Rectangle Name="selectionRectangleUnit" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
                 </Grid>
             </DockPanel>
             
-            <StackPanel HorizontalAlignment="Right" Height="248" Margin="0,147,58,0" VerticalAlignment="Top" Width="291">
+            <StackPanel HorizontalAlignment="Right" Height="248" Margin="0,200,58,0" VerticalAlignment="Top" Width="291">
                 <!--Points de vie-->
                 <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
                     <Label Name="healthLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
@@ -39,8 +38,8 @@
             </StackPanel>
             <Button HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300">
                 <StackPanel>
-                    <Image Source="Resources/eau.png"/>
                     <TextBlock>Fin du tour</TextBlock>
+                    <Image Source="Resources/eau.png" Stretch="Fill"/>
                 </StackPanel>
             </Button>
 

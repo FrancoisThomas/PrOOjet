@@ -32,7 +32,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategieNormale());
+            partie = MonteurPartie.INSTANCE.creerPartie(Nain.INSTANCE, Viking.INSTANCE, new StrategieNormale());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -71,13 +71,13 @@ namespace wpf
 
         private void initialiseUnitGrid()
         {
-            for (int c = 0; c < 5; c++)
+            for (int c = 0; c < 4; c++)
             {
-                unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(50, GridUnitType.Pixel) });
+                unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100, GridUnitType.Pixel) });
             }
             for (int r = 0; r < 2; r++)
             {
-                unitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
+                unitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(100, GridUnitType.Pixel) });
             }
         }
 
@@ -95,12 +95,14 @@ namespace wpf
                 {
                     var element = createUnitRectangle(c, r, unit);
                     unitGrid.Children.Add(element);
-                    if (c < 5)
+                    if (c < 3)
+                    {
                         c++;
+                    }
                     else
                     {
-                        r++;
                         c = 0;
+                        r++;
                     }
                 }
             }
@@ -244,8 +246,6 @@ namespace wpf
             defenseLabel.Content = "";
             movementLabel.Content = "";
 
-            tileImage.Fill = rectangle.Fill;
-
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
 
             // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
@@ -294,6 +294,12 @@ namespace wpf
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
 
+            Grid.SetColumn(selectionRectangleMap, column);
+            Grid.SetRow(selectionRectangleMap, row);
+            selectionRectangleMap.Width = rectangle.Width;
+            selectionRectangleMap.Height = rectangle.Height;
+            selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
+
             List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
 
             for (int i = 0; i < partie.Carte.Taille; i++)
@@ -302,12 +308,12 @@ namespace wpf
                 {
                     Console.Write(map.ElementAt(i * partie.Carte.Taille + j) + " ");
                 }
-                Console.WriteLine("");
+                Console.WriteLine();
             }
 
-            // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
-            e.Handled = true;
+            updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
         }
+
 
     }
 }
