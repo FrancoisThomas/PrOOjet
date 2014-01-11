@@ -47,6 +47,8 @@
         
         <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600">
             <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
+            <Grid Name="mapUnitGrid" Panel.ZIndex="1000"/>
+            <Grid Name="movementGrid" Panel.ZIndex="2000"/>
         </Grid>
     </DockPanel>
 
