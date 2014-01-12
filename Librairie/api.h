@@ -35,11 +35,15 @@ class DLL Api{
 	int ** cartePondereePointsViking(int tailleCarte, int ** carte);
 	int * deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
 	
-	int ** cartePondereePointsGaulois(int tailleCarte, int ** carte);
 	int * deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
 	
-	int ** cartePondereePointsNain(int tailleCarte, int ** carte);
 	int * deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis);
+
+	int calculePointsTourViking(int ** carte, int tailleCarte, int ** posUnites);
+	int calculePointsTourGaulois(int ** carte, int tailleCarte, int ** posUnites);
+	int calculePointsTourNain(int ** carte, int tailleCarte, int ** posUnites);
+
+
 
 	int pdv_attaquant_fin;
 	int pdv_defenseur_fin;

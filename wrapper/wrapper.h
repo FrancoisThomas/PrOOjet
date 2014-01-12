@@ -109,7 +109,45 @@ namespace wrapper
 			return suggestions;
 		}
 
-		
+		int pointsTourViking(List<int>^ listCarte, int tailleCarte, Dictionary<int, int>^ unites)
+		{
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de unites en posEnnemis
+			int ** posUnites = deDictionaryAMatrice(unites, tailleCarte);
+
+			return api->calculePointsTourViking(carte, tailleCarte, posUnites);
+		}
+
+		int pointsTourGaulois(List<int>^ listCarte, int tailleCarte, Dictionary<int, int>^ unites)
+		{
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de unites en posEnnemis
+			int ** posUnites = deDictionaryAMatrice(unites, tailleCarte);
+
+			return api->calculePointsTourGaulois(carte, tailleCarte, posUnites);
+		}
+
+
+		int pointsTourNain(List<int>^ listCarte, int tailleCarte, Dictionary<int, int>^ unites)
+		{
+			// On traite d'abord les parametres afin de les transmettre au bon format a l'api
+			
+			// Traitement de listCarte en carte
+			int ** carte = deListAMatrice(listCarte, tailleCarte);
+
+			// Traitement de unites en posEnnemis
+			int ** posUnites = deDictionaryAMatrice(unites, tailleCarte);
+
+			return api->calculePointsTourNain(carte, tailleCarte, posUnites);
+		}
 	};
 
 

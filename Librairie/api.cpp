@@ -12,6 +12,20 @@ int * Api::genereTableauCarte(int taille)
 }
 
 
+int Api::pointsCase(int pointsCarte, int nombreEnnemis)
+{
+	int res;
+	if(pointsCarte == DEPLACEMENT_IMPOSSIBLE)
+		res = DEPLACEMENT_IMPOSSIBLE;
+	else if(nombreEnnemis > 1)
+		res = NUL + ENNEMI;
+	else if(nombreEnnemis == 1)
+		res = pointsCarte + ENNEMI;
+	else 
+		res = pointsCarte;
+	return res;
+}
+
 int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 {
 	int ** res = new int *[tailleCarte];
@@ -46,9 +60,6 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 {
 	int * resultat = new int[tailleCarte*tailleCarte];
 
-	
-
-
 	int x_unit = posUnite % tailleCarte;
 	int y_unit = (int)(posUnite/tailleCarte);
 
@@ -58,8 +69,6 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 	for (int i = 0; i < tailleCarte; i++)
 		for (int j = 0; j < tailleCarte; j++)
 			resultat[i*tailleCarte+j] = points[i][j];
-
-	printf("\n\n\n\nOk\n");
 	
 	for (int i = 0; i < tailleCarte; i++)
 	{
@@ -147,20 +156,6 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 	return resultat;
 }
 
-int Api::pointsCase(int pointsCarte, int nombreEnnemis)
-{
-	int res;
-	if(pointsCarte == DEPLACEMENT_IMPOSSIBLE)
-		res = DEPLACEMENT_IMPOSSIBLE;
-	else if(nombreEnnemis > 1)
-		res = NUL + ENNEMI;
-	else if(nombreEnnemis == 1)
-		res = pointsCarte + ENNEMI;
-	else 
-		res = pointsCarte;
-	return res;
-}
-
 
 int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
@@ -192,6 +187,47 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 	}	
 	return resultat;
 }
+
+
+int Api::calculePointsTourViking(int ** carte, int tailleCarte, int ** posUnites)
+{
+	int res = 0;
+	// On recupere la carte ponderee par la valeur en points des cases
+	int ** points = cartePondereePointsViking(tailleCarte, carte);
+	for(int i = 0; i < tailleCarte; i++)
+		for(int j = 0; j < tailleCarte; j++)
+			if(posUnites[i][j] > 0)
+				res += points[i][j];
+	return res;
+}
+
+int Api::calculePointsTourGaulois(int ** carte, int tailleCarte, int ** posUnites)
+{
+	int res = 0;
+
+	// On recupere la ponderation en points par rapport au type de case
+	int ponderationGaulois[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NUL, NORMAL, SUPER};
+	for(int i = 0; i < tailleCarte; i++)
+		for(int j = 0; j < tailleCarte; j++)
+			if(posUnites[i][j] > 0)
+				res += ponderationGaulois[carte[i][j]];
+	return res;
+}
+
+int Api::calculePointsTourNain(int ** carte, int tailleCarte, int ** posUnites)
+{
+	int res = 0;
+
+	// On recupere la ponderation en points par rapport au type de case
+	int ponderationNain[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NORMAL, SUPER, NUL};
+	for(int i = 0; i < tailleCarte; i++)
+		for(int j = 0; j < tailleCarte; j++)
+			if(posUnites[i][j] > 0)
+				res += ponderationNain[carte[i][j]];
+	return res;
+}
+
+
 
 
 void Api::combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef)
