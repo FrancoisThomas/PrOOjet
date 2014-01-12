@@ -9,13 +9,13 @@
 class Combat
 {
 private:
-	int pdv_attaquant;
-	int pdv_attaquant_max;
-	int pdv_defenseur;
-	int pdv_defenseur_max;
-	int points_att_attaquant;
+	float pdv_attaquant;
+	float pdv_attaquant_max;
+	float pdv_defenseur;
+	float pdv_defenseur_max;
+	float points_att_attaquant;
 	float att_attaquant;
-	int points_def_defenseur;
+	float points_def_defenseur;
 	float def_defenseur;
 
 public:

@@ -15,9 +15,9 @@ namespace PrOOjet
         /// <value> Points de mouvements maximum. </value>
         protected const int PDMMAX = 2;
         /// <value> Points de défense. </value>
-        protected const int DEFENSE = 1;
+        protected const int DEFENSE = 3;
         /// <value> Points d'attaque. </value>
-        protected const int ATTAQUE = 2;
+        protected const int ATTAQUE = 4;
 
         protected int pointsDeVie;
         protected int pointsDeMouvement;
