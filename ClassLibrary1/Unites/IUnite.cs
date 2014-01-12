@@ -18,7 +18,8 @@ namespace PrOOjet
         int Defense { get; }
         /// <summary> Points de vie restants à l'unité </summary>
         int PointsDeVie { get; set; }
-        // TODO propriété Joueur
+        /// <summary> Joueur auquel appartient l'unité </summary>
+        IJoueur Joueur { get; }
 
 		/// <summary>
 		/// Détermine si l'unité peut bouger sur une case.
