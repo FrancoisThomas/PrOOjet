@@ -24,6 +24,10 @@ namespace wpf
         ICarte carte;
         IPartie partie;
 
+        enum ETypeMouvement {
+            IMPOSSIBLE = 0, NUL = 2, NORMALE = 4, SUPER = 6, ENNEMI = 1
+        }
+
         public Jeu()
         {
             InitializeComponent();
@@ -223,25 +227,25 @@ namespace wpf
             return rectangle;
         }
 
-        private Rectangle createMovementSuggestionRectangle(int c, int l, int type, IUnite unit)
+        private Rectangle createMovementSuggestionRectangle(int c, int l, ETypeMouvement type, bool joueurActif)
         {
             var rectangle = new Rectangle();
-            if (type == 0)
+            if (type == ETypeMouvement.IMPOSSIBLE)
             {
                 rectangle.Fill = Brushes.Black;
                 rectangle.Opacity = 0.3;
             }
-            else if (type == 2)
+            else if (type == ETypeMouvement.NUL)
             {
                 rectangle.Fill = Brushes.Blue;
                 rectangle.Opacity = 0.5;
             }
-            else if (type == 4)
+            else if (type == ETypeMouvement.NORMALE)
             {
                 rectangle.Fill = Brushes.Green;
                 rectangle.Opacity = 0.5;
             }
-            else if (type == 6)
+            else if (type == ETypeMouvement.SUPER)
             {
                 rectangle.Fill = Brushes.GreenYellow;
                 rectangle.Opacity = 0.5;
@@ -254,7 +258,7 @@ namespace wpf
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
-            rectangle.Tag = unit;
+            rectangle.Tag = joueurActif ? type : ETypeMouvement.IMPOSSIBLE;
 
             rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(moveUnit_MouseLeftButtonDown);
             rectangle.MouseRightButtonDown += new MouseButtonEventHandler(moveUnit_MouseRightButtonDown);
@@ -333,17 +337,7 @@ namespace wpf
             selectionRectangleMap.Height = rectangle.Height;
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
 
-            List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
-
-            for (int r = 0; r < partie.Carte.Taille; r++)
-            {
-                for (int c = 0; c < partie.Carte.Taille; c++)
-                {
-                    Console.Write(map.ElementAt(r * partie.Carte.Taille + c) + " ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
+            List<int> suggestionMap = partie.suggereDeplacement(unit, new Coordonnees(column, row));
 
             for (int r = 0; r < partie.Carte.Taille; r++)
             {
@@ -353,16 +347,19 @@ namespace wpf
                     {
                         List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
                         Rectangle element = null;
-                        if (unitesCase == null)
-                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unit);
-                        else
-                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unitesCase.ElementAt(0));
+                        //if (unitesCase == null)
+                        element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
+                        /*else
+                            element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
+                         */
                         movementGrid.Children.Add(element);
                     }
                 }
             }
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
+
+            unit_MouseLeftButtonDown(sender, e);
         }
 
         void moveUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -374,19 +371,33 @@ namespace wpf
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
             
-            if (partie.selectionneUnites(new Coordonnees(column, row)) == null)
+            List<IUnite> unites = partie.selectionneUnites(new Coordonnees(column, row));
+            if (unites == null)
             {
                 tile_MouseLeftButtonDown(sender, e);
             }
             else
             {
-                mapUnit_MouseLeftButtonDown(sender, e);
+                var rec = rectangle;
+                rec.Tag = unites.ElementAt(0);
+                mapUnit_MouseLeftButtonDown(rec, e);
             }
         }
 
         void moveUnit_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // TODO
+            var rectangle = sender as Rectangle;
+            ETypeMouvement type = (ETypeMouvement)rectangle.Tag;
+
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+
+            Console.WriteLine("(" + column + ";" + row + ") : " + type);
+
+            //if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
+            //    partie.bougeUnite(new Coordonnees(column, row));
+            //else if (type = ETypeMouvement.ENNEMI)
+            //    partie.attaque();
         }
 
 
