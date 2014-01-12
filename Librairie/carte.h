@@ -16,9 +16,10 @@ class Carte
 private:
 	int taille;
 	int * mat;
-	bool * estPasse;
 	void validationCarte();
 	void echangeCase(int pos);	
+	
+	bool * estPasse;
 
 public:
 	Carte(int taille);

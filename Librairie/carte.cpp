@@ -27,9 +27,9 @@ void Carte::genereTableauCarte()
 		mat[i] = i % 5;
 }
 
-
 void Carte::echangeCase(int pos)
 {
+	srand((unsigned int)time(NULL));
 	int r = pos;
 	while(mat[r] == EAU || estPasse[r])
 		r = rand() % taille*taille;
@@ -40,34 +40,34 @@ void Carte::echangeCase(int pos)
 void Carte::validationCarte()
 {
 	srand((unsigned int)time(NULL));
-	for(int i=0; i<taille*taille; i++)
-		mat[i] = rand() % 5;
-
-	int i = 0;
-
-	// Si une des case de depart est de l'eau, on l'echange, en prenant garde a ne pas 
-	// l'echanger contre la case de depart de l'autre joueur
-	while(mat[i] == EAU || mat[taille*taille - 1] == EAU)
-	{
-		echangeCase(i);
-		echangeCase(taille*taille - 1);
-	}
 
 	estPasse = new bool[taille*taille];
 	for (int i = 0; i < taille*taille; i++)
 		estPasse[i] = false;
+	
+
+	// Si une des case de depart est de l'eau, on l'echange, en prenant garde a ne pas 
+	// l'echanger contre la case de depart de l'autre joueur
+	if(mat[0] == EAU)
+	{
+		echangeCase(0);
+		estPasse[0] = true;
+	}
+	if(mat[taille*taille-1] == EAU)
+		echangeCase(taille*taille - 1);
 
 	enum Direction {
 		BAS = 0, DROITE
 	};
 
+	int i = 0;
 
 	while (i < taille*taille)
 	{
 		estPasse[i] = true;
 
 		// Si on est tout en bas de la carte, on doit forcement aller a droite
-		if(i == taille - 1)
+		if(i >= taille*(taille - 1))
 		{
 			i ++;
 			if(mat[i] == EAU)
