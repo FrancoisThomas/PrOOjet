@@ -155,7 +155,7 @@ namespace PrOOjet
             for (int i = 0; i < joueurNonActif.Unites.Count; i++)
 			{
 			    Coordonnees c = joueurNonActif.Unites.Keys.ElementAt(i);
-                ennemis.Add(c.posX * carte.Taille + c.posY, joueurNonActif.Unites.Values.ElementAt(i).Count);
+                ennemis.Add(c.posX + c.posY * carte.Taille, joueurNonActif.Unites.Values.ElementAt(i).Count);
 			}
 
 

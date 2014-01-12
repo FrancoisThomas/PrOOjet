@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
              Loaded="Window_Loaded">
+    
+    <UserControl.Background>
+        <ImageBrush ImageSource="Resources/background.jpg"/>
+    </UserControl.Background>
 
     <DockPanel>
 
@@ -47,6 +51,8 @@
         
         <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600">
             <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
+            <Grid Name="mapUnitGrid" Panel.ZIndex="1000"/>
+            <Grid Name="movementGrid" Panel.ZIndex="2000"/>
         </Grid>
     </DockPanel>
 

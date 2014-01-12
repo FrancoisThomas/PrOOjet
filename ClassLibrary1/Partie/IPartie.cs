@@ -22,7 +22,7 @@ namespace PrOOjet
 		/// <summary>
 		/// Sélectionne les unités aux coordonnées indiquées.
 		/// </summary>
-		/// <param name="coord"> Les coordonnées auxquelles on veut sélectionner les unités.
+		/// <param name="coord"> Les coordonnées auxquelles on veut sélectionner les unités. </param>
         List<IUnite> selectionneUnites(Coordonnees coord);
 
         /// <summary>

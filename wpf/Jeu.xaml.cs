@@ -32,7 +32,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Nain.INSTANCE, Viking.INSTANCE, new StrategieNormale());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategiePetite());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -48,6 +48,17 @@ namespace wpf
             {
                 mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(tailleRectangle, GridUnitType.Pixel) });
                 mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(tailleRectangle, GridUnitType.Pixel) });
+
+                mapUnitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(tailleRectangle, GridUnitType.Pixel) });
+                mapUnitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(tailleRectangle, GridUnitType.Pixel) });
+                Grid.SetRowSpan(mapUnitGrid, carte.Taille);
+                Grid.SetColumnSpan(mapUnitGrid, carte.Taille);
+
+                movementGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(tailleRectangle, GridUnitType.Pixel) });
+                movementGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(tailleRectangle, GridUnitType.Pixel) });
+                Grid.SetRowSpan(movementGrid, carte.Taille);
+                Grid.SetColumnSpan(movementGrid, carte.Taille);
+
                 for (int l = 0; l < carte.Taille; l++)
                 {
                     var tile = carte.getCase(c, l);
@@ -64,7 +75,7 @@ namespace wpf
                 foreach (IUnite unit in units.Values.ElementAt(i))
                 {
                     var element = createUnitSprite(coord.posX, coord.posY, unit);
-                    mapGrid.Children.Add(element);
+                    mapUnitGrid.Children.Add(element);
                 }
             }
         }
@@ -212,6 +223,44 @@ namespace wpf
             return rectangle;
         }
 
+        private Rectangle createMovementSuggestionRectangle(int c, int l, int type, IUnite unit)
+        {
+            var rectangle = new Rectangle();
+            if (type == 0)
+            {
+                rectangle.Fill = Brushes.Black;
+                rectangle.Opacity = 0.3;
+            }
+            else if (type == 2)
+            {
+                rectangle.Fill = Brushes.Blue;
+                rectangle.Opacity = 0.5;
+            }
+            else if (type == 4)
+            {
+                rectangle.Fill = Brushes.Green;
+                rectangle.Opacity = 0.5;
+            }
+            else if (type == 6)
+            {
+                rectangle.Fill = Brushes.GreenYellow;
+                rectangle.Opacity = 0.5;
+            }
+            else
+            {
+                rectangle.Fill = Brushes.Red;
+                rectangle.Opacity = 0.5;
+            }
+            // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
+            Grid.SetColumn(rectangle, c);
+            Grid.SetRow(rectangle, l);
+            rectangle.Tag = unit;
+
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(moveUnit_MouseLeftButtonDown);
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(moveUnit_MouseRightButtonDown);
+            return rectangle;
+        }
+
         /// <summary>
         /// Délégué : réponse à l'evt click gauche sur le rectangle, affichage des informations de la tuile
         /// </summary>
@@ -220,7 +269,6 @@ namespace wpf
         void tile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            var tile = rectangle.Tag as ICase;
 
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -229,17 +277,9 @@ namespace wpf
             // Mise à jour du rectangle selectionné => le label sera mis à jour automatiquement par Binding
             Grid.SetColumn(selectionRectangleMap, column);
             Grid.SetRow(selectionRectangleMap, row);
-            selectionRectangleMap.Tag = tile;
             selectionRectangleMap.Width = rectangle.Width;
             selectionRectangleMap.Height = rectangle.Height;
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
-
-            Console.WriteLine(column);
-            Console.WriteLine(row);
-            Console.WriteLine(selectionRectangleMap.ActualWidth);
-            Console.WriteLine(selectionRectangleMap.ActualHeight);
-            Console.WriteLine(selectionRectangleMap.Tag);
-            Console.WriteLine(selectionRectangleMap.Visibility);
 
             healthLabel.Content = "";
             attackLabel.Content = "";
@@ -268,14 +308,6 @@ namespace wpf
             selectionRectangleUnit.Height = rectangle.Height;
             selectionRectangleUnit.Visibility = System.Windows.Visibility.Visible;
 
-            Console.WriteLine(column);
-            Console.WriteLine(row);
-            Console.WriteLine(selectionRectangleUnit.ActualWidth);
-            Console.WriteLine(selectionRectangleUnit.ActualHeight);
-            Console.WriteLine(selectionRectangleUnit.Tag);
-            Console.WriteLine(selectionRectangleUnit.Visibility);
-            Console.WriteLine(selectionRectangleUnit.IsVisible);
-
             healthLabel.Content = unit.PointsDeVie;
             attackLabel.Content = unit.Attaque;
             defenseLabel.Content = unit.Defense;
@@ -287,7 +319,8 @@ namespace wpf
 
         void mapUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // TODO
+            movementGrid.Children.Clear();
+
             var rectangle = sender as Rectangle;
             var unit = rectangle.Tag as IUnite;
 
@@ -302,17 +335,72 @@ namespace wpf
 
             List<int> map = partie.suggereDeplacement(unit, new Coordonnees(column, row));
 
-            for (int i = 0; i < partie.Carte.Taille; i++)
+            for (int r = 0; r < partie.Carte.Taille; r++)
             {
-                for (int j = 0; j < partie.Carte.Taille; j++)
+                for (int c = 0; c < partie.Carte.Taille; c++)
                 {
-                    Console.Write(map.ElementAt(i * partie.Carte.Taille + j) + " ");
+                    Console.Write(map.ElementAt(r * partie.Carte.Taille + c) + " ");
                 }
                 Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            for (int r = 0; r < partie.Carte.Taille; r++)
+            {
+                for (int c = 0; c < partie.Carte.Taille; c++)
+                {
+                    if (r != row || c != column)
+                    {
+                        List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
+                        Rectangle element = null;
+                        if (unitesCase == null)
+                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unit);
+                        else
+                            element = createMovementSuggestionRectangle(c, r, map.ElementAt(r * partie.Carte.Taille + c), unitesCase.ElementAt(0));
+                        movementGrid.Children.Add(element);
+                    }
+                }
             }
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
         }
+
+        void moveUnit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            movementGrid.Children.Clear();
+
+            var rectangle = sender as Rectangle;
+
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+            
+            if (partie.selectionneUnites(new Coordonnees(column, row)) == null)
+            {
+                tile_MouseLeftButtonDown(sender, e);
+            }
+            else
+            {
+                mapUnit_MouseLeftButtonDown(sender, e);
+            }
+        }
+
+        void moveUnit_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // TODO
+        }
+
+
+        
+        /*
+        for (int r = 0; r < partie.Carte.Taille; r++)
+        {
+            for (int c = 0; c < partie.Carte.Taille; c++)
+            {
+                Console.Write(l.ElementAt(r * partie.Carte.Taille + c) + " ");
+            }
+            Console.WriteLine();
+        }
+        */     
 
 
     }
