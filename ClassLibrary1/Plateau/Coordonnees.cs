@@ -40,5 +40,10 @@ namespace PrOOjet
             hash = 31 * hash + (int) (posY ^ (posY >> 32));
             return hash;
         }
+
+        public override string ToString()
+        {
+            return "(" + posX + ";" + posY + ")";
+        }
     }
 }

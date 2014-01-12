@@ -27,6 +27,8 @@ namespace PrOOjet
 		/// Détermine si l'unité peut se déplacer.
 		/// </summary>
         bool peutBouger();
+
+        void reinitialiseMouvement();
         
         /// <summary>
         /// Détermine si une unité est décédée.

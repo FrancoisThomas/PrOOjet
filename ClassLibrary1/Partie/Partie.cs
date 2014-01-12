@@ -107,15 +107,26 @@ namespace PrOOjet
             set { pointsJoueur2 = value; }
         }
 
-        public void finTour()
+        public bool finTour()
         {
             if (joueurActif == joueur2)
                 nbTours++;
             if (nbTours == nbToursMax)
-                // TODO : methode de fin de partie
-                return;
+                return true;
+
+            Dictionary<Coordonnees, List<IUnite>> d = recupereUnites();
+            foreach (List<IUnite> l in d.Values)
+            {
+                foreach (IUnite unit in l)
+                {
+                    unit.reinitialiseMouvement();
+                }
+            }
+
             ajoutPoints(joueurActif);
             joueurActif = joueurNonActif;
+
+            return false;
         }
 
         public void ajoutPoints(IJoueur j)

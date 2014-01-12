@@ -5,12 +5,12 @@ using System.Text;
 
 namespace PrOOjet
 {
-	/// <summary>
-	/// Classe représentant une unité.
-	/// </summary>
+    /// <summary>
+    /// Classe représentant une unité.
+    /// </summary>
     public abstract class Unite : PrOOjet.IUnite
     {
-    	/// <value> Points de vie maximum. </value>
+        /// <value> Points de vie maximum. </value>
         protected const int PDVMAX = 2;
         /// <value> Points de mouvements maximum. </value>
         protected const int PDMMAX = 2;
@@ -31,7 +31,7 @@ namespace PrOOjet
             joueur = j;
         }
 
-		/// <summary> Points de mouvements de l'unité </summary>
+        /// <summary> Points de mouvements de l'unité </summary>
         public int PointsDeMouvement
         {
             get
@@ -92,33 +92,41 @@ namespace PrOOjet
             }
         }
 
-		/// <summary>
-		/// Diminue les points de mouvements de l'unité.
-		/// </summary>
-		/// <param name="v"> La valeur à retirer aux points de mouvements de l'unité. </param>
+        /// <summary>
+        /// Diminue les points de mouvements de l'unité.
+        /// </summary>
+        /// <param name="v"> La valeur à retirer aux points de mouvements de l'unité. </param>
         public void diminuePointsDeMouvement(int v)
         {
             pointsDeMouvement -= v;
         }
 
-		/// <summary>
-		/// Diminue les points de vie de l'unité.
-		/// </summary>
-		/// <param name="v"> La valeur à retirer aux points de vie de l'unité. </param>
+        /// <summary>
+        /// Diminue les points de vie de l'unité.
+        /// </summary>
+        /// <param name="v"> La valeur à retirer aux points de vie de l'unité. </param>
         public void diminuePointsDeVie(int v)
         {
             pointsDeVie -= v;
         }
 
-		/// <summary>
-		/// Détermine si l'unité peut bouger sur une case.
-		/// </summary>
+        /// <summary>
+        /// Détermine si l'unité peut bouger sur une case.
+        /// </summary>
         public bool peutBouger()
         {
             return pointsDeMouvement > 0;
         }
 
-		/// <summary>
+        /// <summary>
+        /// Remet le nombre max de points de mouvement à l'unité.
+        /// </summary>
+        public void reinitialiseMouvement()
+        {
+            pointsDeMouvement = PDMMAX;
+        }
+
+        /// <summary>
         /// Détermine si une unité est décédée.
         /// </summary>
         /// <returns> <c>true</c> si l'unité est morte. </returns>

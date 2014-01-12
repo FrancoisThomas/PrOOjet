@@ -47,5 +47,9 @@ namespace PrOOjet
         void deplaceUnite(IUnite unite, Coordonnees ancienneCoord, Coordonnees nouvelleCoord);
 
         bool attaque(IUnite attaquant, IUnite defenseur);
+
+        void finTour();
+
+        void ajoutPoints(IJoueur j);
     }
 }

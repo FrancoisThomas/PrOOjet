@@ -356,6 +356,8 @@ namespace wpf
         {
             movementGrid.Children.Clear();
 
+            Console.WriteLine("mapUnit_MouseLeftButtonDown");
+
             var rectangle = sender as Rectangle;
             var unit = rectangle.Tag as IUnite;
 
@@ -386,7 +388,7 @@ namespace wpf
             int row = Grid.GetRow(rectangle);
             
             List<IUnite> unites = partie.selectionneUnites(new Coordonnees(column, row));
-            if (unites == null)
+            if (unites == null || unites.Count == 0)
             {
                 tile_MouseLeftButtonDown(sender, e);
             }
@@ -419,6 +421,17 @@ namespace wpf
                 updateUnitGrid(null);
                 movementGrid.Children.Clear();
             }
+        }
+
+
+
+        void endTurn_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            partie.finTour();
+            Console.WriteLine(partie.JoueurActif.Peuple);
+
+            updateUnitMapGrid();
+            movementGrid.Children.Clear();
         }
 
 
