@@ -17,6 +17,8 @@ private:
 	int taille;
 	int * mat;
 	bool * estPasse;
+	void validationCarte();
+	void echangeCase(int pos);	
 
 public:
 	Carte(int taille);
@@ -27,7 +29,6 @@ public:
 	void genereTableauCarte2();
 
 	bool testCase(int pos);
-	bool carteValide();
 };
 
 #endif

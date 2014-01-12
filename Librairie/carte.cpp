@@ -27,14 +27,28 @@ void Carte::genereTableauCarte()
 		mat[i] = i % 5;
 }
 
-void Carte::genereTableauCarte2()
-{
-	
-	srand((unsigned int)time(NULL));
-	for(int i=0; i<taille*taille; i++)
-		mat[i] = rand() % 5;
 
+void Carte::echangeCase(int pos)
+{
+	int r = pos;
+	while(mat[r] == EAU || estPasse[r])
+		r = rand() % taille*taille;
+	mat[pos] = mat[r];
+	mat[r] = EAU;
+}
+
+void Carte::validationCarte()
+{
 	int i = 0;
+
+	// Si une des case de depart est de l'eau, on l'echange, en prenant garde a ne pas 
+	// l'echanger contre la case de depart de l'autre joueur
+	while(mat[i] == EAU || mat[taille*taille - 1] == EAU)
+	{
+		echangeCase(i);
+		echangeCase(taille*taille - 1);
+	}
+
 	estPasse = new bool[taille*taille];
 	for (int i = 0; i < taille*taille; i++)
 		estPasse[i] = false;
@@ -42,6 +56,7 @@ void Carte::genereTableauCarte2()
 	enum Direction {
 		BAS = 0, DROITE
 	};
+
 
 	while (i < taille*taille)
 	{
@@ -52,13 +67,7 @@ void Carte::genereTableauCarte2()
 		{
 			i ++;
 			if(mat[i] == EAU)
-			{
-				int r = rand() % taille*taille;
-				while(estPasse[r])
-					r = rand() % taille*taille;
-				mat[i] = mat[r];
-				mat[r] = EAU;
-			}
+				echangeCase(i);
 		}
 
 		// Si on est tout a droite de la carte, on doit forcement descendre
@@ -66,13 +75,7 @@ void Carte::genereTableauCarte2()
 		{
 			i += taille;
 			if(mat[i] == EAU)
-			{
-				int r = rand() % taille*taille;
-				while(estPasse[r])
-					r = rand() % taille*taille;
-				mat[i] = mat[r];
-				mat[r] = EAU;
-			}
+				echangeCase(i);
 		}
 
 		// Sinon, on tire au sort la direction
@@ -80,8 +83,62 @@ void Carte::genereTableauCarte2()
 		{
 			int dir = rand() % 2;
 
+			// Cas ou la direction tiree est BAS
+			if(dir == BAS)
+			{
+				// Si la case en bas est de l'eau, on essaye de la contourner par la droite
+				if(mat[i+taille] == EAU)
+				{
+
+					// Si la case a droite est aussi de l'eau, alors on force le passage en bas, en
+					// echangeant la case d'eau avec une autre case differente, qui n'appartient pas au chemin
+					if (mat[i+1] == EAU)
+					{
+						i += taille; 
+						echangeCase(i);
+					}
+
+					// Sinon, on peut contourner par la droite
+					else
+						i++;
+				}
+
+				// Sinon, on peut passer par le bas
+				else
+					i += taille;
+			}
+			else if(dir == DROITE)
+			{
+				// Si la case a droite est de l'eau, on essaye de la contourner par le bas
+				if(mat[i+1] == EAU)
+				{
+					// Si la case en bas est aussi de l'eau, alors on force le passage a droite, en
+					// echangeant la case d'eau avec une autre case differente, qui n'appartient pas au chemin
+					if (mat[i+taille] == EAU)
+					{
+						i++; 
+						echangeCase(i);
+					}
+					// Sinon, on peut contourner par le bas
+					else
+						i += taille;
+				}
+				// Sinon, on passe a droite
+				else
+					i++;
+			}
 		}
 	}
+}
+
+
+void Carte::genereTableauCarte2()
+{
+	
+	srand((unsigned int)time(NULL));
+	for(int i=0; i<taille*taille; i++)
+			mat[i] = rand() % 5;
+	validationCarte();
 }
 
 /*bool Carte::testCase(int pos)
