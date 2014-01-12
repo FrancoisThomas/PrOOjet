@@ -15,6 +15,7 @@ Combat::~Combat(){}
 void Combat::calculeCarac()
 {
 	att_attaquant = (pdv_attaquant / pdv_attaquant_max) * points_att_attaquant;
+
 	def_defenseur = (pdv_defenseur / pdv_defenseur_max) * points_def_defenseur;
 }
 
@@ -38,5 +39,8 @@ void Combat::combattre()
 		srand((unsigned int)time(NULL));
 		int resultat = rand() % 100;
 		(resultat<proba)? pdv_attaquant-- : pdv_defenseur--;
+		i++;
+
+		printf("Tour : %d \nAttaquant : %d \nDefenseur : %d", i, pdv_attaquant, pdv_defenseur);
 	}
 };
