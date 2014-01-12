@@ -39,6 +39,10 @@ void Carte::echangeCase(int pos)
 
 void Carte::validationCarte()
 {
+	srand((unsigned int)time(NULL));
+	for(int i=0; i<taille*taille; i++)
+		mat[i] = rand() % 5;
+
 	int i = 0;
 
 	// Si une des case de depart est de l'eau, on l'echange, en prenant garde a ne pas 
