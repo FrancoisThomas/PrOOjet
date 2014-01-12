@@ -26,6 +26,9 @@ namespace PrOOjet
         private ICarte carte;
 
         /// <summary> Le nombre de tours. </summary>
+        private int nbToursMax;
+
+        /// <summary> Le nombre de tours. </summary>
         private int nbTours;
 
         /// <summary> Le nombre de points du Joueur 1. </summary>
@@ -80,6 +83,12 @@ namespace PrOOjet
             set { carte = value; }
         }
 
+        public int NbToursMax
+        {
+            get { return nbToursMax; }
+            set { nbToursMax = value; }
+        }
+
         public int NbTours
         {
             get { return nbTours; }
@@ -98,6 +107,22 @@ namespace PrOOjet
             set { pointsJoueur2 = value; }
         }
 
+        public void finTour()
+        {
+            if (joueurActif == joueur2)
+                nbTours++;
+            if (nbTours == nbToursMax)
+                // TODO : methode de fin de partie
+                return;
+            ajoutPoints(joueurActif);
+            joueurActif = joueurNonActif;
+        }
+
+        public void ajoutPoints(IJoueur j)
+        {
+        }
+
+
 
 		/// <summary>
 		/// Sélectionne les unités aux coordonnées indiquées.
@@ -115,7 +140,7 @@ namespace PrOOjet
         }
 
         /// <summary>
-        /// Renvoi le dictionnaire des unités de la partie, avec leurs coordonees.
+        /// Renvoie le dictionnaire des unités de la partie, avec leurs coordonees.
         /// </summary>
         public Dictionary<Coordonnees, List<IUnite>> recupereUnites()
         {
@@ -127,7 +152,7 @@ namespace PrOOjet
         }
 
         /// <summary>
-        /// Renvoi la carte annotée selons les deplacements possibles.
+        /// Renvoie la carte annotée selons les deplacements possibles.
         /// </summary>
         public List<int> suggereDeplacement(IUnite unite, Coordonnees pos)
         {

@@ -43,7 +43,7 @@ namespace PrOOjet
             partie.Joueur2 = new Joueur(peuple2, 1, "j2");
             partie.JoueurActif = partie.Joueur1;
             partie.Carte = strategie.construitCarte();
-            partie.NbTours = strategie.NbTours;
+            partie.NbToursMax = strategie.NbTours;
 
             //TODO Recuperer coordonnes de depart pour j1 et j2
 
