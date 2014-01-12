@@ -21,10 +21,19 @@ namespace PrOOjet
 
         /// <summary> Joueur en train de jouer. </summary>
         private IJoueur joueurActif;
+
+        /// <summary> La carte du jeu. </summary>
         private ICarte carte;
+
+        /// <summary> Le nombre de tours. </summary>
         private int nbTours;
 
-		/// <summary> Joueur en train de jouer. </summary>
+        /// <summary> Le nombre de points du Joueur 1. </summary>
+        private int pointsJoueur1;
+
+        /// <summary> Le nombre de points du Joueur 2. </summary>
+        private int pointsJoueur2;
+
         
         /// <summary> Joueur en attente. </summary>
         private IJoueur joueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
@@ -76,6 +85,19 @@ namespace PrOOjet
             get { return nbTours; }
             set { nbTours = value; }
         }
+
+        public int PointsJoueur1
+        {
+            get { return pointsJoueur1; }
+            set { pointsJoueur1 = value; }
+        }
+
+        public int PointsJoueur2
+        {
+            get { return pointsJoueur2; }
+            set { pointsJoueur2 = value; }
+        }
+
 
 		/// <summary>
 		/// Sélectionne les unités aux coordonnées indiquées.

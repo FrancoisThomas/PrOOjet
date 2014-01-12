@@ -90,24 +90,6 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 
 
 
-int ** Api::cartePondereePointsGaulois(int tailleCarte, int ** carte)
-{
-	int ** res = new int *[tailleCarte];
-	for(int i = 0; i < tailleCarte; i++)
-	{
-		res[i] = new int[tailleCarte];
-		for(int j = 0; j < tailleCarte; j++)
-		{
-			if(carte[i][j] == MONTAGNE) 
-				res[i][j] = NUL;
-			else if(carte[i][j] == PLAINE) 
-				res[i][j] = SUPER;
-			else 
-				res[i][j] = NORMAL;
-		}
-	}
-	return res;
-}
 
 int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
@@ -203,7 +185,7 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 			else 
 				resultat[i*tailleCarte+j] = pointsCase(ponderationNain[carte[i][j]],posEnnemis[i][j]);
 		}
-	}
+	}	
 	return resultat;
 }
 

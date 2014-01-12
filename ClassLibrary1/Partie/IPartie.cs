@@ -15,6 +15,8 @@ namespace PrOOjet
         IJoueur JoueurActif { get; set; }
         ICarte Carte { get; set; }
         int NbTours { get; set; }
+        int PointsJoueur1 { get; set; }
+        int PointsJoueur2 { get; set; }
 
 		
 		/// <summary>

@@ -6,12 +6,17 @@
 #include <time.h>		//time
 #include <algorithm>	//max   
 
+enum Cases{
+	DESERT = 0, EAU, MONTAGNE, FORET, PLAINE
+};
+
 
 class Carte 
 {
 private:
 	int taille;
-	int* mat;
+	int * mat;
+	bool * estPasse;
 
 public:
 	Carte(int taille);
@@ -20,6 +25,9 @@ public:
 	int * getData();
 	void genereTableauCarte();
 	void genereTableauCarte2();
+
+	bool testCase(int pos);
+	bool carteValide();
 };
 
 #endif

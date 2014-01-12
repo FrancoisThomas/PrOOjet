@@ -46,8 +46,8 @@ namespace PrOOjet
             partie.NbTours = strategie.NbTours;
 
             //TODO Recuperer coordonnes de depart pour j1 et j2
-            Coordonnees c1 = new Coordonnees(0,0);
-            Coordonnees c2 = new Coordonnees(strategie.Taille-1,strategie.Taille-1);
+            Coordonnees c1 = new Coordonnees(1,1);
+            Coordonnees c2 = new Coordonnees(1,2);
 
             for (int i = 0; i < strategie.NbUnites ; i++) {
                 partie.Joueur1.creeUnite(c1);

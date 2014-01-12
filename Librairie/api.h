@@ -18,10 +18,6 @@ enum ennemiPresent{
 	ENNEMI = -1, RAS = 0
 };
 
-enum Cases{
-	DESERT = 0, EAU, MONTAGNE, FORET, PLAINE
-};
-
 enum pointsCase{
 	DEPLACEMENT_IMPOSSIBLE = 0, NUL = 2, NORMAL = 4, SUPER = 6
 };
@@ -34,7 +30,6 @@ class DLL Api{
 	
 	int * genereTableauCarte(int taille);
 
-	int ** cartePondereeEnnemis(int tailleCarte, int ** posEnnemis);
 	int pointsCase(int pointsCarte, int nombreEnnemis);
 
 	int ** cartePondereePointsViking(int tailleCarte, int ** carte);
