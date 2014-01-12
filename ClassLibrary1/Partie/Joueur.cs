@@ -92,6 +92,35 @@ namespace PrOOjet
             }
         }
 
+        /// <summary>
+        /// Déplace une unité du joueur actif.
+        /// </summary>
+        /// <param name="unite"> L'unité à déplacer. </param>
+        /// <param name="ancienneCoord"> Les anciennes coordonnées. </param>
+        /// <param name="nouvelleCoord"> Les nouvelles coordonnées. </param>
+        public void deplaceUnite(IUnite unite, Coordonnees ancienneCoord, Coordonnees nouvelleCoord)
+        {
+            List<IUnite> unitesCoord;
+            if (!unites.TryGetValue(ancienneCoord, out unitesCoord))
+                return;
+
+            if (unitesCoord.Contains(unite))
+            {
+                unitesCoord.Remove(unite);
+                if (unites.TryGetValue(nouvelleCoord, out unitesCoord))
+                    unitesCoord.Add(unite);
+                else
+                {
+                    unitesCoord = new List<IUnite>();
+                    unitesCoord.Add(unite);
+                    unites.Add(nouvelleCoord, unitesCoord);
+                }
+            }
+
+            //Console.WriteLine(Math.Abs(ancienneCoord.posX - nouvelleCoord.posX) + Math.Abs(ancienneCoord.posY - nouvelleCoord.posY));
+            unite.diminuePointsDeMouvement(unite.PointsDeMouvement);
+        }
+
         public override string ToString()
         {
             return "Joueur " + nom + " , peuple : " + peuple;

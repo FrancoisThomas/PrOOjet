@@ -24,6 +24,9 @@ namespace wpf
         ICarte carte;
         IPartie partie;
 
+        IUnite uniteSelectionnee;
+        Coordonnees coordUniteSelectionnee;
+
         enum ETypeMouvement {
             IMPOSSIBLE = 0, NUL = 2, NORMALE = 4, SUPER = 6, ENNEMI = 1
         }
@@ -36,7 +39,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, new StrategiePetite());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, new StrategiePetite());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -71,6 +74,12 @@ namespace wpf
                 }
             }
 
+            updateUnitMapGrid();
+        }
+
+        private void updateUnitMapGrid()
+        {
+            mapUnitGrid.Children.Clear();
             Dictionary<Coordonnees, List<IUnite>> units = partie.recupereUnites();
 
             for (int i = 0; i < units.Count; i++)
@@ -118,6 +127,25 @@ namespace wpf
                     {
                         c = 0;
                         r++;
+                    }
+                }
+            }
+        }
+
+        private void updateSuggestionGrid(IUnite unit, int column, int row)
+        {
+            List<int> suggestionMap = partie.suggereDeplacement(unit, new Coordonnees(column, row));
+
+            for (int r = 0; r < partie.Carte.Taille; r++)
+            {
+                for (int c = 0; c < partie.Carte.Taille; c++)
+                {
+                    if (r != row || c != column)
+                    {
+                        List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
+                        Rectangle element = null;
+                        element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
+                        movementGrid.Children.Add(element);
                     }
                 }
             }
@@ -305,6 +333,9 @@ namespace wpf
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
 
+            uniteSelectionnee = unit;
+            coordUniteSelectionnee = new Coordonnees(column, row);
+
             Grid.SetColumn(selectionRectangleUnit, column);
             Grid.SetRow(selectionRectangleUnit, row);
             selectionRectangleUnit.Tag = unit;
@@ -337,25 +368,8 @@ namespace wpf
             selectionRectangleMap.Height = rectangle.Height;
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
 
-            List<int> suggestionMap = partie.suggereDeplacement(unit, new Coordonnees(column, row));
-
-            for (int r = 0; r < partie.Carte.Taille; r++)
-            {
-                for (int c = 0; c < partie.Carte.Taille; c++)
-                {
-                    if (r != row || c != column)
-                    {
-                        List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
-                        Rectangle element = null;
-                        //if (unitesCase == null)
-                        element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
-                        /*else
-                            element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
-                         */
-                        movementGrid.Children.Add(element);
-                    }
-                }
-            }
+            if (unit.peutBouger())
+                updateSuggestionGrid(unit, column, row);
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
 
@@ -394,10 +408,17 @@ namespace wpf
 
             Console.WriteLine("(" + column + ";" + row + ") : " + type);
 
-            //if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
-            //    partie.bougeUnite(new Coordonnees(column, row));
-            //else if (type = ETypeMouvement.ENNEMI)
-            //    partie.attaque();
+            if (uniteSelectionnee.peutBouger() && type != ETypeMouvement.IMPOSSIBLE)
+            {
+                if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
+                    partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, new Coordonnees(column, row));
+                else if (type == ETypeMouvement.ENNEMI)
+                    partie.attaque(uniteSelectionnee, partie.selectionneUniteDefensive(new Coordonnees(column, row)));
+
+                updateUnitMapGrid();
+                updateUnitGrid(null);
+                movementGrid.Children.Clear();
+            }
         }
 
 

@@ -33,5 +33,13 @@ namespace PrOOjet
 		/// <remarks> Si il y a déja une ou des unité(s) aux coordonnées, l'unité est ajoutée à la liste. </remarks>
 		/// <param name="c"> Coordonnées auxquels ajouter l'unité. </param>
         void creeUnite(Coordonnees c);
+
+        /// <summary>
+        /// Déplace une unité du joueur actif.
+        /// </summary>
+        /// <param name="unite"> L'unité à déplacer. </param>
+        /// <param name="ancienneCoord"> Les anciennes coordonnées. </param>
+        /// <param name="nouvelleCoord"> Les nouvelles coordonnées. </param>
+        void deplaceUnite(IUnite unite, Coordonnees ancienneCoord, Coordonnees nouvelleCoord);
     }
 }

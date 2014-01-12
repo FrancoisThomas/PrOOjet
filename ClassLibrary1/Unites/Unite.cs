@@ -24,12 +24,6 @@ namespace PrOOjet
 
         protected IJoueur joueur;
 
-        protected Unite() // TODO A virer
-        {
-            pointsDeVie = PDVMAX;
-            pointsDeMouvement = PDMMAX;
-        }
-
         protected Unite(IJoueur j)
         {
             pointsDeVie = PDVMAX;
@@ -44,10 +38,6 @@ namespace PrOOjet
             {
                 return pointsDeMouvement;
             }
-            set
-            {
-                // TODO
-            }
         }
 
         /// <summary> Valeur d'attaque effective de l'unité (calculée en fonction de ses points de vie). </summary>
@@ -55,7 +45,7 @@ namespace PrOOjet
         {
             get
             {
-                return ATTAQUE * (pointsDeVie / PDVMAX);
+                return ATTAQUE;
             }
         }
 
@@ -64,7 +54,7 @@ namespace PrOOjet
         {
             get
             {
-                return DEFENSE * (pointsDeVie / PDVMAX);
+                return DEFENSE;
             }
         }
 
@@ -78,6 +68,15 @@ namespace PrOOjet
             set
             {
                 pointsDeVie = value;
+            }
+        }
+
+        /// <summary> Points de vie max de l'unité </summary>
+        public int PointsDeVieMax
+        {
+            get
+            {
+                return PDVMAX;
             }
         }
 
@@ -114,9 +113,10 @@ namespace PrOOjet
 		/// <summary>
 		/// Détermine si l'unité peut bouger sur une case.
 		/// </summary>
-		/// <param name="caseEntree"> Case sur laquelle l'unité doit avancer. </param>
-		/// <returns> <c>true</c> si l'unité peut aller sur la case en paramètre. </returns>
-        public abstract bool peutBouger(ICase caseEntree); // TODO Ecrire un comportement "standard" à overrider si besoin ?
+        public bool peutBouger()
+        {
+            return pointsDeMouvement > 0;
+        }
 
 		/// <summary>
         /// Détermine si une unité est décédée.

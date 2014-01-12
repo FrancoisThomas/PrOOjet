@@ -139,6 +139,22 @@ namespace PrOOjet
             return unites;
         }
 
+        public IUnite selectionneUniteDefensive(Coordonnees coord)
+        {
+            List<IUnite> unites = joueurNonActif.recupereUnites(coord);
+            IUnite res = null;
+            if (unites != null)
+            {
+                res = unites.ElementAt(0);
+                foreach (IUnite u in unites)
+                {
+                    if (u.Defense > res.Defense)
+                        res = u;
+                }
+            }
+            return res;
+        }
+
         /// <summary>
         /// Renvoie le dictionnaire des unités de la partie, avec leurs coordonees.
         /// </summary>
@@ -192,6 +208,47 @@ namespace PrOOjet
                 carteAnnotee = wrap.suggestionDeplacementViking(posUnite, carteInt, carte.Taille, ennemis);
 
             return carteAnnotee;
+        }
+
+        /// <summary>
+        /// Déplace une unité du joueur actif.
+        /// </summary>
+        /// <param name="unite"> L'unité à déplacer. </param>
+        /// <param name="ancienneCoord"> Les anciennes coordonnées. </param>
+        /// <param name="nouvelleCoord"> Les nouvelles coordonnées. </param>
+        public void deplaceUnite(IUnite unite, Coordonnees ancienneCoord, Coordonnees nouvelleCoord)
+        {
+            joueurActif.deplaceUnite(unite, ancienneCoord, nouvelleCoord);
+        }
+
+        public bool attaque(IUnite attaquant, IUnite defenseur)
+        {
+            WrapperCombat wrap = new WrapperCombat();
+            Console.WriteLine(attaquant.PointsDeVie + " " +
+                           attaquant.PointsDeVieMax + " " +
+                           defenseur.PointsDeVie + " " +
+                           defenseur.PointsDeVieMax + " " +
+                           attaquant.Attaque + " " +
+                           defenseur.Defense);
+            wrap.combattre(attaquant.PointsDeVie, 
+                           attaquant.PointsDeVieMax, 
+                           defenseur.PointsDeVie, 
+                           defenseur.PointsDeVieMax,
+                           attaquant.Attaque,
+                           defenseur.Defense);
+
+            if (wrap.getVieAttaquant() > 0)
+                attaquant.PointsDeVie = wrap.getVieAttaquant();
+            else
+                return true;
+                // TODO enlever de la liste des untes
+
+            if (wrap.getVieDefenseur() > 0)
+                defenseur.PointsDeVie = wrap.getVieDefenseur();
+            else
+                return true;
+                // TODO enlever de la liste des untes
+            return false;
         }
     }
 }
