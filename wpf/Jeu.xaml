@@ -9,7 +9,7 @@
              Loaded="Window_Loaded">
     
     <UserControl.Background>
-        <ImageBrush ImageSource="Resources/background.jpg"/>
+        <ImageBrush ImageSource="Resources/background.png"/>
     </UserControl.Background>
 
     <DockPanel>

@@ -14,9 +14,9 @@ private:
 	int pdv_defenseur;
 	int pdv_defenseur_max;
 	int points_att_attaquant;
-	int att_attaquant;
+	float att_attaquant;
 	int points_def_defenseur;
-	int def_defenseur;
+	float def_defenseur;
 
 public:
 	Combat(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def);
