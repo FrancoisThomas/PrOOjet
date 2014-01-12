@@ -203,11 +203,12 @@ namespace PrOOjet
 	        }
 
             Dictionary<int, int> ennemis = new Dictionary<int,int>();
+            IJoueur j = unite.Joueur == joueurActif ? joueurNonActif : joueurActif;
 
-            for (int i = 0; i < joueurNonActif.Unites.Count; i++)
+            for (int i = 0; i < j.Unites.Count; i++)
 			{
-			    Coordonnees c = joueurNonActif.Unites.Keys.ElementAt(i);
-                ennemis.Add(c.posX + c.posY * carte.Taille, joueurNonActif.Unites.Values.ElementAt(i).Count);
+			    Coordonnees c = j.Unites.Keys.ElementAt(i);
+                ennemis.Add(c.posX + c.posY * carte.Taille, j.Unites.Values.ElementAt(i).Count);
 			}
 
 
