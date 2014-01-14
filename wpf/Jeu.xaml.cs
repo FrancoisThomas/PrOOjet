@@ -28,7 +28,8 @@ namespace wpf
         Coordonnees coordUniteSelectionnee;
 
         enum ETypeMouvement {
-            IMPOSSIBLE = 0, NUL = 2, NORMALE = 4, SUPER = 6, ENNEMI = 1
+            IMPOSSIBLE = 0, NUL = 2, NORMALE = 4, SUPER = 6,
+            ENNEMI_NUL = 1, ENNEMI_NORMALE = 3, ENNEMI_SUPER = 5
         }
 
         public Jeu()
@@ -39,12 +40,13 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, new StrategiePetite());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, new StrategieDemo());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
             initialiseMapGrid();
             initialiseUnitGrid();
+            initialisePartieGrid();
 
         }
 
@@ -84,11 +86,11 @@ namespace wpf
 
             for (int i = 0; i < units.Count; i++)
             {
-                Coordonnees coord = units.Keys.ElementAt(i);
+                Coordonnees coord = units.Keys.ElementAt(i);                
                 foreach (IUnite unit in units.Values.ElementAt(i))
                 {
                     var element = createUnitSprite(coord.posX, coord.posY, unit);
-                    mapUnitGrid.Children.Add(element);
+                    mapUnitGrid.Children.Insert(0,element);
                 }
             }
         }
@@ -97,11 +99,11 @@ namespace wpf
         {
             for (int c = 0; c < 4; c++)
             {
-                unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100, GridUnitType.Pixel) });
+                unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(95, GridUnitType.Pixel) });
             }
             for (int r = 0; r < 2; r++)
             {
-                unitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(100, GridUnitType.Pixel) });
+                unitGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(90, GridUnitType.Pixel) });
             }
         }
 
@@ -132,8 +134,21 @@ namespace wpf
             }
         }
 
+        private void initialisePartieGrid()
+        {
+            //nameJ1.Content = partie.Joueur1.Nom;
+            //nameJ2.Content = partie.Joueur2.Nom;
+            pointsJ1.Background = Brushes.DarkCyan;
+            pointsJ1.Content = 0;
+            pointsJ2.Content = 0;
+
+            tours.Content = partie.NbTours + "/" + partie.NbToursMax;
+        }
+
         private void updateSuggestionGrid(IUnite unit, int column, int row)
         {
+            movementGrid.Children.Clear();
+
             List<int> suggestionMap = partie.suggereDeplacement(unit, new Coordonnees(column, row));
 
             for (int r = 0; r < partie.Carte.Taille; r++)
@@ -149,6 +164,24 @@ namespace wpf
                     }
                 }
             }
+        }
+
+        private void updateInfoGrid(IUnite unit)
+        {
+            healthLabel.Content = unit.PointsDeVie;
+            attackLabel.Content = unit.Attaque;
+            defenseLabel.Content = unit.Defense;
+            movementLabel.Content = unit.PointsDeMouvement;
+            infoGrid.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void clearInfoGrid()
+        {
+            healthLabel.Content = "";
+            attackLabel.Content = "";
+            defenseLabel.Content = "";
+            movementLabel.Content = "";
+            infoGrid.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private Rectangle createMapRectangle(int c, int l, ICase tile)
@@ -221,7 +254,7 @@ namespace wpf
             rectangle.StrokeThickness = 1;
             // enregistrement d'un écouteur d'evt sur le rectangle : 
             // source = rectangle / evt = MouseLeftButtonDown / délégué = rectangle_MouseLeftButtonDown
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(unit_MouseLeftButtonDown); // TODO chnager
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(unit_MouseLeftButtonDown);
             return rectangle;
         }
 
@@ -313,10 +346,7 @@ namespace wpf
             selectionRectangleMap.Height = rectangle.Height;
             selectionRectangleMap.Visibility = System.Windows.Visibility.Visible;
 
-            healthLabel.Content = "";
-            attackLabel.Content = "";
-            defenseLabel.Content = "";
-            movementLabel.Content = "";
+            clearInfoGrid();
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
 
@@ -334,7 +364,6 @@ namespace wpf
             int row = Grid.GetRow(rectangle);
 
             uniteSelectionnee = unit;
-            coordUniteSelectionnee = new Coordonnees(column, row);
 
             Grid.SetColumn(selectionRectangleUnit, column);
             Grid.SetRow(selectionRectangleUnit, row);
@@ -343,10 +372,12 @@ namespace wpf
             selectionRectangleUnit.Height = rectangle.Height;
             selectionRectangleUnit.Visibility = System.Windows.Visibility.Visible;
 
-            healthLabel.Content = unit.PointsDeVie;
-            attackLabel.Content = unit.Attaque;
-            defenseLabel.Content = unit.Defense;
-            movementLabel.Content = unit.PointsDeMouvement;
+            uniteSelectionnee = unit;
+            movementGrid.Children.Clear();
+            if (unit.peutBouger())
+                updateSuggestionGrid(unit, coordUniteSelectionnee.posX, coordUniteSelectionnee.posY);
+
+            updateInfoGrid(unit);
 
             // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
             e.Handled = true;
@@ -362,6 +393,9 @@ namespace wpf
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
 
+            uniteSelectionnee = unit;
+            coordUniteSelectionnee = new Coordonnees(column, row);
+
             Grid.SetColumn(selectionRectangleMap, column);
             Grid.SetRow(selectionRectangleMap, row);
             selectionRectangleMap.Width = rectangle.Width;
@@ -372,6 +406,7 @@ namespace wpf
                 updateSuggestionGrid(unit, column, row);
 
             updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
+            updateInfoGrid(unit);
 
             unit_MouseLeftButtonDown(sender, e);
         }
@@ -408,14 +443,21 @@ namespace wpf
 
             if (uniteSelectionnee.peutBouger() && type != ETypeMouvement.IMPOSSIBLE)
             {
+                Coordonnees c = new Coordonnees(column, row);
                 if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
-                    partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, new Coordonnees(column, row));
-                else if (type == ETypeMouvement.ENNEMI)
-                    partie.attaque(uniteSelectionnee, partie.selectionneUniteDefensive(new Coordonnees(column, row)));
+                    partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+                else if (type == ETypeMouvement.ENNEMI_NUL || type == ETypeMouvement.ENNEMI_NORMALE || type == ETypeMouvement.ENNEMI_SUPER)
+                {
+                    bool mortDefenseur = partie.attaque(uniteSelectionnee, partie.selectionneUniteDefensive(c));
+                    if (mortDefenseur && partie.selectionneUnites(c) == null)
+                        partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+                    uniteSelectionnee.diminuePointsDeMouvement(uniteSelectionnee.PointsDeMouvement);
+                }
 
                 updateUnitMapGrid();
                 updateUnitGrid(null);
                 movementGrid.Children.Clear();
+                clearInfoGrid();
             }
         }
 
@@ -426,9 +468,26 @@ namespace wpf
             partie.finTour();
 
             // TODO Changer affichage
+            pointsJ1.Content = partie.PointsJoueur1;
+            pointsJ2.Content = partie.PointsJoueur2;
+
+            if (partie.JoueurActif == partie.Joueur1)
+            {
+                pointsJ1.Background = Brushes.DarkCyan;
+                pointsJ2.Background = Brushes.Black;
+            }
+            else
+            {
+                pointsJ1.Background = Brushes.Black;
+                pointsJ2.Background = Brushes.DarkCyan;
+            }
+
+            tours.Content = partie.NbTours + "/" + partie.NbToursMax;
 
             updateUnitMapGrid();
             movementGrid.Children.Clear();
+            unitGrid.Children.Clear();
+            clearInfoGrid();
         }
 
 

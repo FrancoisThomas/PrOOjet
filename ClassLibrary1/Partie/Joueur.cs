@@ -126,11 +126,32 @@ namespace PrOOjet
         /// <param name="unite"> L'unité à supprimer. </param>
         public void supprimeUnite(IUnite unite)
         {
+            foreach (Coordonnees c in unites.Keys)
+            {
+                List<IUnite> l = null;
+                unites.TryGetValue(c, out l);
+                if (l.Contains(unite))
+                {
+                    l.Remove(unite);
+                    if (l.Count == 0)
+                        unites.Remove(c);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Baisse la priorité d'une unité en la placant en fin de liste.
+        /// </summary>
+        /// <param name="unite"> L'unité à déplacer. </param>
+        public void placeUniteEnFin(IUnite unite)
+        {
             foreach (List<IUnite> l in unites.Values)
             {
                 if (l.Contains(unite))
                 {
                     l.Remove(unite);
+                    l.Add(unite);
                     break;
                 }
             }
