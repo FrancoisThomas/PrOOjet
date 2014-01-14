@@ -27,6 +27,8 @@ namespace wpf
         IUnite uniteSelectionnee;
         Coordonnees coordUniteSelectionnee;
 
+        Smallworld mainWindow;
+
         enum ETypeMouvement {
             IMPOSSIBLE = 0, NUL = 2, NORMALE = 4, SUPER = 6,
             ENNEMI_NUL = 1, ENNEMI_NORMALE = 3, ENNEMI_SUPER = 5
@@ -40,7 +42,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, new StrategieDemo());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, "Jean-Mouloud", "Jeanine", new StrategieDemo());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -136,8 +138,8 @@ namespace wpf
 
         private void initialisePartieGrid()
         {
-            //nameJ1.Content = partie.Joueur1.Nom;
-            //nameJ2.Content = partie.Joueur2.Nom;
+            nameJ1.Content = partie.Joueur1.Nom;
+            nameJ2.Content = partie.Joueur2.Nom;
             pointsJ1.Background = Brushes.DarkCyan;
             pointsJ1.Content = 0;
             pointsJ2.Content = 0;
@@ -467,27 +469,52 @@ namespace wpf
         {
             partie.finTour();
 
-            // TODO Changer affichage
-            pointsJ1.Content = partie.PointsJoueur1;
-            pointsJ2.Content = partie.PointsJoueur2;
-
-            if (partie.JoueurActif == partie.Joueur1)
+            if (!partie.terminee())
             {
-                pointsJ1.Background = Brushes.DarkCyan;
-                pointsJ2.Background = Brushes.Black;
+                pointsJ1.Content = partie.PointsJoueur1;
+                pointsJ2.Content = partie.PointsJoueur2;
+
+                if (partie.JoueurActif == partie.Joueur1)
+                {
+                    pointsJ1.Background = Brushes.DarkCyan;
+                    pointsJ2.Background = Brushes.Black;
+                }
+                else
+                {
+                    pointsJ1.Background = Brushes.Black;
+                    pointsJ2.Background = Brushes.DarkCyan;
+                }
+
+                tours.Content = partie.NbTours + "/" + partie.NbToursMax;
+
+                updateUnitMapGrid();
+                movementGrid.Children.Clear();
+                unitGrid.Children.Clear();
+                clearInfoGrid();
             }
             else
             {
-                pointsJ1.Background = Brushes.Black;
-                pointsJ2.Background = Brushes.DarkCyan;
+                pointsJ1.Content = partie.PointsJoueur1;
+                pointsJ2.Content = partie.PointsJoueur2;
+
+                if (partie.PointsJoueur1 > partie.PointsJoueur2)
+                {
+                    pointsJ1.Background = Brushes.DarkGoldenrod;
+                    pointsJ2.Background = Brushes.Black;
+                }
+                else if (partie.PointsJoueur1 < partie.PointsJoueur2)
+                {
+                    pointsJ1.Background = Brushes.Black;
+                    pointsJ2.Background = Brushes.DarkGoldenrod;
+                }
+                else
+                {
+                    pointsJ1.Background = Brushes.DarkKhaki;
+                    pointsJ2.Background = Brushes.DarkKhaki;
+                }
+
+                //TODO mainWindow.finPartie();
             }
-
-            tours.Content = partie.NbTours + "/" + partie.NbToursMax;
-
-            updateUnitMapGrid();
-            movementGrid.Children.Clear();
-            unitGrid.Children.Clear();
-            clearInfoGrid();
         }
 
 

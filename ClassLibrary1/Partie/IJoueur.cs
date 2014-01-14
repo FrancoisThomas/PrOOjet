@@ -18,6 +18,8 @@ namespace PrOOjet
         Dictionary<Coordonnees, List<IUnite>> Unites { get; }
         /// <summary> Peuple choisi par le joueur. </summary>
         IPeuple Peuple { get; }
+        /// <summary> Nom choisi par le joueur. </summary>
+        string Nom { get; }
 
 		/// <summary>
 		/// Fournit la liste des unités sur la case aux coordonnées passées en paramètre.

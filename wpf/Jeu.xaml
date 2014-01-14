@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024"
+             d:DesignHeight="768" d:DesignWidth="1200"
              Loaded="Window_Loaded">
 
     <DockPanel>
@@ -57,11 +57,11 @@
                     <ColumnDefinition Width="53"/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="nameJ1" Content="Jean-Mouloud" Foreground="White" FontWeight="Bold" Grid.Column="0" FontSize="25" VerticalAlignment="Center"/>
+                <Label Name="nameJ1" Foreground="White" FontWeight="Bold" Grid.Column="0" FontSize="25" VerticalAlignment="Center"/>
                 <Label Name="pointsJ1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <Label Name="tours" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <Label Name="pointsJ2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Label Name="nameJ2" Content="Jeanine" Foreground="White" FontWeight="Bold" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Label Name="nameJ2" Foreground="White" FontWeight="Bold" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             </Grid>
 
             <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600" Margin="0,20,20,0">

@@ -22,6 +22,6 @@ namespace PrOOjet
 		/// <seealso cref="ICarte"/>
 		/// <seealso cref="IJoueur"/>
 		/// <seealso cref="IUnite"/>
-        IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, IStrategieTaille strategie);
+        IPartie creerPartie(IPeuple peuple1, IPeuple peuple2, string nomJ1, string nomJ2, IStrategieTaille strategie);
     }
 }

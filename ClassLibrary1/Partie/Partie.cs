@@ -250,12 +250,10 @@ namespace PrOOjet
         /// TODO
         /// </summary>
         /// <returns></returns>
-        public bool finTour()
+        public void finTour()
         {
             if (joueurActif == joueur2)
                 nbTours++;
-            if (nbTours == nbToursMax)
-                return true;
 
             Dictionary<Coordonnees, List<IUnite>> d = recupereUnites();
             foreach (List<IUnite> l in d.Values)
@@ -268,12 +266,62 @@ namespace PrOOjet
 
             ajoutPoints(joueurActif);
             joueurActif = joueurNonActif;
+        }
 
-            return false;
+        public bool terminee()
+        {
+            return NbTours > NbToursMax;
         }
 
         public void ajoutPoints(IJoueur j)
         {
+            WrapperCarte wrap = new WrapperCarte();
+            
+            List<int> carteInt = new List<int>();
+            foreach (ICase c in carte.Cases)
+            {
+                if (c is ICaseDesert)
+                    carteInt.Add((int)ECase.DESERT);
+                if (c is ICaseEau)
+                    carteInt.Add((int)ECase.EAU);
+                if (c is ICaseMontagne)
+                    carteInt.Add((int)ECase.MONTAGNE);
+                if (c is ICaseForet)
+                    carteInt.Add((int)ECase.FORET);
+                if (c is ICasePlaine)
+                    carteInt.Add((int)ECase.PLAINE);
+            }
+
+	        Dictionary<int, int> unites = new Dictionary<int,int>();
+
+            for (int i = 0; i < j.Unites.Count; i++)
+			{
+			    Coordonnees c = j.Unites.Keys.ElementAt(i);
+                unites.Add(c.posX + c.posY * carte.Taille, j.Unites.Values.ElementAt(i).Count);
+			}
+
+
+            if (j.Peuple is IPeupleGaulois)
+            {
+                if (j == joueur1)
+                    pointsJoueur1 += wrap.pointsTourGaulois(carteInt, carte.Taille, unites);
+                else 
+                    PointsJoueur2 += wrap.pointsTourGaulois(carteInt, carte.Taille, unites);
+            }
+            if (j.Peuple is IPeupleNain)
+            {
+                if (j == joueur1)
+                    pointsJoueur1 += wrap.pointsTourNain(carteInt, carte.Taille, unites);
+                else
+                    PointsJoueur2 += wrap.pointsTourNain(carteInt, carte.Taille, unites);
+            }
+            if (j.Peuple is IPeupleViking)
+            {
+                if (j == joueur1)
+                    pointsJoueur1 += wrap.pointsTourViking(carteInt, carte.Taille, unites);
+                else
+                    PointsJoueur2 += wrap.pointsTourViking(carteInt, carte.Taille, unites);
+            }
         }
     }
 }

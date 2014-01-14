@@ -11,7 +11,6 @@ namespace PrOOjet
     public class Joueur : PrOOjet.IJoueur
     {
         private string nom;
-        private int couleur;
         private IPeuple peuple;
         private Dictionary<Coordonnees, List<IUnite>> unites;
 
@@ -19,12 +18,10 @@ namespace PrOOjet
 		/// Constructeur.
 		/// </summary>
 		/// <param name="p"> Peuple du joueur. </param>
-		/// <param name="c"> Couleur du joueur. </param>
 		/// <param name="n"> Nom du joueur. </param>
-        public Joueur(IPeuple p, int c, string n)
+        public Joueur(IPeuple p, string n)
         {
             peuple = p;
-            couleur = c;
             nom = n;
             unites = new Dictionary<Coordonnees, List<IUnite>>();
         }
@@ -36,10 +33,15 @@ namespace PrOOjet
     	/// </summary>
         public Dictionary<Coordonnees, List<IUnite>> Unites
         {
-            get
-            {
-                return unites;
-            }
+            get { return unites; }
+        }
+
+        /// <summary>
+        /// Nom du joueur.
+        /// </summary>
+        public string Nom
+        {
+            get { return nom; }
         }
 
 		/// <summary>

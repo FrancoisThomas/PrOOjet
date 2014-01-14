@@ -48,8 +48,10 @@ namespace PrOOjet
 
         bool attaque(IUnite attaquant, IUnite defenseur);
 
-        bool finTour();
+        void finTour();
 
         void ajoutPoints(IJoueur j);
+
+        bool terminee();
     }
 }
