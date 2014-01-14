@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace wpf
 {
     /// <summary>
-    /// Logique d'interaction pour Accueil.xaml
+    /// Logique d'interaction pour Lancement.xaml
     /// </summary>
-    public partial class Accueil : UserControl
+    public partial class Lancement : UserControl
     {
         private Smallworld mainWindow;
 
 
-        public Accueil()
+        public Lancement()
         {
             InitializeComponent();
         }
@@ -34,10 +34,9 @@ namespace wpf
          mainWindow = main;
         }
 
-        public void nouvellePartie(object sender, RoutedEventArgs e) 
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
-            Visibility = Visibility.Collapsed;
-            mainWindow.EcranCarte.Visibility = Visibility.Visible;
+
         }
     }
 }

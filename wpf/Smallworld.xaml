@@ -4,6 +4,8 @@
         xmlns:wpf="clr-namespace:wpf"
         Title="SmallWorld" Height="768" Width="1024">
     <Grid>
-        <wpf:Jeu x:Name="EcranCarte"></wpf:Jeu>
+        <wpf:Accueil x:Name="EcranAccueil"> </wpf:Accueil>
+        <wpf:Lancement x:Name="EcranLancement" Visibility="Collapsed"></wpf:Lancement>
+        <wpf:Jeu x:Name="EcranCarte" Visibility="Collapsed"></wpf:Jeu>
     </Grid>
 </Window>

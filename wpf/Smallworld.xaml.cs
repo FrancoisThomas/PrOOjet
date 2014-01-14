@@ -21,6 +21,8 @@ namespace wpf
         public Smallworld()
         {
             InitializeComponent();
+            EcranAccueil.ajoutReference(this);
+            EcranLancement.ajoutReference(this);
         }
     }
 }

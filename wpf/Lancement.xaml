@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:wpf" x:Class="wpf.Accueil" 
+             xmlns:local="clr-namespace:wpf" x:Class="wpf.Lancement" 
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024" >
-    
+
     <UserControl.Background>
         <ImageBrush ImageSource="Resources/background.png" ></ImageBrush>
     </UserControl.Background>
@@ -17,26 +17,18 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontWeight="Bold" FontSize="14" TextAlignment="Center">SmallWorld</TextBlock>
+            <TextBlock FontWeight="Bold" FontSize="14" TextAlignment="Center">Nouvelle Partie</TextBlock>
         </Grid>
 
         <Grid Grid.Row="1">
-            <StackPanel>
-                <StackPanel>
-                    <Button Content="Jouer" Click="nouvellePartie" Margin="20" Width="150"/>
-                </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="108"/>
                 
-                <!--
-                <StackPanel>
-                    <Button Content="Charger" Click="chargePartie" Margin="20" Width="150"/>
-                </StackPanel>
-                <StackPanel>
-                    <Button Content="A propos" Click="aPropos" Margin="20" Width="150"/>
-                </StackPanel>
-                <Button Content="Quitter" Click="quitterJeu" Margin="20" Width="150"/>
-                
-                 -->
-            </StackPanel>
+            </Grid.ColumnDefinitions>
+            <Viewbox Margin="0" Height="30">
+                <RadioButton/>
+            </Viewbox>
         </Grid>
     </Grid>
 </UserControl>
