@@ -107,35 +107,7 @@ namespace PrOOjet
             set { pointsJoueur2 = value; }
         }
 
-        public bool finTour()
-        {
-            if (joueurActif == joueur2)
-                nbTours++;
-            if (nbTours == nbToursMax)
-                return true;
-
-            Dictionary<Coordonnees, List<IUnite>> d = recupereUnites();
-            foreach (List<IUnite> l in d.Values)
-            {
-                foreach (IUnite unit in l)
-                {
-                    unit.reinitialiseMouvement();
-                }
-            }
-
-            ajoutPoints(joueurActif);
-            joueurActif = joueurNonActif;
-
-            return false;
-        }
-
-        public void ajoutPoints(IJoueur j)
-        {
-        }
-
-
-
-		/// <summary>
+        /// <summary>
 		/// Sélectionne les unités aux coordonnées indiquées.
 		/// </summary>
 		/// <param name="coord"> Les coordonnées auxquelles on veut sélectionner les unités. </param>
@@ -242,12 +214,6 @@ namespace PrOOjet
         public bool attaque(IUnite attaquant, IUnite defenseur)
         {
             WrapperCombat wrap = new WrapperCombat();
-            Console.WriteLine(attaquant.PointsDeVie + " " +
-                           attaquant.PointsDeVieMax + " " +
-                           defenseur.PointsDeVie + " " +
-                           defenseur.PointsDeVieMax + " " +
-                           attaquant.Attaque + " " +
-                           defenseur.Defense);
             wrap.combattre(attaquant.PointsDeVie, 
                            attaquant.PointsDeVieMax, 
                            defenseur.PointsDeVie, 
@@ -261,19 +227,53 @@ namespace PrOOjet
             if (wrap.getVieAttaquant() > 0)
             {
                 attaquant.PointsDeVie = wrap.getVieAttaquant();
-                attaquant.diminuePointsDeMouvement(attaquant.PointsDeMouvement);
+                joueurActif.placeUniteEnFin(attaquant);
             }
             else
                 joueurActif.supprimeUnite(attaquant);
 
             if (wrap.getVieDefenseur() > 0)
+            {
                 defenseur.PointsDeVie = wrap.getVieDefenseur();
+                joueurNonActif.placeUniteEnFin(defenseur);
+            }
             else
             {
+                Console.WriteLine(defenseur);
                 joueurNonActif.supprimeUnite(defenseur);
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <returns></returns>
+        public bool finTour()
+        {
+            if (joueurActif == joueur2)
+                nbTours++;
+            if (nbTours == nbToursMax)
+                return true;
+
+            Dictionary<Coordonnees, List<IUnite>> d = recupereUnites();
+            foreach (List<IUnite> l in d.Values)
+            {
+                foreach (IUnite unit in l)
+                {
+                    unit.reinitialiseMouvement();
+                }
+            }
+
+            ajoutPoints(joueurActif);
+            joueurActif = joueurNonActif;
+
+            return false;
+        }
+
+        public void ajoutPoints(IJoueur j)
+        {
         }
     }
 }

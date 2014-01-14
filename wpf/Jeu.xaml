@@ -7,53 +7,72 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
              Loaded="Window_Loaded">
-    
-    <UserControl.Background>
-        <ImageBrush ImageSource="Resources/background.png"/>
-    </UserControl.Background>
 
     <DockPanel>
 
         <Grid DockPanel.Dock="Left" Width="400">
             
             <DockPanel HorizontalAlignment="Left" Height="200" LastChildFill="False" VerticalAlignment="Top" Width="400">
-                <Grid Name="unitGrid" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" Width="400">
+                <Grid Name="unitGrid" Height="180" Margin="10,10,10,10" VerticalAlignment="Center" Width="380">
                     <Rectangle Name="selectionRectangleUnit" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
                 </Grid>
             </DockPanel>
             
-            <StackPanel HorizontalAlignment="Right" Height="248" Margin="0,200,58,0" VerticalAlignment="Top" Width="291">
+            <Grid Name="infoGrid" HorizontalAlignment="Right" Height="248" Margin="0,200,58,0" VerticalAlignment="Top" Width="291" Background="Beige" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="72" />
+                    <ColumnDefinition Width="72" />
+                    <ColumnDefinition Width="72" />
+                    <ColumnDefinition Width="72" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <!--Points de vie-->
-                <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
-                    <Label Name="healthLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
-                </DockPanel>
+                <Label Name="healthLabel" Height="50" FontSize="30" Width="40" Grid.Row="0" Grid.Column="1"/>
                 <!--Attaque-->
-                <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40">
-                    <Label Name="attackLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
-                </DockPanel>
+                <Image Source="Resources/attaque.jpg" Grid.Row="1" Grid.Column="0" />
+                <Label Name="attackLabel" Height="50" Width="40" FontSize="30" Grid.Row="1" Grid.Column="1"/>
                 <!--Defense-->
-                <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
-                    <Label Name="defenseLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
-                </DockPanel>
+                <Label Name="defenseLabel" Height="50" Width="40" Grid.Row="1" Grid.Column="3"/>
                 <!--Points de mouvements-->
-                <DockPanel Height="50" LastChildFill="False" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40">
-                    <Label Name="movementLabel" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
-                </DockPanel>
-            </StackPanel>
+                <Label Name="movementLabel" Height="50" Width="40" Grid.Row="0" Grid.Column="3"/>
+            </Grid>
             <Button HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick">
                 <StackPanel>
                     <TextBlock>Fin du tour</TextBlock>
                     <Image Source="Resources/eau.png" Stretch="Fill"/>
                 </StackPanel>
             </Button>
+        </Grid>
 
-        </Grid>
-        
-        <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600">
-            <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
-            <Grid Name="mapUnitGrid" Panel.ZIndex="1000"/>
-            <Grid Name="movementGrid" Panel.ZIndex="2000"/>
-        </Grid>
+        <StackPanel>
+            <Grid Height="50" Margin="0,20,20,0" VerticalAlignment="Top" Width="600" Background="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="53"/>
+                    <ColumnDefinition Width="94"/>
+                    <ColumnDefinition Width="53"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="nameJ1" Content="Jean-Mouloud" Foreground="White" FontWeight="Bold" Grid.Column="0" FontSize="25" VerticalAlignment="Center"/>
+                <Label Name="pointsJ1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Name="tours" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Name="pointsJ2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Name="nameJ2" Content="Jeanine" Foreground="White" FontWeight="Bold" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            </Grid>
+
+            <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600" Margin="0,20,20,0">
+                <Rectangle Name="selectionRectangleMap" Stroke="Black" StrokeThickness="2" Panel.ZIndex="333" Visibility="Collapsed"/>
+                <Grid Name="mapUnitGrid" Panel.ZIndex="1000"/>
+                <Grid Name="movementGrid" Panel.ZIndex="2000"/>
+            </Grid>
+        </StackPanel>
     </DockPanel>
 
+    <UserControl.Background>
+        <ImageBrush ImageSource="Resources/background.png"/>
+    </UserControl.Background>
 </UserControl>

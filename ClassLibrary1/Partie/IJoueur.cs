@@ -47,5 +47,11 @@ namespace PrOOjet
         /// </summary>
         /// <param name="unite"> L'unité à supprimer. </param>
         void supprimeUnite(IUnite unite);
+
+        /// <summary>
+        /// Baisse la priorité d'une unité en la placant en fin de liste.
+        /// </summary>
+        /// <param name="unite"> L'unité à déplacer. </param>
+        void placeUniteEnFin(IUnite unite);
     }
 }
