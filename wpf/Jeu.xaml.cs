@@ -356,8 +356,6 @@ namespace wpf
         {
             movementGrid.Children.Clear();
 
-            Console.WriteLine("mapUnit_MouseLeftButtonDown");
-
             var rectangle = sender as Rectangle;
             var unit = rectangle.Tag as IUnite;
 
@@ -408,8 +406,6 @@ namespace wpf
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
 
-            Console.WriteLine("(" + column + ";" + row + ") : " + type);
-
             if (uniteSelectionnee.peutBouger() && type != ETypeMouvement.IMPOSSIBLE)
             {
                 if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
@@ -428,7 +424,8 @@ namespace wpf
         void endTurn_ButtonClick(object sender, RoutedEventArgs e)
         {
             partie.finTour();
-            Console.WriteLine(partie.JoueurActif.Peuple);
+
+            // TODO Changer affichage
 
             updateUnitMapGrid();
             movementGrid.Children.Clear();

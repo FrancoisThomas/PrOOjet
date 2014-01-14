@@ -233,6 +233,12 @@ namespace PrOOjet
             joueurActif.deplaceUnite(unite, ancienneCoord, nouvelleCoord);
         }
 
+        /// <summary>
+        /// Méthode de combat.
+        /// </summary>
+        /// <param name="attaquant">Unité attaquante.</param>
+        /// <param name="defenseur">Unité défendante.</param>
+        /// <returns><c>true</c> si le défenseur est mort.</returns>
         public bool attaque(IUnite attaquant, IUnite defenseur)
         {
             WrapperCombat wrap = new WrapperCombat();
@@ -249,17 +255,24 @@ namespace PrOOjet
                            attaquant.Attaque,
                            defenseur.Defense);
 
+            Console.WriteLine("Att : " + wrap.getVieAttaquant());
+            Console.WriteLine("Def : " + wrap.getVieDefenseur());
+
             if (wrap.getVieAttaquant() > 0)
+            {
                 attaquant.PointsDeVie = wrap.getVieAttaquant();
+                attaquant.diminuePointsDeMouvement(attaquant.PointsDeMouvement);
+            }
             else
-                return true;
-                // TODO enlever de la liste des untes
+                joueurActif.supprimeUnite(attaquant);
 
             if (wrap.getVieDefenseur() > 0)
                 defenseur.PointsDeVie = wrap.getVieDefenseur();
             else
+            {
+                joueurNonActif.supprimeUnite(defenseur);
                 return true;
-                // TODO enlever de la liste des untes
+            }
             return false;
         }
     }

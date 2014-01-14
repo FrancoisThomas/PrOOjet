@@ -126,14 +126,5 @@ namespace PrOOjet
             pointsDeMouvement = PDMMAX;
         }
 
-        /// <summary>
-        /// Détermine si une unité est décédée.
-        /// </summary>
-        /// <returns> <c>true</c> si l'unité est morte. </returns>
-        public bool estMort()
-        {
-            return pointsDeVie <= 0;
-        }
-
     }
 }

@@ -28,13 +28,10 @@ namespace PrOOjet
 		/// </summary>
         bool peutBouger();
 
-        void reinitialiseMouvement();
-        
         /// <summary>
-        /// Détermine si une unité est décédée.
+        /// Remet le nombre max de points de mouvement à l'unité.
         /// </summary>
-        /// <returns> <c>true</c> si l'unité est morte. </returns>
-        bool estMort();
+        void reinitialiseMouvement();
 
 		/// <summary>
 		/// Diminue les points de vie de l'unité.
