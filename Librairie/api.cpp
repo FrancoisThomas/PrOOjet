@@ -234,5 +234,8 @@ void Api::combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAt
 {
 	Combat * cbt = new Combat(pdvAtt, pdvAttMax, pdvDef, pdvDefMax, ptsAtt, ptsDef);
 	cbt->combattre();
+	
+	this->pdv_attaquant_fin = cbt->getPointsDeVieAttaquant();
+	this->pdv_defenseur_fin = cbt->getPointsDeVieDefenseur();
 }
 
