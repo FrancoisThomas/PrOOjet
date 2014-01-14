@@ -35,11 +35,17 @@ namespace PrOOjet
         void creeUnite(Coordonnees c);
 
         /// <summary>
-        /// Déplace une unité du joueur actif.
+        /// Déplace une unité.
         /// </summary>
         /// <param name="unite"> L'unité à déplacer. </param>
         /// <param name="ancienneCoord"> Les anciennes coordonnées. </param>
         /// <param name="nouvelleCoord"> Les nouvelles coordonnées. </param>
         void deplaceUnite(IUnite unite, Coordonnees ancienneCoord, Coordonnees nouvelleCoord);
+
+        /// <summary>
+        /// Supprime une unité.
+        /// </summary>
+        /// <param name="unite"> L'unité à supprimer. </param>
+        void supprimeUnite(IUnite unite);
     }
 }

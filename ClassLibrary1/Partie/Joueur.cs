@@ -117,8 +117,23 @@ namespace PrOOjet
                 }
             }
 
-            //Console.WriteLine(Math.Abs(ancienneCoord.posX - nouvelleCoord.posX) + Math.Abs(ancienneCoord.posY - nouvelleCoord.posY));
             unite.diminuePointsDeMouvement(unite.PointsDeMouvement);
+        }
+
+        /// <summary>
+        /// Supprime une unité.
+        /// </summary>
+        /// <param name="unite"> L'unité à supprimer. </param>
+        public void supprimeUnite(IUnite unite)
+        {
+            foreach (List<IUnite> l in unites.Values)
+            {
+                if (l.Contains(unite))
+                {
+                    l.Remove(unite);
+                    break;
+                }
+            }
         }
 
         public override string ToString()
