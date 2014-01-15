@@ -238,17 +238,17 @@ namespace wpf
             ImageBrush imageBrush = new ImageBrush();
             if (unit is IUniteGaulois)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoHumain.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             if (unit is IUniteNain)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoNain.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             if (unit is IUniteViking)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoTriton.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
@@ -270,17 +270,17 @@ namespace wpf
             ImageBrush imageBrush = new ImageBrush();
             if (unit is IUniteGaulois)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_gaulois.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoHumain.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             if (unit is IUniteNain)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_nain.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoNain.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             if (unit is IUniteViking)
             {
-                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\icone_viking.png", UriKind.Relative));
+                imageBrush.ImageSource = new BitmapImage(new Uri(@"Resources\persoTriton.gif", UriKind.Relative));
                 rectangle.Fill = imageBrush;
             }
             // mise à jour des attributs (column et Row) référencant la position dans la grille à rectangle
