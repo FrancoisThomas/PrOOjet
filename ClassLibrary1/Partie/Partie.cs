@@ -119,6 +119,11 @@ namespace PrOOjet
             return unites;
         }
 
+        /// <summary>
+        /// Sélectionne l'unité aux coordonnées indiquées ayant le plus de défense.
+        /// </summary>
+        /// <param name="coord"> Les coordonnées auxquelles on veut sélectionner l'unité. </param>
+        /// <returns> Renvoie l'unité aux coordonnées indiquées ayant le plus de défense (null si il n'y en a pas). </returns>
         public IUnite selectionneUniteDefensive(Coordonnees coord)
         {
             List<IUnite> unites = JoueurNonActif.recupereUnites(coord);
@@ -156,6 +161,8 @@ namespace PrOOjet
             WrapperCarte wrap = new WrapperCarte();
 
             int posUnite = pos.posX * carte.Taille + pos.posY;
+
+            // Liste carteInt représentant la carte sous forme d'entiers.
             List<int> carteInt = new List<int>();
             foreach (ICase c in carte.Cases)
 	        {
@@ -171,6 +178,7 @@ namespace PrOOjet
                     carteInt.Add((int)ECase.PLAINE);
 	        }
 
+            // Dictionnary ennemis représentant la position des ennemis sous forme (position -> nombre d'ennemis).
             Dictionary<int, int> ennemis = new Dictionary<int,int>();
             IJoueur j = unite.Joueur == joueurActif ? JoueurNonActif : joueurActif;
 
@@ -180,7 +188,7 @@ namespace PrOOjet
                 ennemis.Add(c.posX + c.posY * carte.Taille, j.Unites.Values.ElementAt(i).Count);
 			}
 
-
+            // Appel aux méthodes dédiées de la librairie
             if (unite is IUniteGaulois)
                 carteAnnotee = wrap.suggestionDeplacementGaulois(posUnite, carteInt, carte.Taille, ennemis);  
             if (unite is IUniteNain)
@@ -218,9 +226,7 @@ namespace PrOOjet
                            attaquant.Attaque,
                            defenseur.Defense);
 
-            Console.WriteLine("Att : " + wrap.getVieAttaquant());
-            Console.WriteLine("Def : " + wrap.getVieDefenseur());
-
+            // Test si les unités sont toujours en vie.
             if (wrap.getVieAttaquant() > 0)
             {
                 attaquant.PointsDeVie = wrap.getVieAttaquant();
@@ -244,36 +250,42 @@ namespace PrOOjet
         }
 
         /// <summary>
-        /// TODO
+        /// Gère la fin de tour d'un joueur. Ajoute les points du tour à ceux du joueur actif.
+        /// Si le joueur est Joueur2, incrémente le nombre de tours.
         /// </summary>
-        /// <returns></returns>
         public void finTour()
         {
             if (joueurActif == joueur2)
                 nbTours++;
 
+            // Remet des points de mouvements aux unités aant bougées.
             Dictionary<Coordonnees, List<IUnite>> d = recupereUnites();
             foreach (List<IUnite> l in d.Values)
-            {
                 foreach (IUnite unit in l)
-                {
                     unit.reinitialiseMouvement();
-                }
-            }
 
             ajoutPoints(joueurActif);
             joueurActif = JoueurNonActif;
         }
 
+        /// <summary>
+        /// Determine si la partie est terminée.
+        /// </summary>
+        /// <returns><c>true</c> si la partie est terminée.</returns>
         public bool terminee()
         {
             return NbTours > NbToursMax;
         }
 
+        /// <summary>
+        /// Ajoute les points du tour à un joueur.
+        /// </summary>
+        /// <param name="j">Le joueur auquel on ajoute des points</param>
         public void ajoutPoints(IJoueur j)
         {
             WrapperCarte wrap = new WrapperCarte();
 
+            // Liste carteInt représentant la carte sous forme d'entiers.
             List<int> carteInt = new List<int>();
             foreach (ICase c in carte.Cases)
             {
@@ -298,6 +310,7 @@ namespace PrOOjet
             }
 
 
+            // Ajout des points au bon joueur en fonction de son peuple.
             if (j.Peuple is IPeupleGaulois)
             {
                 if (j == joueur1)
