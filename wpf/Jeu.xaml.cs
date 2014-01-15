@@ -22,7 +22,6 @@ namespace wpf
     {
 
         ICarte carte;
-        IPartie partie;
 
         IUnite uniteSelectionnee;
         Coordonnees coordUniteSelectionnee;
@@ -42,14 +41,17 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, "Jean-Mouloud", "Jeanine", new StrategieNormale());
+            //partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, "Jean-Mouloud", "Jeanine", new StrategieNormale());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
-            carte = partie.Carte;
+        }
+
+        public void initialiseIHM()
+        {
+            carte = Partie.INSTANCE.Carte;
             initialiseMapGrid();
             initialiseUnitGrid();
             initialisePartieGrid();
-
         }
 
         private void initialiseMapGrid()
@@ -84,7 +86,7 @@ namespace wpf
         private void updateUnitMapGrid()
         {
             mapUnitGrid.Children.Clear();
-            Dictionary<Coordonnees, List<IUnite>> units = partie.recupereUnites();
+            Dictionary<Coordonnees, List<IUnite>> units = Partie.INSTANCE.recupereUnites();
 
             for (int i = 0; i < units.Count; i++)
             {
@@ -138,30 +140,30 @@ namespace wpf
 
         private void initialisePartieGrid()
         {
-            nameJ1.Content = partie.Joueur1.Nom;
-            nameJ2.Content = partie.Joueur2.Nom;
+            nameJ1.Content = Partie.INSTANCE.Joueur1.Nom;
+            nameJ2.Content = Partie.INSTANCE.Joueur2.Nom;
             pointsJ1.Background = Brushes.DarkCyan;
             pointsJ1.Content = 0;
             pointsJ2.Content = 0;
 
-            tours.Content = partie.NbTours + "/" + partie.NbToursMax;
+            tours.Content = Partie.INSTANCE.NbTours + "/" + Partie.INSTANCE.NbToursMax;
         }
 
         private void updateSuggestionGrid(IUnite unit, int column, int row)
         {
             movementGrid.Children.Clear();
 
-            List<int> suggestionMap = partie.suggereDeplacement(unit, new Coordonnees(column, row));
+            List<int> suggestionMap = Partie.INSTANCE.suggereDeplacement(unit, new Coordonnees(column, row));
 
-            for (int r = 0; r < partie.Carte.Taille; r++)
+            for (int r = 0; r < Partie.INSTANCE.Carte.Taille; r++)
             {
-                for (int c = 0; c < partie.Carte.Taille; c++)
+                for (int c = 0; c < Partie.INSTANCE.Carte.Taille; c++)
                 {
                     if (r != row || c != column)
                     {
-                        List<IUnite> unitesCase = partie.selectionneUnites(new Coordonnees(c, r));
+                        List<IUnite> unitesCase = Partie.INSTANCE.selectionneUnites(new Coordonnees(c, r));
                         Rectangle element = null;
-                        element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * partie.Carte.Taille + c), unit.Joueur == partie.JoueurActif);
+                        element = createMovementSuggestionRectangle(c, r, (ETypeMouvement)suggestionMap.ElementAt(r * Partie.INSTANCE.Carte.Taille + c), unit.Joueur == Partie.INSTANCE.JoueurActif);
                         movementGrid.Children.Add(element);
                     }
                 }
@@ -350,7 +352,7 @@ namespace wpf
 
             clearInfoGrid();
 
-            updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
+            updateUnitGrid(Partie.INSTANCE.selectionneUnites(new Coordonnees(column, row)));
 
             // on arrête la propagation d'evt : sinon l'evt va jusqu'à la fenetre => affichage via "Window_MouseLeftButtonDown"
             e.Handled = true;
@@ -407,7 +409,7 @@ namespace wpf
             if (unit.peutBouger())
                 updateSuggestionGrid(unit, column, row);
 
-            updateUnitGrid(partie.selectionneUnites(new Coordonnees(column, row)));
+            updateUnitGrid(Partie.INSTANCE.selectionneUnites(new Coordonnees(column, row)));
             updateInfoGrid(unit);
 
             unit_MouseLeftButtonDown(sender, e);
@@ -421,8 +423,8 @@ namespace wpf
 
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
-            
-            List<IUnite> unites = partie.selectionneUnites(new Coordonnees(column, row));
+
+            List<IUnite> unites = Partie.INSTANCE.selectionneUnites(new Coordonnees(column, row));
             if (unites == null || unites.Count == 0)
             {
                 tile_MouseLeftButtonDown(sender, e);
@@ -447,12 +449,12 @@ namespace wpf
             {
                 Coordonnees c = new Coordonnees(column, row);
                 if (type == ETypeMouvement.NUL || type == ETypeMouvement.NORMALE || type == ETypeMouvement.SUPER)
-                    partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+                    Partie.INSTANCE.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
                 else if (type == ETypeMouvement.ENNEMI_NUL || type == ETypeMouvement.ENNEMI_NORMALE || type == ETypeMouvement.ENNEMI_SUPER)
                 {
-                    bool mortDefenseur = partie.attaque(uniteSelectionnee, partie.selectionneUniteDefensive(c));
-                    if (mortDefenseur && partie.selectionneUnites(c) == null)
-                        partie.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+                    bool mortDefenseur = Partie.INSTANCE.attaque(uniteSelectionnee, Partie.INSTANCE.selectionneUniteDefensive(c));
+                    if (mortDefenseur && Partie.INSTANCE.selectionneUnites(c) == null)
+                        Partie.INSTANCE.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
                     uniteSelectionnee.diminuePointsDeMouvement(uniteSelectionnee.PointsDeMouvement);
                 }
 
@@ -467,14 +469,14 @@ namespace wpf
 
         void endTurn_ButtonClick(object sender, RoutedEventArgs e)
         {
-            partie.finTour();
+            Partie.INSTANCE.finTour();
 
-            if (!partie.terminee())
+            if (!Partie.INSTANCE.terminee())
             {
-                pointsJ1.Content = partie.PointsJoueur1;
-                pointsJ2.Content = partie.PointsJoueur2;
+                pointsJ1.Content = Partie.INSTANCE.PointsJoueur1;
+                pointsJ2.Content = Partie.INSTANCE.PointsJoueur2;
 
-                if (partie.JoueurActif == partie.Joueur1)
+                if (Partie.INSTANCE.JoueurActif == Partie.INSTANCE.Joueur1)
                 {
                     pointsJ1.Background = Brushes.DarkCyan;
                     pointsJ2.Background = Brushes.Black;
@@ -485,7 +487,7 @@ namespace wpf
                     pointsJ2.Background = Brushes.DarkCyan;
                 }
 
-                tours.Content = partie.NbTours + "/" + partie.NbToursMax;
+                tours.Content = Partie.INSTANCE.NbTours + "/" + Partie.INSTANCE.NbToursMax;
 
                 updateUnitMapGrid();
                 movementGrid.Children.Clear();
@@ -494,15 +496,15 @@ namespace wpf
             }
             else
             {
-                pointsJ1.Content = partie.PointsJoueur1;
-                pointsJ2.Content = partie.PointsJoueur2;
+                pointsJ1.Content = Partie.INSTANCE.PointsJoueur1;
+                pointsJ2.Content = Partie.INSTANCE.PointsJoueur2;
 
-                if (partie.PointsJoueur1 > partie.PointsJoueur2)
+                if (Partie.INSTANCE.PointsJoueur1 > Partie.INSTANCE.PointsJoueur2)
                 {
                     pointsJ1.Background = Brushes.DarkGoldenrod;
                     pointsJ2.Background = Brushes.Black;
                 }
-                else if (partie.PointsJoueur1 < partie.PointsJoueur2)
+                else if (Partie.INSTANCE.PointsJoueur1 < Partie.INSTANCE.PointsJoueur2)
                 {
                     pointsJ1.Background = Brushes.Black;
                     pointsJ2.Background = Brushes.DarkGoldenrod;
