@@ -6,36 +6,34 @@
              xmlns:local="clr-namespace:wpf" x:Class="wpf.Accueil" 
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024" >
-    
     <UserControl.Background>
-        <ImageBrush ImageSource="Resources/background.png" ></ImageBrush>
+        <ImageBrush ImageSource="Resources/background.png"></ImageBrush>
     </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
+            <RowDefinition Height="150" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <TextBlock FontWeight="Bold" FontSize="14" TextAlignment="Center">SmallWorld</TextBlock>
+        <Grid Grid.RowSpan="2">
+            <TextBlock FontSize="150" FontWeight="Bold" Margin="0,50,0,0" FontFamily="/Fonts/#Turtles" TextAlignment="Center" RenderTransformOrigin="0.445,0.395"><Run Text="Small"/><Run Text="World"/></TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <StackPanel>
+        <Grid Grid.Row="2">
+            <StackPanel Margin="0,64,0,-64">
                 <StackPanel>
-                    <Button Content="Jouer" Click="nouvellePartie" Margin="20" Width="150"/>
+                    <Button FontFamily="/Fonts/#Turtles" FontSize="40" FontWeight="Light" Content="Jouer" Click="nouvellePartie" Margin="20" Width="250" Height="70"/>
                 </StackPanel>
-                
+                <StackPanel>
+                    <Button FontFamily="/Fonts/#Turtles" FontSize="40" FontWeight="Light" Content="Charger" Click="chargePartie" Margin="20" Width="250" Height="70"/>
+                </StackPanel>
                 <!--
                 <StackPanel>
-                    <Button Content="Charger" Click="chargePartie" Margin="20" Width="150"/>
+                    <Button FontFamily="/Fonts/#Turtles" FontSize="40" FontWeight="Light" Content="A propos" Click="aPropos" Margin="20" Width="250" Height="70"/>
                 </StackPanel>
-                <StackPanel>
-                    <Button Content="A propos" Click="aPropos" Margin="20" Width="150"/>
-                </StackPanel>
-                <Button Content="Quitter" Click="quitterJeu" Margin="20" Width="150"/>
-                
-                 -->
+                -->
+                <Button FontFamily="/Fonts/#Turtles" FontSize="40" FontWeight="Light" Content="Quitter" Click="quitterJeu" Margin="20" Width="250" Height="70"/>
             </StackPanel>
         </Grid>
     </Grid>

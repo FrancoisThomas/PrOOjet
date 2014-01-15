@@ -11,13 +11,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using PrOOjet;
 
 namespace wpf
 {
     /// <summary>
     /// Logique d'interaction pour Accueil.xaml
     /// </summary>
-    public partial class Accueil : UserControl
+    public partial class Accueil : System.Windows.Controls.UserControl
     {
         private Smallworld mainWindow;
 
@@ -38,6 +40,33 @@ namespace wpf
         {
             Visibility = Visibility.Collapsed;
             mainWindow.EcranLancement.Visibility = Visibility.Visible;
+        }
+
+        public void chargePartie(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog finder = new OpenFileDialog();
+            finder.Filter = "Fichier smallworld(*.sw)|*.sw";
+            if (finder.ShowDialog() == DialogResult.OK)
+            {
+                Console.WriteLine("Chargement");
+                Partie.charger(finder.FileName);
+                Console.WriteLine(Partie.INSTANCE.Joueur1.Nom);
+                mainWindow.EcranCarte.initialiseIHM();
+                Visibility = Visibility.Collapsed;
+                mainWindow.EcranCarte.Visibility = Visibility.Visible;
+            }
+        }
+
+        /*
+        public void aPropos(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+        */
+
+        public void quitterJeu(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

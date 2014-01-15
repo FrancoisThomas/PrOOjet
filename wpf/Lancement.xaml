@@ -25,7 +25,7 @@
         <Grid Grid.Row="0">
             <Image Source="Resources/parcheminFond.gif" Height="690" Margin="38,10,38,-600" VerticalAlignment="Top"/>
 
-            <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" Margin="0,47,0,0"><Run Text="Nouvelle Partie"/></TextBlock>
+            <TextBlock FontFamily="/Fonts/#Turtles" VerticalAlignment="Center" FontWeight="Bold" FontSize="60" TextAlignment="Center" Margin="0,40,0,-19"><Run Text="Nouvelle Partie"/></TextBlock>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -38,14 +38,14 @@
             </Grid.ColumnDefinitions>
 
             
-            <Viewbox Margin="0" Height="30" Grid.Column="1">
-                <RadioButton GroupName="tailleCarte" Content="Démo" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratDemo" IsChecked="True"/>
+            <Viewbox Margin="0,25,0,0" Height="30" Grid.Column="1">
+                <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" GroupName="tailleCarte" Content="Démo" Margin="10,0,0,0" Checked="setStratDemo" IsChecked="True"/>
             </Viewbox>
-            <Viewbox Margin="0" Height="30" Grid.Column="2" Grid.Row="1">
-                <RadioButton GroupName="tailleCarte" Content="Petite" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratPetite"/>
+            <Viewbox Margin="0,25,0,0" Height="30" Grid.Column="2" Grid.Row="1">
+                <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" GroupName="tailleCarte" Content="Petite" Margin="10,0,0,0" Checked="setStratPetite"/>
             </Viewbox>
-            <Viewbox Margin="0" Height="30" Grid.Column="3" Grid.Row="1">
-                <RadioButton GroupName="tailleCarte" Content="Normale" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratNormale"/>
+            <Viewbox Margin="0,25,0,0" Height="30" Grid.Column="3" Grid.Row="1">
+                <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" GroupName="tailleCarte" Content="Normale" Margin="10,0,0,0" Checked="setStratNormale"/>
             </Viewbox>
         </Grid>
 
@@ -56,17 +56,17 @@
                 <ColumnDefinition Width="450"/>
             </Grid.ColumnDefinitions>
             <Viewbox Margin="0,10,0,40" Height="30" Grid.Column="0">
-                <TextBlock VerticalAlignment="Top" FontWeight="Bold" FontSize="40" TextAlignment="Center" >Joueur 1</TextBlock>
+                <TextBlock FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" VerticalAlignment="Top" FontSize="40" TextAlignment="Center" >Joueur 1</TextBlock>
             </Viewbox>
             <Viewbox Margin="-6,50,6,0" Height="30" Grid.Column="0">
-                <TextBox FontSize="25" Width="223"  Height="50" Name="nomJoueur1" VerticalAlignment="Bottom" />
+                <TextBox FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" FontSize="25" Width="223" Height="50" Name="nomJoueur1" VerticalAlignment="Bottom" />
             </Viewbox>
 
             <Viewbox Margin="0,10,0,40" Height="30" Grid.Column="2">
-                <TextBlock VerticalAlignment="Top" FontWeight="Bold" FontSize="40" TextAlignment="Center" >Joueur 2</TextBlock>
+                <TextBlock FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" VerticalAlignment="Top" FontSize="40" TextAlignment="Center" >Joueur 2</TextBlock>
             </Viewbox>
             <Viewbox Margin="-6,50,6,0" Height="30" Grid.Column="2">
-                <TextBox FontSize="25" Width="223"  Height="50" Name="nomJoueur2" VerticalAlignment="Bottom" />
+                <TextBox FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" FontSize="25" Width="223"  Height="50" Name="nomJoueur2" VerticalAlignment="Bottom" />
             </Viewbox>
 
 
@@ -81,12 +81,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Humain1" GroupName="peupleJoueur1" Click="setHumain1" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Humain1" GroupName="peupleJoueur1" Click="setHumain1" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Humain2" GroupName="peupleJoueur2" Click="setHumain2" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Humain2" GroupName="peupleJoueur2" Click="setHumain2" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -101,12 +101,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Nain1" GroupName="peupleJoueur1" Click="setNain1" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Nain1" GroupName="peupleJoueur1" Click="setNain1" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Nain2" GroupName="peupleJoueur2" Click="setNain2" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Nain2" GroupName="peupleJoueur2" Click="setNain2" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -121,12 +121,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Triton1" GroupName="peupleJoueur1" Click="setTriton1" Content="Triton" VerticalAlignment="Stretch" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Triton1" GroupName="peupleJoueur1" Click="setTriton1" Content="Triton" VerticalAlignment="Stretch" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Triton2" GroupName="peupleJoueur2" Click="setTriton2" Content="Triton" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Triton2" GroupName="peupleJoueur2" Click="setTriton2" Content="Triton" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -140,12 +140,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Aleatoire1" GroupName="peupleJoueur1" Click="aleatoire1" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Aleatoire1" GroupName="peupleJoueur1" Click="aleatoire1" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton Name="Aleatoire2" GroupName="peupleJoueur2" Click="aleatoire2" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
+                    <RadioButton FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" Name="Aleatoire2" GroupName="peupleJoueur2" Click="aleatoire2" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -157,7 +157,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
-            <Button Click="jouer" HorizontalAlignment="Center" Content="Jouer" FontSize="25" Width="200" Height="100" VerticalAlignment="Center" Margin="62,290,62,65" Grid.Column="1"/>
+            <Button FontFamily="/Fonts/#Turtles" FontWeight="ExtraLight" FontSize="40" Click="jouer" HorizontalAlignment="Center" Content="Jouer" Width="200" Height="100" VerticalAlignment="Center" Margin="62,290,62,65" Grid.Column="1"/>
         </Grid>
 
         <Image x:Name="imagePeuple1" Grid.Column="0" HorizontalAlignment="Right" Height="179" Grid.Row="7" VerticalAlignment="Top" Width="179" Margin="0,0,644,0" Source="Resources/aleatoire.gif"/>
