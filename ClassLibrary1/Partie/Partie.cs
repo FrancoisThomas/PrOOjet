@@ -42,7 +42,7 @@ namespace PrOOjet
 
         
         /// <summary> Joueur en attente. </summary>
-        private IJoueur joueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
+        public IJoueur JoueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
 
         private Partie() {}
 
@@ -114,14 +114,14 @@ namespace PrOOjet
             List<IUnite> unites = joueurActif.recupereUnites(coord);
 
             if (unites == null)
-                unites = joueurNonActif.recupereUnites(coord);
+                unites = JoueurNonActif.recupereUnites(coord);
 
             return unites;
         }
 
         public IUnite selectionneUniteDefensive(Coordonnees coord)
         {
-            List<IUnite> unites = joueurNonActif.recupereUnites(coord);
+            List<IUnite> unites = JoueurNonActif.recupereUnites(coord);
             IUnite res = null;
             if (unites != null)
             {
@@ -172,7 +172,7 @@ namespace PrOOjet
 	        }
 
             Dictionary<int, int> ennemis = new Dictionary<int,int>();
-            IJoueur j = unite.Joueur == joueurActif ? joueurNonActif : joueurActif;
+            IJoueur j = unite.Joueur == joueurActif ? JoueurNonActif : joueurActif;
 
             for (int i = 0; i < j.Unites.Count; i++)
 			{
@@ -232,12 +232,12 @@ namespace PrOOjet
             if (wrap.getVieDefenseur() > 0)
             {
                 defenseur.PointsDeVie = wrap.getVieDefenseur();
-                joueurNonActif.placeUniteEnFin(defenseur);
+                JoueurNonActif.placeUniteEnFin(defenseur);
             }
             else
             {
                 Console.WriteLine(defenseur);
-                joueurNonActif.supprimeUnite(defenseur);
+                JoueurNonActif.supprimeUnite(defenseur);
                 return true;
             }
             return false;
@@ -262,7 +262,7 @@ namespace PrOOjet
             }
 
             ajoutPoints(joueurActif);
-            joueurActif = joueurNonActif;
+            joueurActif = JoueurNonActif;
         }
 
         public bool terminee()

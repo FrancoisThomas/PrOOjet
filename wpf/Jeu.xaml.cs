@@ -461,6 +461,12 @@ namespace wpf
                     bool mortDefenseur = Partie.INSTANCE.attaque(uniteSelectionnee, Partie.INSTANCE.selectionneUniteDefensive(c));
                     if (mortDefenseur && Partie.INSTANCE.selectionneUnites(c) == null)
                         Partie.INSTANCE.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+
+                    if (Partie.INSTANCE.JoueurActif.Unites.Count == 0)
+                        Console.WriteLine("The End 1");
+                    if (Partie.INSTANCE.JoueurNonActif.Unites.Count == 0)
+                        Console.WriteLine("The End 2");
+
                     uniteSelectionnee.diminuePointsDeMouvement(uniteSelectionnee.PointsDeMouvement);
                 }
 

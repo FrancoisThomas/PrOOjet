@@ -15,8 +15,6 @@ namespace PrOOjet
         private IPeuple peuple;
         private Dictionary<Coordonnees, List<IUnite>> unites;
 
-        public Joueur() { }
-
 		/// <summary>
 		/// Constructeur.
 		/// </summary>
@@ -112,6 +110,9 @@ namespace PrOOjet
             if (unitesCoord.Contains(unite))
             {
                 unitesCoord.Remove(unite);
+                if (unitesCoord.Count == 0)
+                    unites.Remove(ancienneCoord);
+
                 if (unites.TryGetValue(nouvelleCoord, out unitesCoord))
                     unitesCoord.Add(unite);
                 else
@@ -140,8 +141,8 @@ namespace PrOOjet
                     l.Remove(unite);
                     if (l.Count == 0)
                     {
-                        Console.WriteLine("supprimeListeUnite");
                         unites.Remove(c);
+                        Console.WriteLine("supprimeListeUnite : " + unites.Count);
                     }
                     break;
                 }
