@@ -44,14 +44,11 @@
                 <Image Source="Resources/movement.png" Grid.Row="0" Grid.Column="1" Opacity="1"/>
                 <Label Name="movementLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
             </Grid>
-            <Button HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick">
-                <StackPanel>
-                    <TextBlock>Fin du tour</TextBlock>
-                    <Image Source="Resources/eau.png" Stretch="Fill"/>
-                </StackPanel>
-            </Button>
-
-            <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300" Click="save_ButtonClick"/>
+            
+            <StackPanel>
+                <Button Content="Fin du tour" HorizontalAlignment="Left" Height="30" Margin="51,580,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick"/>
+                <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="30" Margin="51,20,0,0" VerticalAlignment="Top" Width="300" Click="save_ButtonClick"/>
+            </StackPanel>
         </Grid>
 
         <StackPanel>

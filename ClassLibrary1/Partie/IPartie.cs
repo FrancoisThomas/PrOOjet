@@ -53,5 +53,7 @@ namespace PrOOjet
         void ajoutPoints(IJoueur j);
 
         bool terminee();
+
+        void sauvegarder(string nomFichier);
     }
 }

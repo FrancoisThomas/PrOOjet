@@ -9,6 +9,7 @@ namespace PrOOjet
 	/// Classe représentant le peuple viking. Sert de fabrique à <c>UnitesViking</c>.
 	/// </summary>
 	/// <seealso cref="UniteViking"/>
+    [Serializable]
     public class Viking : Peuple, IPeupleViking
     {
         private static IPeupleViking instance;
@@ -33,6 +34,11 @@ namespace PrOOjet
         public override IUnite creeUnite(IJoueur joueur)
         {
             return new UniteViking(joueur);
+        }
+
+        public override string ToString()
+        {
+            return "Viking";
         }
 
     }

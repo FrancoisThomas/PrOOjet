@@ -8,8 +8,11 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant une unité naine.
 	/// </summary>
+    [Serializable]
     public class UniteNain : Unite, IUniteNain
     {
+        public UniteNain() {}
+
     	/// <summary>
     	/// Constructeur.
     	/// </summary>

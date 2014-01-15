@@ -8,11 +8,14 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant un joueur.
 	/// </summary>
+    [Serializable]
     public class Joueur : PrOOjet.IJoueur
     {
         private string nom;
         private IPeuple peuple;
         private Dictionary<Coordonnees, List<IUnite>> unites;
+
+        public Joueur() { }
 
 		/// <summary>
 		/// Constructeur.

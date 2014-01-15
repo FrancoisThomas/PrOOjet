@@ -8,8 +8,11 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant une unité viking.
 	/// </summary>
+    [Serializable]
     public class UniteViking : Unite, IUniteViking
     {
+        public UniteViking() {}
+
     	/// <summary>
     	/// Constructeur.
     	/// </summary>

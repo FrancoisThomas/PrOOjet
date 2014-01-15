@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace PrOOjet
 {
@@ -9,6 +10,7 @@ namespace PrOOjet
 	/// Classe représentant un peuple. Sert de fabrique à <c>IUnite</c>.
 	/// </summary>
 	/// <seealso cref="IUnite"/>
+    [Serializable]
     public abstract class Peuple : PrOOjet.IPeuple
     {
         public Peuple() {}

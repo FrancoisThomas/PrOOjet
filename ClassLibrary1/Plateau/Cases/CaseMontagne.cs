@@ -8,6 +8,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant une case de montagne.
 	/// </summary>
+    [Serializable]
     public class CaseMontagne : Case, ICaseMontagne
     {
     }

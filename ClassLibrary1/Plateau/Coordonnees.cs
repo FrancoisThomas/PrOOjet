@@ -8,6 +8,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant des coordonnées en deux dimensions.
 	/// </summary>
+    [Serializable]
     public class Coordonnees
     {
     	/// <summary> Abscisse. </summary>

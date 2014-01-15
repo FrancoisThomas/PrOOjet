@@ -9,10 +9,12 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant la carte. Contient la liste des cases de la carte.
 	/// </summary>
+    [Serializable]
     public class Carte : ICarte
     {
         private int taille;
         private List<ICase> cases;
+        [NonSerialized]
         private IFabriqueCase fabriqueCase;
 
 		/// <summary>
