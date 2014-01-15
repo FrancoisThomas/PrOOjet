@@ -29,8 +29,8 @@ namespace tests
             IStrategieTaille strat = new StrategieNormale();
 
             partie.Carte = strat.construitCarte();
-            partie.Joueur1 = new Joueur(Gaulois.INSTANCE, 0, "j1");
-            partie.Joueur2 = new Joueur(Viking.INSTANCE, 2, "j2");
+            partie.Joueur1 = new Joueur(Gaulois.INSTANCE, "j1");
+            partie.Joueur2 = new Joueur(Viking.INSTANCE, "j2");
 
             Console.WriteLine(partie.Carte);
             Assert.IsNotNull(partie.Carte);
@@ -49,8 +49,8 @@ namespace tests
             IStrategieTaille strat = new StrategieNormale();
 
             partie.Carte = strat.construitCarte();
-            partie.Joueur1 = new Joueur(Gaulois.INSTANCE, 0, "j1");
-            partie.Joueur2 = new Joueur(Viking.INSTANCE, 2, "j2");
+            partie.Joueur1 = new Joueur(Gaulois.INSTANCE, "j1");
+            partie.Joueur2 = new Joueur(Viking.INSTANCE, "j2");
 
             for (int i = 0; i < 2; i++)
             {
