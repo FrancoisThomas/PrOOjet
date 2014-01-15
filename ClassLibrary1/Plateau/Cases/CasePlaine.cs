@@ -8,6 +8,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant une case de plaine.
 	/// </summary>
+    [Serializable]
     public class CasePlaine : Case, ICasePlaine
     {
     }

@@ -8,6 +8,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe abstraite représentant une case.
 	/// </summary>
+    [Serializable]
     public abstract class Case : ICase
     {
     	//TODO Propriété Image ?

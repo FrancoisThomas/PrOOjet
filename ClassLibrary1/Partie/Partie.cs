@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using wrapper;
 
 namespace PrOOjet
@@ -9,6 +11,7 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant la partie. Gère le jeu.
 	/// </summary>
+    [Serializable]
     public class Partie : IPartie
     {
         private static IPartie instance;
@@ -39,15 +42,9 @@ namespace PrOOjet
 
         
         /// <summary> Joueur en attente. </summary>
-        private IJoueur joueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
+        public IJoueur JoueurNonActif { get { return joueurActif == joueur1 ? joueur2 : joueur1; } }
 
-        private Partie()
-        {
-            // TODO
-            //carte = new Carte(8);
-        }
-
-        //public ICarte getCarte() { return carte; } //TODO supprimer
+        private Partie() {}
 
         public static IPartie INSTANCE
         {
@@ -117,14 +114,14 @@ namespace PrOOjet
             List<IUnite> unites = joueurActif.recupereUnites(coord);
 
             if (unites == null)
-                unites = joueurNonActif.recupereUnites(coord);
+                unites = JoueurNonActif.recupereUnites(coord);
 
             return unites;
         }
 
         public IUnite selectionneUniteDefensive(Coordonnees coord)
         {
-            List<IUnite> unites = joueurNonActif.recupereUnites(coord);
+            List<IUnite> unites = JoueurNonActif.recupereUnites(coord);
             IUnite res = null;
             if (unites != null)
             {
@@ -175,7 +172,7 @@ namespace PrOOjet
 	        }
 
             Dictionary<int, int> ennemis = new Dictionary<int,int>();
-            IJoueur j = unite.Joueur == joueurActif ? joueurNonActif : joueurActif;
+            IJoueur j = unite.Joueur == joueurActif ? JoueurNonActif : joueurActif;
 
             for (int i = 0; i < j.Unites.Count; i++)
 			{
@@ -235,12 +232,12 @@ namespace PrOOjet
             if (wrap.getVieDefenseur() > 0)
             {
                 defenseur.PointsDeVie = wrap.getVieDefenseur();
-                joueurNonActif.placeUniteEnFin(defenseur);
+                JoueurNonActif.placeUniteEnFin(defenseur);
             }
             else
             {
                 Console.WriteLine(defenseur);
-                joueurNonActif.supprimeUnite(defenseur);
+                JoueurNonActif.supprimeUnite(defenseur);
                 return true;
             }
             return false;
@@ -265,7 +262,7 @@ namespace PrOOjet
             }
 
             ajoutPoints(joueurActif);
-            joueurActif = joueurNonActif;
+            joueurActif = JoueurNonActif;
         }
 
         public bool terminee()
@@ -276,7 +273,7 @@ namespace PrOOjet
         public void ajoutPoints(IJoueur j)
         {
             WrapperCarte wrap = new WrapperCarte();
-            
+
             List<int> carteInt = new List<int>();
             foreach (ICase c in carte.Cases)
             {
@@ -292,20 +289,20 @@ namespace PrOOjet
                     carteInt.Add((int)ECase.PLAINE);
             }
 
-	        Dictionary<int, int> unites = new Dictionary<int,int>();
+            Dictionary<int, int> unites = new Dictionary<int, int>();
 
             for (int i = 0; i < j.Unites.Count; i++)
-			{
-			    Coordonnees c = j.Unites.Keys.ElementAt(i);
+            {
+                Coordonnees c = j.Unites.Keys.ElementAt(i);
                 unites.Add(c.posX + c.posY * carte.Taille, j.Unites.Values.ElementAt(i).Count);
-			}
+            }
 
 
             if (j.Peuple is IPeupleGaulois)
             {
                 if (j == joueur1)
                     pointsJoueur1 += wrap.pointsTourGaulois(carteInt, carte.Taille, unites);
-                else 
+                else
                     PointsJoueur2 += wrap.pointsTourGaulois(carteInt, carte.Taille, unites);
             }
             if (j.Peuple is IPeupleNain)
@@ -321,6 +318,55 @@ namespace PrOOjet
                     pointsJoueur1 += wrap.pointsTourViking(carteInt, carte.Taille, unites);
                 else
                     PointsJoueur2 += wrap.pointsTourViking(carteInt, carte.Taille, unites);
+            }
+        }
+
+        public void sauvegarder(string nomFichier)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            FileStream flux = null;
+            try
+            {
+                //On ouvre le flux en mode création / écrasement de fichier et on
+                //donne au flux le droit en écriture seulement.
+                flux = new FileStream(nomFichier, FileMode.Create, FileAccess.Write);
+                //Et hop ! On sérialise !
+                formatter.Serialize(flux, this);
+                //On s'assure que le tout soit écrit dans le fichier.
+                flux.Flush();
+                Console.WriteLine("sauvegarde réussie.");
+            }
+            catch (Exception e)
+            { Console.WriteLine(e.Message); }
+            finally
+            {
+                //Et on ferme le flux.
+                if (flux != null)
+                    flux.Close();
+            }
+        }
+
+        public static void charger(string nomFichier)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream flux = null;
+            
+            try
+            {
+                //On ouvre le fichier en mode lecture seule. De plus, puisqu'on a sélectionné le mode Open,
+                //si le fichier n'existe pas, une exception sera levée.
+                flux = new FileStream(nomFichier, FileMode.Open, FileAccess.Read);
+                instance = (Partie)formatter.Deserialize(flux);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (flux != null)
+                    flux.Close();
             }
         }
     }

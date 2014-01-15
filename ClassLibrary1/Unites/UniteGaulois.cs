@@ -8,8 +8,11 @@ namespace PrOOjet
 	/// <summary>
 	/// Classe représentant une unité gauloise.
 	/// </summary>
+    [Serializable]
     public class UniteGaulois : Unite, IUniteGaulois
     {
+        public UniteGaulois() {}
+
     	/// <summary>
     	/// Constructeur.
     	/// </summary>

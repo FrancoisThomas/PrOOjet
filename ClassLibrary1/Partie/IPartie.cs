@@ -13,6 +13,7 @@ namespace PrOOjet
         IJoueur Joueur1 { get; set; }
         IJoueur Joueur2 { get; set; }
         IJoueur JoueurActif { get; set; }
+        IJoueur JoueurNonActif { get; }
         ICarte Carte { get; set; }
         int NbToursMax{ get; set; }
         int NbTours { get; set; }
@@ -53,5 +54,7 @@ namespace PrOOjet
         void ajoutPoints(IJoueur j);
 
         bool terminee();
+
+        void sauvegarder(string nomFichier);
     }
 }

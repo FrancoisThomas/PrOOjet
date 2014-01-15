@@ -9,6 +9,7 @@ namespace PrOOjet
 	/// Classe représentant le peuple nain. Sert de fabrique à <c>UnitesNain</c>.
 	/// </summary>
 	/// <seealso cref="UniteNain"/>
+    [Serializable]
     public class Nain : Peuple, IPeupleNain
     {
         private static IPeupleNain instance;
@@ -33,6 +34,11 @@ namespace PrOOjet
         public override IUnite creeUnite(IJoueur joueur)
         {
             return new UniteNain(joueur);
+        }
+
+        public override string ToString()
+        {
+            return "Nain";
         }
     }
 }

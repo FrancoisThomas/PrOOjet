@@ -9,6 +9,7 @@ namespace PrOOjet
 	/// Classe représentant le peuple gaulois. Sert de fabrique à <c>UnitesGaulois</c>.
 	/// </summary>
 	/// <seealso cref="UniteGaulois"/>
+    [Serializable]
     public class Gaulois : Peuple, IPeupleGaulois
     {
         private static IPeupleGaulois instance;
@@ -33,6 +34,11 @@ namespace PrOOjet
         public override IUnite creeUnite(IJoueur joueur)
         {
             return new UniteGaulois(joueur);
+        }
+
+        public override string ToString()
+        {
+            return "Gaulois";
         }
     }
 }

@@ -21,7 +21,7 @@ namespace tests
         {
             IStrategieTaille strat = new StrategieNormale();
 
-            IPartie partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, strat);
+            IPartie partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, "j1", "j2" ,strat);
         }
     }
 }

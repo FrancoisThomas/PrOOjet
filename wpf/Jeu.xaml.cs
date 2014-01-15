@@ -99,6 +99,10 @@ namespace wpf
 
         private void initialiseUnitGrid()
         {
+            unitGrid.ColumnDefinitions.Clear();
+            unitGrid.RowDefinitions.Clear();
+            unitGrid.Children.Clear();
+
             for (int c = 0; c < 4; c++)
             {
                 unitGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(95, GridUnitType.Pixel) });
@@ -141,8 +145,8 @@ namespace wpf
             nameJ1.Content = Partie.INSTANCE.Joueur1.Nom;
             nameJ2.Content = Partie.INSTANCE.Joueur2.Nom;
             pointsJ1.Background = Brushes.DarkCyan;
-            pointsJ1.Content = 0;
-            pointsJ2.Content = 0;
+            pointsJ1.Content = Partie.INSTANCE.PointsJoueur1;
+            pointsJ2.Content = Partie.INSTANCE.PointsJoueur2;
 
             tours.Content = Partie.INSTANCE.NbTours + "/" + Partie.INSTANCE.NbToursMax;
         }
@@ -457,6 +461,12 @@ namespace wpf
                     bool mortDefenseur = Partie.INSTANCE.attaque(uniteSelectionnee, Partie.INSTANCE.selectionneUniteDefensive(c));
                     if (mortDefenseur && Partie.INSTANCE.selectionneUnites(c) == null)
                         Partie.INSTANCE.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
+
+                    if (Partie.INSTANCE.JoueurActif.Unites.Count == 0)
+                        Console.WriteLine("The End 1");
+                    if (Partie.INSTANCE.JoueurNonActif.Unites.Count == 0)
+                        Console.WriteLine("The End 2");
+
                     uniteSelectionnee.diminuePointsDeMouvement(uniteSelectionnee.PointsDeMouvement);
                 }
 
@@ -521,15 +531,29 @@ namespace wpf
             }
         }
 
+
         void save_ButtonClick(object sender, EventArgs e)
         {
-            /*SaveFileDialog boiteSauvegarde = new SaveFileDialog();
-            boiteSauvegarde.Filter = "Fichier xml(*.xml)|*.xml";
+            SaveFileDialog boiteSauvegarde = new SaveFileDialog();
+            boiteSauvegarde.Filter = "Fichier smallworld(*.sw)|*.sw";
             if (boiteSauvegarde.ShowDialog() == DialogResult.OK)
             {
-                Sauvegarde save = new Sauvegarde();
-                save.sauvegarder(boiteSauvegarde.FileName);
-            }*/
+                Partie.INSTANCE.sauvegarder(boiteSauvegarde.FileName);
+            }
+        }
+
+        void load_ButtonClick(object sender, EventArgs e)
+        {
+            //partie = Partie.charger
+            OpenFileDialog finder = new OpenFileDialog();
+            finder.Filter = "Fichier smallworld(*.sw)|*.sw";
+            if (finder.ShowDialog() == DialogResult.OK)
+            {
+                Console.WriteLine("Chargement");
+                Partie.charger(finder.FileName);
+                Console.WriteLine(Partie.INSTANCE.Joueur1.Nom);
+                initialiseIHM();
+            }
         }
 
 

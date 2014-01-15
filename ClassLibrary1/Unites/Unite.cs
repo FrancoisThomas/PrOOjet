@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace PrOOjet
 {
     /// <summary>
     /// Classe représentant une unité.
     /// </summary>
+    [Serializable]
     public abstract class Unite : PrOOjet.IUnite
     {
         /// <value> Points de vie maximum. </value>
@@ -22,7 +24,10 @@ namespace PrOOjet
         protected int pointsDeVie;
         protected int pointsDeMouvement;
 
+        [XmlIgnore]
         protected IJoueur joueur;
+
+        public Unite() {}
 
         protected Unite(IJoueur j)
         {
