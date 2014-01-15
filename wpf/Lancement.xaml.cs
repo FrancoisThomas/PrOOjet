@@ -40,5 +40,10 @@ namespace wpf
 
 
         }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

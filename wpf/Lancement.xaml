@@ -13,23 +13,121 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontWeight="Bold" FontSize="14" TextAlignment="Center">Nouvelle Partie</TextBlock>
+            <Image Source="Resources/parchemin.jpg" Height="746" Margin="38,10,38,-656" VerticalAlignment="Top"/>
+
+            <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" Margin="0,47,0,0"><Run Text="Nouvelle Partie"/></TextBlock>
         </Grid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition Width="108"/>
-                
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="208"/>
+                <ColumnDefinition Width="208"/>
+                <ColumnDefinition Width="208"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <Viewbox Margin="0" Height="30">
-                <RadioButton/>
+
+            
+            <Viewbox Margin="0" Height="30" Grid.Column="1">
+                <RadioButton GroupName="tailleCarte" Content="Démo" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+            </Viewbox>
+            <Viewbox Margin="0" Height="30" Grid.Column="2" Grid.Row="1">
+                <RadioButton GroupName="tailleCarte" Content="Petite" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+            </Viewbox>
+            <Viewbox Margin="0" Height="30" Grid.Column="3" Grid.Row="1">
+                <RadioButton GroupName="tailleCarte" Content="Normale" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
             </Viewbox>
         </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Margin="0" Height="30" Grid.Column="0">
+                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" ><Run Text="Joueur 1"/></TextBlock>
+            </Viewbox>
+            <Viewbox Margin="0" Height="30" Grid.Column="0">
+                <TextBox Width="200"  Height="50" Name="LoginTextBox" VerticalAlignment="Top" />
+            </Viewbox>
+
+
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur1" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur2" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur1" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur2" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur1" Content="Triton" VerticalAlignment="Stretch" Width="70"/>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton GroupName="peupleJoueur2" Content="Triton" VerticalAlignment="Bottom" Width="70"/>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="6">
+            <Button Content="Jouer" FontSize="25" Width="200" Height="60" Margin="412,33,412,105"/>
+        </Grid>
+
     </Grid>
 </UserControl>
     
