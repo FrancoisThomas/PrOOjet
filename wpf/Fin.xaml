@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpf" x:Class="wpf.Fin" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024" >
+
+    <UserControl.Background>
+        <ImageBrush ImageSource="Resources/background.png" ></ImageBrush>
+    </UserControl.Background>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="175"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.ColumnSpan="5">
+            <Image Source="Resources/parcheminFond.gif" Height="690" Margin="38,10,38,-600" VerticalAlignment="Top"/>
+            <TextBlock Name="resultLabel" VerticalAlignment="Center" FontWeight="Bold" FontSize="100" TextAlignment="Center" Margin="0,47,0,0" Text="Victoire !"/>
+        </Grid>
+
+
+        <TextBlock Name="winnerNameLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="80" TextAlignment="Center" Margin="0,0,0,20"/>
+
+        <TextBlock Name="nameJ1Label" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <TextBlock Name="nameJ2Label" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+
+        <Image x:Name="imagePeuple1" Grid.Column="1" HorizontalAlignment="Center" Height="179" Grid.Row="3" VerticalAlignment="Center" Width="179"/>
+        <Image Grid.Column="2" HorizontalAlignment="Center" Height="100" Grid.Row="3" VerticalAlignment="Center" Width="100" Source="Resources/fight.gif"/>
+        <Image x:Name="imagePeuple2" Grid.Column="3" HorizontalAlignment="Center" Height="179" Grid.Row="3" VerticalAlignment="Center" Width="179"/>
+
+        <TextBlock Name="pointsJ1Label" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <TextBlock Name="pointsJ2Label" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+
+    </Grid>
+    
+</UserControl>
+    

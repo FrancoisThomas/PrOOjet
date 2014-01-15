@@ -39,9 +39,9 @@ namespace wpf
             InitializeComponent();
         }
 
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void ajoutReference(Smallworld main)
         {
+            mainWindow = main;
         }
 
         public void initialiseIHM()
@@ -527,7 +527,9 @@ namespace wpf
                     pointsJ2.Background = Brushes.DarkKhaki;
                 }
 
-                //TODO mainWindow.finPartie();
+                Visibility = Visibility.Collapsed;
+                mainWindow.EcranFin.initialise();
+                mainWindow.EcranFin.Visibility = Visibility.Visible;
             }
         }
 
@@ -535,7 +537,7 @@ namespace wpf
         void save_ButtonClick(object sender, EventArgs e)
         {
             SaveFileDialog boiteSauvegarde = new SaveFileDialog();
-            boiteSauvegarde.Filter = "Fichier smallworld(*.sw)|*.sw";
+            boiteSauvegarde.Filter = "Fichier sauvegarde Smallworld(*.godwin)|*.godwin";
             if (boiteSauvegarde.ShowDialog() == DialogResult.OK)
             {
                 Partie.INSTANCE.sauvegarder(boiteSauvegarde.FileName);
@@ -546,7 +548,7 @@ namespace wpf
         {
             //partie = Partie.charger
             OpenFileDialog finder = new OpenFileDialog();
-            finder.Filter = "Fichier smallworld(*.sw)|*.sw";
+            finder.Filter = "Fichier sauvegarde Smallworld(*.godwin)|*.godwin";
             if (finder.ShowDialog() == DialogResult.OK)
             {
                 Console.WriteLine("Chargement");

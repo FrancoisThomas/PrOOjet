@@ -7,5 +7,6 @@
         <wpf:Accueil x:Name="EcranAccueil"> </wpf:Accueil>
         <wpf:Lancement x:Name="EcranLancement" Visibility="Collapsed"></wpf:Lancement>
         <wpf:Jeu x:Name="EcranCarte" Visibility="Collapsed"></wpf:Jeu>
+        <wpf:Fin x:Name="EcranFin" Visibility="Collapsed"></wpf:Fin>
     </Grid>
 </Window>
