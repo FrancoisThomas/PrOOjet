@@ -1,5 +1,8 @@
 #include "combat.h"
 
+/// <summary>
+/// Constructeur de combat, qui initialise les attributs des protagonistes.
+/// </summary>
 Combat::Combat(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int pts_att, int pts_def)
 {
 	pdv_attaquant_max = (float)pdv_att_max;
@@ -10,8 +13,14 @@ Combat::Combat(int pdv_att, int pdv_att_max, int pdv_def, int pdv_def_max, int p
 	points_def_defenseur = (float)pts_def;
 }
 
+/// <summary>
+/// Destructeur de combat.
+/// </summary>
 Combat::~Combat(){}
 
+/// <summary>
+/// Permet de mettre a jour les cararcteristiques des protagonistes, basees sur la perte eventuelle de points de vie.
+/// </summary>
 void Combat::calculeCarac()
 {
 	att_attaquant = ((float)pdv_attaquant * points_att_attaquant)/ pdv_attaquant_max;
@@ -20,7 +29,9 @@ void Combat::calculeCarac()
 }
 
 
-
+/// <summary>
+/// Permet d'effectuer un combat.
+/// </summary>
 void Combat::combattre()
 {
 

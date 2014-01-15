@@ -2,10 +2,13 @@
 #define COMBAT_H
 
 #include <stddef.h>
-#include <stdlib.h>		//srand/rand
-#include <time.h>		//time
-#include <algorithm>	//max   
+#include <stdlib.h>		// pour utiliser srand/rand
+#include <time.h>		// pour utiliser time
+#include <algorithm>	// pour utiliser max   
 
+/// <summary>
+/// Classe permettant de representer un combat, et de le faire se derouler.
+/// </summary>
 class Combat
 {
 private:

@@ -32,21 +32,22 @@
                 </Grid.RowDefinitions>
                 <!--Points de vie-->
                 <Image Source="Resources/vie.png" Grid.Row="0" Grid.Column="0"/>
-                <Label Name="healthLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="healthLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Attaque-->
                 <Image Source="Resources/attaque.png" Grid.Row="1" Grid.Column="0"/>
-                <Label Name="attackLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="attackLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Defense-->
                 <Image Source="Resources/defense.png" Grid.Row="1" Grid.Column="1" Opacity="1"/>
-                <Label Name="defenseLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="defenseLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Points de mouvements-->
                 <Image Source="Resources/movement.png" Grid.Row="0" Grid.Column="1" Opacity="1"/>
-                <Label Name="movementLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="movementLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
             </Grid>
             
             <StackPanel>
-                <Button Content="Fin du tour" HorizontalAlignment="Left" Height="30" Margin="51,580,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick"/>
-                <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="30" Margin="51,20,0,0" VerticalAlignment="Top" Width="300" Click="save_ButtonClick"/>
+                <Button FontFamily="/Fonts/#Turtles" FontSize="25" Content="Fin du tour" HorizontalAlignment="Left" Height="40" Margin="51,550,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick"/>
+                <Button FontFamily="/Fonts/#Turtles" FontSize="25" Content="Sauvegarder" HorizontalAlignment="Left" Height="40" Margin="51,20,0,0" VerticalAlignment="Top" Width="300" Click="save_ButtonClick"/>
+                <Button FontFamily="/Fonts/#Turtles" FontSize="25" Content="Menu Principal" HorizontalAlignment="Left" Height="40" Margin="51,20,0,0" VerticalAlignment="Top" Width="300" Click="menu_ButtonClick"/>
             </StackPanel>
         </Grid>
 
@@ -59,11 +60,11 @@
                     <ColumnDefinition Width="53"/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="nameJ1" Foreground="White" FontWeight="Bold" Grid.Column="0" FontSize="25" VerticalAlignment="Center"/>
-                <Label Name="pointsJ1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Label Name="tours" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Label Name="pointsJ2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Label Name="nameJ2" Foreground="White" FontWeight="Bold" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="nameJ1" Foreground="White" FontWeight="Bold" Grid.Column="0" FontSize="25" VerticalAlignment="Center"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="pointsJ1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="tours" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="pointsJ2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label FontFamily="/Fonts/#Turtles" Name="nameJ2" Foreground="White" FontWeight="Bold" Grid.Column="4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             </Grid>
 
             <Grid Name="mapGrid" Background="Azure" DockPanel.Dock="Right" Height="600" Width="600" Margin="0,20,20,0">

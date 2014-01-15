@@ -1,6 +1,9 @@
 #include "carte.h"
 
-
+/// <summary>
+/// Generateur de la carte.
+/// <param name="taille"> La taille de la carte a construire. </param>
+/// </summary>
 Carte::Carte(int t) : taille(t)
 {
 	if(t > 0)
@@ -10,33 +13,49 @@ Carte::Carte(int t) : taille(t)
 	else mat = NULL;
 }
 
+/// <summary>
+/// Destructeur de carte.
+/// </summary>
 Carte::~Carte()
 {
 	if(mat!=NULL) delete[] mat;
 }
 
+/// <summary>
+/// Accesseur a la carte.
+/// <return> La matrice representant la carte. </return>
+/// </summary>
 int * Carte::getData()
 {
 	return mat;
 }
 
+/// <summary>
+/// Une premiere version du generateur de carte, totalement deterministe.
+/// </summary>
 void Carte::genereTableauCarte()
 {
-	// TODO Remplir mat
 	for(int i=0; i<taille*taille; i++)
-		mat[i] = i % 5;
+	mat[i] = i % 5;
 }
 
-void Carte::echangeCase(int pos)
+
+/// <summary>
+/// Une seconde version du generateur de carte, aleatoire, mais qui permet de ne pas creer une carte "bloquee".
+/// </summary>
+void Carte::genereTableauCarte2()
 {
+	
 	srand((unsigned int)time(NULL));
-	int r = pos;
-	while(mat[r] == EAU || estPasse[r])
-		r = rand() % taille*taille;
-	mat[pos] = mat[r];
-	mat[r] = EAU;
+	for(int i=0; i<taille*taille; i++)
+			mat[i] = rand() % 5;
+	validationCarte();
 }
 
+/// <summary>
+/// Permet de verifier si la carte est valide, c'st a dire que les deux joueurs ne commencent pas sur une case d'eau, 
+/// et qu'ils peuvent se rejoindre s'ils le desirent. Modifie la carte dans le cas contraire.
+/// </summary>
 void Carte::validationCarte()
 {
 	srand((unsigned int)time(NULL));
@@ -136,60 +155,16 @@ void Carte::validationCarte()
 }
 
 
-void Carte::genereTableauCarte2()
+/// <summary>
+/// Permet d'echanger une case genante contre une autre, qui ne l'est pas. On verifie bien que la case remplacee 
+/// n'est ni sur le chemin emprunte par les joueurs pour se rejoindre, ni du type EAU.
+/// </summary>
+void Carte::echangeCase(int pos)
 {
-	
 	srand((unsigned int)time(NULL));
-	for(int i=0; i<taille*taille; i++)
-			mat[i] = rand() % 5;
-	validationCarte();
+	int r = pos;
+	while(mat[r] == EAU || estPasse[r])
+		r = rand() % taille*taille;
+	mat[pos] = mat[r];
+	mat[r] = EAU;
 }
-
-/*bool Carte::testCase(int pos)
-{
-	bool res;
-	if(estTeste[pos] || mat[pos] == EAU)
-	{
-		estTeste[pos] = true;
-		return false;
-	}
-	else if(pos == taille*taille - 1)
-		return true;
-	else
-	{
-		estTeste[pos] = true;
-		bool haut, gauche, bas, droite = false;
-
-		if(pos < taille*(taille - 1))
-			if(testCase(pos + taille))
-				return true;
-
-		if(pos % taille < taille - 1)
-			if(testCase(pos + 1))
-				return true;
-
-		if(pos > taille)
-		{
-			bool haut = testCase(pos - taille);
-			if(haut)
-				return haut;
-		}
-		if(pos % taille > 0)
-		{
-			bool gauche = testCase(pos - 1);
-			if(gauche)
-				return(gauche);
-		}
-		
-	}
-	return false;
-}
-
-
-bool Carte::carteValide()
-{
-	estTeste = new bool[taille*taille];
-	return testCase(0);
-}
-
-*/

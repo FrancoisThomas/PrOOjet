@@ -76,5 +76,14 @@ namespace wpf
             else
                 return new BitmapImage(new Uri(@"Resources\aleatoire.gif", UriKind.Relative));
         }
+
+        private void menuPrincipal(object sender, RoutedEventArgs e) 
+        {
+            Partie.INSTANCE.PointsJoueur1 = 0;
+            Partie.INSTANCE.PointsJoueur2 = 0;
+
+            Visibility = Visibility.Collapsed;
+            mainWindow.EcranCarte.menu_ButtonClick(sender, e);
+        }
     }
 }

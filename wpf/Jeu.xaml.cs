@@ -463,9 +463,25 @@ namespace wpf
                         Partie.INSTANCE.deplaceUnite(uniteSelectionnee, coordUniteSelectionnee, c);
 
                     if (Partie.INSTANCE.JoueurActif.Unites.Count == 0)
-                        Console.WriteLine("The End 1");
+                    {
+                        if (Partie.INSTANCE.JoueurActif == Partie.INSTANCE.Joueur1)
+                            Partie.INSTANCE.PointsJoueur2 += 100;
+                        else
+                            Partie.INSTANCE.PointsJoueur1 += 100;
+                        Visibility = Visibility.Collapsed;
+                        mainWindow.EcranFin.initialise();
+                        mainWindow.EcranFin.Visibility = Visibility.Visible;
+                    }
                     if (Partie.INSTANCE.JoueurNonActif.Unites.Count == 0)
-                        Console.WriteLine("The End 2");
+                    {
+                        if (Partie.INSTANCE.JoueurActif == Partie.INSTANCE.Joueur1)
+                            Partie.INSTANCE.PointsJoueur1 += 100;
+                        else
+                            Partie.INSTANCE.PointsJoueur2 += 100;
+                        Visibility = Visibility.Collapsed;
+                        mainWindow.EcranFin.initialise();
+                        mainWindow.EcranFin.Visibility = Visibility.Visible;
+                    }
 
                     uniteSelectionnee.diminuePointsDeMouvement(uniteSelectionnee.PointsDeMouvement);
                 }
@@ -537,25 +553,26 @@ namespace wpf
         void save_ButtonClick(object sender, EventArgs e)
         {
             SaveFileDialog boiteSauvegarde = new SaveFileDialog();
-            boiteSauvegarde.Filter = "Fichier sauvegarde Smallworld(*.godwin)|*.godwin";
+            boiteSauvegarde.Filter = "Fichier sauvegarde Smallworld(*.alalign)|*.alalign";
             if (boiteSauvegarde.ShowDialog() == DialogResult.OK)
             {
                 Partie.INSTANCE.sauvegarder(boiteSauvegarde.FileName);
             }
         }
 
-        void load_ButtonClick(object sender, EventArgs e)
+        public void menu_ButtonClick(object sender, EventArgs e)
         {
-            //partie = Partie.charger
-            OpenFileDialog finder = new OpenFileDialog();
-            finder.Filter = "Fichier sauvegarde Smallworld(*.godwin)|*.godwin";
-            if (finder.ShowDialog() == DialogResult.OK)
-            {
-                Console.WriteLine("Chargement");
-                Partie.charger(finder.FileName);
-                Console.WriteLine(Partie.INSTANCE.Joueur1.Nom);
-                initialiseIHM();
-            }
+            Partie.INSTANCE.PointsJoueur1 = 0;
+            Partie.INSTANCE.PointsJoueur2 = 0;
+
+            pointsJ1.Content = 0;
+            pointsJ2.Content = 0;
+
+            pointsJ1.Background = Brushes.Black;
+            pointsJ2.Background = Brushes.Black;
+
+            Visibility = Visibility.Collapsed;
+            mainWindow.EcranAccueil.Visibility = Visibility.Visible;
         }
 
 

@@ -30,22 +30,22 @@
         
         <Grid Grid.Row="0" Grid.ColumnSpan="5">
             <Image Source="Resources/parcheminFond.gif" Height="690" Margin="38,10,38,-600" VerticalAlignment="Top"/>
-            <TextBlock Name="resultLabel" VerticalAlignment="Center" FontWeight="Bold" FontSize="100" TextAlignment="Center" Margin="0,47,0,0" Text="Victoire !"/>
+            <TextBlock FontFamily="/Fonts/#Turtles" Name="resultLabel" VerticalAlignment="Center" FontWeight="Bold" FontSize="100" TextAlignment="Center" Margin="0,47,0,0" Text="Victoire !"/>
         </Grid>
 
 
-        <TextBlock Name="winnerNameLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="80" TextAlignment="Center" Margin="0,0,0,20"/>
+        <TextBlock FontFamily="/Fonts/#Turtles" Name="winnerNameLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="80" TextAlignment="Center" Margin="0,0,0,20"/>
 
-        <TextBlock Name="nameJ1Label" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
-        <TextBlock Name="nameJ2Label" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <TextBlock FontFamily="/Fonts/#Turtles" Name="nameJ1Label" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <TextBlock FontFamily="/Fonts/#Turtles" Name="nameJ2Label" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
 
         <Image x:Name="imagePeuple1" Grid.Column="1" HorizontalAlignment="Center" Height="179" Grid.Row="3" VerticalAlignment="Center" Width="179"/>
         <Image Grid.Column="2" HorizontalAlignment="Center" Height="100" Grid.Row="3" VerticalAlignment="Center" Width="100" Source="Resources/fight.gif"/>
         <Image x:Name="imagePeuple2" Grid.Column="3" HorizontalAlignment="Center" Height="179" Grid.Row="3" VerticalAlignment="Center" Width="179"/>
 
-        <TextBlock Name="pointsJ1Label" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
-        <TextBlock Name="pointsJ2Label" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
-
+        <TextBlock FontFamily="/Fonts/#Turtles" Name="pointsJ1Label" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <TextBlock FontFamily="/Fonts/#Turtles" Name="pointsJ2Label" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" />
+        <Button FontFamily="/Fonts/#Turtles" FontSize="18" Click="menuPrincipal" Grid.ColumnSpan="3" Content="Menu Principal" Grid.Column="1" HorizontalAlignment="Center" Height="56" Margin="278,14,278,0" Grid.Row="4" VerticalAlignment="Top" Width="144"/>
     </Grid>
     
 </UserControl>

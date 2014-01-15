@@ -1,9 +1,20 @@
 #include "api.h"
 
+/// <summary>
+/// Constructeur d'api.
+/// </summary>
 Api * Api_new(){ return new Api(); }
+
+/// <summary>
+/// Destructeur d'api.
+/// </summary>
 void Api_delete(Api* api){ delete api; }
 
-
+/// <summary>
+/// Generateur de la carte.
+/// <param name="taille"> La taille de la carte a generer. </param>
+/// <returns> La carte contenu dans un tableau a une dimension. </returns>
+/// </summary>
 int * Api::genereTableauCarte(int taille)
 {
 	Carte * c = new Carte(taille);
@@ -11,12 +22,19 @@ int * Api::genereTableauCarte(int taille)
 	return c->getData();
 }
 
-
+/// <summary>
+/// Calculateur de points pour un score de case et un nombre d'ennemi donne.
+/// <param name="pointsCarte"> Le score de la case, provenant de l'enum pointsCase </param>
+/// <param name="nombreEnnemis"> Le nombre d'ennemi sur la case, permettant de ponderer la valeur de la case </param>
+/// <returns> La valeur de la case, selon son score et le nombre d'ennemi. </returns>
+/// </summary>
 int Api::pointsCase(int pointsCarte, int nombreEnnemis)
 {
 	int res;
 	if(pointsCarte == DEPLACEMENT_IMPOSSIBLE)
 		res = DEPLACEMENT_IMPOSSIBLE;
+
+	// Une case avec plus d'un ennemi ne peut etre prise, elle est donc ininteressante.
 	else if(nombreEnnemis > 1)
 		res = NUL + ENNEMI;
 	else if(nombreEnnemis == 1)
@@ -26,6 +44,12 @@ int Api::pointsCase(int pointsCarte, int nombreEnnemis)
 	return res;
 }
 
+/// <summary>
+/// Generateur d'une carte dont toutes les cases sont ponderees par leur apport en points pour le peuple Viking. 
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <returns> La matrice representant la carte ponderee pour les Vikings. </returns>
+/// </summary>
 int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 {
 	int ** res = new int *[tailleCarte];
@@ -56,6 +80,14 @@ int ** Api::cartePondereePointsViking(int tailleCarte, int ** carte)
 	return res;
 }
 
+/// <summary>
+/// Generateur d'une carte referencant les deplacements possibles pour une unite Viking, et leurs gains en points.
+/// <param name="posUnite"> La position de l'unite. </param>
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posEnnemis"> La matrice representant la position des ennemis. </param>
+/// <returns> La matrice representant la carte des deplacements possibles pour l'unite Viking. </returns>
+/// </summary>
 int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
 	int * resultat = new int[tailleCarte*tailleCarte];
@@ -99,7 +131,14 @@ int * Api::deplacementsPossiblesViking(int posUnite, int ** carte, int tailleCar
 
 
 
-
+/// <summary>
+/// Generateur d'une carte referencant les deplacements possibles pour une unite Gauloise, et leurs gains en points.
+/// <param name="posUnite"> La position de l'unite. </param>
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posEnnemis"> La matrice representant la position des ennemis. </param>
+/// <returns> La matrice representant la carte des deplacements possibles pour l'unite Gauloise. </returns>
+/// </summary>
 int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
 	int ponderationGaulois[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NUL, NORMAL, SUPER};
@@ -156,7 +195,14 @@ int * Api::deplacementsPossiblesGaulois(int posUnite, int ** carte, int tailleCa
 	return resultat;
 }
 
-
+/// <summary>
+/// Generateur d'une carte referencant les deplacements possibles pour une unite Naine, et leurs gains en points.
+/// <param name="posUnite"> La position de l'unite. </param>
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posEnnemis"> La matrice representant la position des ennemis. </param>
+/// <returns> La matrice representant la carte des deplacements possibles pour l'unite Naine. </returns>
+/// </summary>
 int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte, int ** posEnnemis)
 {
 	int ponderationNain[5] = {NORMAL, DEPLACEMENT_IMPOSSIBLE, NORMAL, SUPER, NUL};
@@ -188,7 +234,13 @@ int * Api::deplacementsPossiblesNain(int posUnite, int ** carte, int tailleCarte
 	return resultat;
 }
 
-
+/// <summary>
+/// Permet de calculer le gain en points sur un tour d'un joueur Viking.
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posUnites"> La matrice representant la position des unites du joueur. </param>
+/// <returns> Le nombre de points gagnes sur le tour par le joueur. </returns>
+/// </summary>
 int Api::calculePointsTourViking(int ** carte, int tailleCarte, int ** posUnites)
 {
 	int res = 0;
@@ -201,6 +253,14 @@ int Api::calculePointsTourViking(int ** carte, int tailleCarte, int ** posUnites
 	return res;
 }
 
+
+/// <summary>
+/// Permet de calculer le gain en points sur un tour d'un joueur Gaulois.
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posUnites"> La matrice representant la position des unites du joueur. </param>
+/// <returns> Le nombre de points gagnes sur le tour par le joueur. </returns>
+/// </summary>
 int Api::calculePointsTourGaulois(int ** carte, int tailleCarte, int ** posUnites)
 {
 	int res = 0;
@@ -214,6 +274,14 @@ int Api::calculePointsTourGaulois(int ** carte, int tailleCarte, int ** posUnite
 	return res;
 }
 
+
+/// <summary>
+/// Permet de calculer le gain en points sur un tour d'un joueur Nain.
+/// <param name="carte"> La matrice representant la carte. </param>
+/// <param name="tailleCarte"> La taille de la carte. </param>
+/// <param name="posUnites"> La matrice representant la position des unites du joueur. </param>
+/// <returns> Le nombre de points gagnes sur le tour par le joueur. </returns>
+/// </summary>
 int Api::calculePointsTourNain(int ** carte, int tailleCarte, int ** posUnites)
 {
 	int res = 0;
@@ -229,12 +297,25 @@ int Api::calculePointsTourNain(int ** carte, int tailleCarte, int ** posUnites)
 
 
 
-
+/// <summary>
+/// Permet d'effectuer un combat entre deux unites.
+/// <param name="pdvAtt"> Les points de vie de l'attaquant. </param>
+/// <param name="pdvAttMax"> Les points de vie max de l'attaquant. </param>
+/// <param name="pdvDef"> Les points de vie du defenseur. </param>
+/// <param name="pdvDefMax"> Les points de vie max du defenseur. </param>
+/// <param name="ptsAtt"> Les points d'attaque de l'attaquant </param>
+/// <param name="ptsDef"> Les points de defense du defenseur </param>
+/// </summary>
 void Api::combat(int pdvAtt, int pdvAttMax, int pdvDef, int pdvDefMax, int ptsAtt, int ptsDef)
 {
+	// On cree le combat
 	Combat * cbt = new Combat(pdvAtt, pdvAttMax, pdvDef, pdvDefMax, ptsAtt, ptsDef);
+
+	// On effectue le combat
 	cbt->combattre();
 	
+
+	// On recupere la vie de l'attaquant et du defenseur
 	this->pdv_attaquant_fin = cbt->getPointsDeVieAttaquant();
 	this->pdv_defenseur_fin = cbt->getPointsDeVieDefenseur();
 }

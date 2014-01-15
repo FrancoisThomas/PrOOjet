@@ -45,7 +45,7 @@ namespace wpf
         public void chargePartie(object sender, RoutedEventArgs e)
         {
             OpenFileDialog finder = new OpenFileDialog();
-            finder.Filter = "Fichier smallworld(*.sw)|*.sw";
+            finder.Filter = "Fichier smallworld(*.alalign)|*.alalign";
             if (finder.ShowDialog() == DialogResult.OK)
             {
                 Console.WriteLine("Chargement");
