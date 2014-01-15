@@ -13,16 +13,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
-            <RowDefinition Height="150" />
+            <RowDefinition Height="70" />
             <RowDefinition Height="80" />
-            <RowDefinition Height="80" />
-            <RowDefinition Height="80" />
-            <RowDefinition Height="80" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="55" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Image Source="Resources/parchemin.jpg" Height="746" Margin="38,10,38,-656" VerticalAlignment="Top"/>
+            <Image Source="Resources/parcheminFond.gif" Height="690" Margin="38,10,38,-600" VerticalAlignment="Top"/>
 
             <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" Margin="0,47,0,0"><Run Text="Nouvelle Partie"/></TextBlock>
         </Grid>
@@ -130,10 +131,40 @@
             </Grid>
         </Grid>
 
-
         <Grid Grid.Row="6">
-            <Button Click="jouer" Content="Jouer" FontSize="25" Width="200" Height="60" Margin="412,33,412,105"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton Name="Aleatoire1" GroupName="peupleJoueur1" Click="aleatoire1" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Viewbox Margin="0" Height="30" Grid.Row="0">
+                    <RadioButton Name="Aleatoire2" GroupName="peupleJoueur2" Click="aleatoire2" Content="Aléatoire" VerticalAlignment="Bottom" Width="70" IsChecked="True"/>
+                </Viewbox>
+            </Grid>
         </Grid>
+
+
+        <Grid Grid.RowSpan="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="jouer" HorizontalAlignment="Center" Content="Jouer" FontSize="25" Width="200" Height="100" VerticalAlignment="Center" Margin="62,290,62,65" Grid.Column="1"/>
+        </Grid>
+
+        <Image x:Name="imagePeuple1" Grid.Column="0" HorizontalAlignment="Right" Height="179" Grid.Row="7" VerticalAlignment="Top" Width="179" Margin="0,0,644,0" Source="Resources/aleatoire.gif"/>
+        <Image x:Name="imagePeuple2" Grid.Column="0" HorizontalAlignment="Left" Height="179" Grid.Row="7" VerticalAlignment="Top" Width="179" Margin="644,0,0,0" Source="Resources/aleatoire.gif"/>
+        <Image Source="/Resources/fight.gif" HorizontalAlignment="Stretch" Height="152" Margin="363,26,363,0" Grid.Row="7" VerticalAlignment="Top" Width="298"/>
+
+
 
     </Grid>
 </UserControl>

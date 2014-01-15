@@ -142,7 +142,52 @@
   <data name="montagne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\montagne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Persos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Persos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plaine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plaine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aleatoire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aleatoire.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="attaque" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\attaque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="defense" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\defense.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fight.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="movement" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\movement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="parchemin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\parchemin.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="parcheminFond" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\parcheminFond.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="persoHumain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\persoHumain.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="persoNain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\persoNain.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="persoTriton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\persoTriton.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PeupleHumain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PeupleHumain.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PeupleNain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PeupleNain.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PeupleTriton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PeupleTriton.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
