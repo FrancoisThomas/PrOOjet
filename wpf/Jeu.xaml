@@ -18,29 +18,31 @@
                 </Grid>
             </DockPanel>
 
-            <Grid Name="infoGrid" HorizontalAlignment="Right" Height="248" Margin="0,200,58,0" VerticalAlignment="Top" Width="291">
+            <Grid Name="infoGrid" HorizontalAlignment="Right" Height="248" Margin="0,200,58,0" VerticalAlignment="Top" Width="291" Visibility="Collapsed">
                 <Grid.Background>
-                    <SolidColorBrush Color="Black" Opacity=".2" />
+                    <SolidColorBrush Color="DarkGray" Opacity=".4" />
                 </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="144" />
                     <ColumnDefinition Width="144" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="72" />
-                    <RowDefinition Height="72" />
+                    <RowDefinition Height="124" />
+                    <RowDefinition Height="124" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <!--Points de vie-->
-                <Label Name="healthLabel" Foreground="White" FontSize="30" FontWeight="Black" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1"/>
+                <Image Source="Resources/vie.png" Grid.Row="0" Grid.Column="0"/>
+                <Label Name="healthLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Attaque-->
                 <Image Source="Resources/attaque.png" Grid.Row="1" Grid.Column="0"/>
-                <Label Name="attackLabel" Foreground="White" FontSize="30" FontWeight="Black" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1"/>
+                <Label Name="attackLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Defense-->
-                <Image Source="Resources/defense.png" Grid.Row="1" Grid.Column="2" Opacity="1"/>
-                <Label Name="defenseLabel" Foreground="White" FontSize="30" FontWeight="Black" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1"/>
+                <Image Source="Resources/defense.png" Grid.Row="1" Grid.Column="1" Opacity="1"/>
+                <Label Name="defenseLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
                 <!--Points de mouvements-->
-                <Label Name="movementLabel" Foreground="White" FontSize="30" FontWeight="Black" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1"/>
+                <Image Source="Resources/movement.png" Grid.Row="0" Grid.Column="1" Opacity="1"/>
+                <Label Name="movementLabel" Height="120" Foreground="White" FontSize="70" FontWeight="Black" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="1"/>
             </Grid>
             <Button HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300" Click="endTurn_ButtonClick">
                 <StackPanel>
@@ -48,6 +50,8 @@
                     <Image Source="Resources/eau.png" Stretch="Fill"/>
                 </StackPanel>
             </Button>
+
+            <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="30" Margin="51,620,0,0" VerticalAlignment="Top" Width="300" Click="save_ButtonClick"/>
         </Grid>
 
         <StackPanel>

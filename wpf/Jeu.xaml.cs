@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using PrOOjet;
 
 namespace wpf
@@ -18,7 +19,7 @@ namespace wpf
     /// <summary>
     /// Logique d'interaction pour Carte.xaml
     /// </summary>
-    public partial class Jeu : UserControl
+    public partial class Jeu : System.Windows.Controls.UserControl
     {
 
         ICarte carte;
@@ -42,7 +43,7 @@ namespace wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Nain.INSTANCE, "Jean-Mouloud", "Jeanine", new StrategieNormale());
+            partie = MonteurPartie.INSTANCE.creerPartie(Gaulois.INSTANCE, Viking.INSTANCE, "Jean-Mouloud", "Lord", new StrategieDemo());
 
             // on initialise la Grid (mapGrid défini dans le xaml) à partir de la map du modèle (engine)
             carte = partie.Carte;
@@ -174,6 +175,10 @@ namespace wpf
             attackLabel.Content = unit.Attaque;
             defenseLabel.Content = unit.Defense;
             movementLabel.Content = unit.PointsDeMouvement;
+            if ((int)movementLabel.Content == 0)
+                movementLabel.Foreground = Brushes.DarkGray;
+            else
+                movementLabel.Foreground = Brushes.White;
             infoGrid.Visibility = System.Windows.Visibility.Visible;
         }
 
@@ -515,6 +520,17 @@ namespace wpf
 
                 //TODO mainWindow.finPartie();
             }
+        }
+
+        void save_ButtonClick(object sender, EventArgs e)
+        {
+            /*SaveFileDialog boiteSauvegarde = new SaveFileDialog();
+            boiteSauvegarde.Filter = "Fichier xml(*.xml)|*.xml";
+            if (boiteSauvegarde.ShowDialog() == DialogResult.OK)
+            {
+                Sauvegarde save = new Sauvegarde();
+                save.sauvegarder(boiteSauvegarde.FileName);
+            }*/
         }
 
 
