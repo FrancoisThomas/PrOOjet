@@ -197,7 +197,7 @@ int Api::calculePointsTourViking(int ** carte, int tailleCarte, int ** posUnites
 	for(int i = 0; i < tailleCarte; i++)
 		for(int j = 0; j < tailleCarte; j++)
 			if(posUnites[i][j] > 0)
-				res += points[i][j];
+				res += (points[i][j]-2)/2;
 	return res;
 }
 
@@ -210,7 +210,7 @@ int Api::calculePointsTourGaulois(int ** carte, int tailleCarte, int ** posUnite
 	for(int i = 0; i < tailleCarte; i++)
 		for(int j = 0; j < tailleCarte; j++)
 			if(posUnites[i][j] > 0)
-				res += ponderationGaulois[carte[i][j]];
+				res += (ponderationGaulois[carte[i][j]]-2)/2;
 	return res;
 }
 
@@ -223,7 +223,7 @@ int Api::calculePointsTourNain(int ** carte, int tailleCarte, int ** posUnites)
 	for(int i = 0; i < tailleCarte; i++)
 		for(int j = 0; j < tailleCarte; j++)
 			if(posUnites[i][j] > 0)
-				res += ponderationNain[carte[i][j]];
+				res += (ponderationNain[carte[i][j]]-2)/2;
 	return res;
 }
 
