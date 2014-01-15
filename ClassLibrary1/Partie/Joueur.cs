@@ -136,7 +136,10 @@ namespace PrOOjet
                 {
                     l.Remove(unite);
                     if (l.Count == 0)
+                    {
+                        Console.WriteLine("supprimeListeUnite");
                         unites.Remove(c);
+                    }
                     break;
                 }
             }
