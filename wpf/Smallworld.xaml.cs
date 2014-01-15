@@ -23,6 +23,8 @@ namespace wpf
             InitializeComponent();
             EcranAccueil.ajoutReference(this);
             EcranLancement.ajoutReference(this);
+            EcranCarte.ajoutReference(this);
+            EcranFin.ajoutReference(this);
         }
     }
 }
