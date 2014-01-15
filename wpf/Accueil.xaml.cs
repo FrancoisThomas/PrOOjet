@@ -37,7 +37,7 @@ namespace wpf
         public void nouvellePartie(object sender, RoutedEventArgs e) 
         {
             Visibility = Visibility.Collapsed;
-            mainWindow.EcranCarte.Visibility = Visibility.Visible;
+            mainWindow.EcranLancement.Visibility = Visibility.Visible;
         }
     }
 }

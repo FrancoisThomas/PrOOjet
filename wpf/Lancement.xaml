@@ -38,13 +38,13 @@
 
             
             <Viewbox Margin="0" Height="30" Grid.Column="1">
-                <RadioButton GroupName="tailleCarte" Content="Démo" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+                <RadioButton GroupName="tailleCarte" Content="Démo" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratDemo" IsChecked="True"/>
             </Viewbox>
             <Viewbox Margin="0" Height="30" Grid.Column="2" Grid.Row="1">
-                <RadioButton GroupName="tailleCarte" Content="Petite" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+                <RadioButton GroupName="tailleCarte" Content="Petite" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratPetite"/>
             </Viewbox>
             <Viewbox Margin="0" Height="30" Grid.Column="3" Grid.Row="1">
-                <RadioButton GroupName="tailleCarte" Content="Normale" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+                <RadioButton GroupName="tailleCarte" Content="Normale" VerticalAlignment="Stretch" Margin="10,0,0,0" Checked="setStratNormale"/>
             </Viewbox>
         </Grid>
 
@@ -54,11 +54,18 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="450"/>
             </Grid.ColumnDefinitions>
-            <Viewbox Margin="0" Height="30" Grid.Column="0">
-                <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="40" TextAlignment="Center" ><Run Text="Joueur 1"/></TextBlock>
+            <Viewbox Margin="0,10,0,40" Height="30" Grid.Column="0">
+                <TextBlock VerticalAlignment="Top" FontWeight="Bold" FontSize="40" TextAlignment="Center" >Joueur 1</TextBlock>
             </Viewbox>
-            <Viewbox Margin="0" Height="30" Grid.Column="0">
-                <TextBox Width="200"  Height="50" Name="LoginTextBox" VerticalAlignment="Top" />
+            <Viewbox Margin="-6,50,6,0" Height="30" Grid.Column="0">
+                <TextBox FontSize="25" Width="223"  Height="50" Name="nomJoueur1" VerticalAlignment="Bottom" />
+            </Viewbox>
+
+            <Viewbox Margin="0,10,0,40" Height="30" Grid.Column="2">
+                <TextBlock VerticalAlignment="Top" FontWeight="Bold" FontSize="40" TextAlignment="Center" >Joueur 2</TextBlock>
+            </Viewbox>
+            <Viewbox Margin="-6,50,6,0" Height="30" Grid.Column="2">
+                <TextBox FontSize="25" Width="223"  Height="50" Name="nomJoueur2" VerticalAlignment="Bottom" />
             </Viewbox>
 
 
@@ -73,12 +80,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur1" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton Name="Humain1" GroupName="peupleJoueur1" Click="setHumain1" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur2" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton Name="Humain2" GroupName="peupleJoueur2" Click="setHumain2" Content="Humain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -93,12 +100,12 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur1" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton Name="Nain1" GroupName="peupleJoueur1" Click="setNain1" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur2" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton Name="Nain2" GroupName="peupleJoueur2" Click="setNain2" Content="Nain" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
@@ -113,19 +120,19 @@
 
             <Grid Grid.Column="0">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur1" Content="Triton" VerticalAlignment="Stretch" Width="70"/>
+                    <RadioButton Name="Triton1" GroupName="peupleJoueur1" Click="setTriton1" Content="Triton" VerticalAlignment="Stretch" Width="70"/>
                 </Viewbox>
             </Grid>
             <Grid Grid.Column="2">
                 <Viewbox Margin="0" Height="30" Grid.Row="0">
-                    <RadioButton GroupName="peupleJoueur2" Content="Triton" VerticalAlignment="Bottom" Width="70"/>
+                    <RadioButton Name="Triton2" GroupName="peupleJoueur2" Click="setTriton2" Content="Triton" VerticalAlignment="Bottom" Width="70"/>
                 </Viewbox>
             </Grid>
         </Grid>
 
 
         <Grid Grid.Row="6">
-            <Button Content="Jouer" FontSize="25" Width="200" Height="60" Margin="412,33,412,105"/>
+            <Button Click="jouer" Content="Jouer" FontSize="25" Width="200" Height="60" Margin="412,33,412,105"/>
         </Grid>
 
     </Grid>
